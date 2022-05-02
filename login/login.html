@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nutridaily: accedi o iscriviti</title>
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Vue -->
+  <script src="https://unpkg.com/vue@3"></script>
+  <!-- JQuery -->
+  <script src="//code.jquery.com/jquery-3.6.0.js"></script>
+  <!-- bootstrap -->
+  <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css">
+  <script type="application/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
+  <!-- styleLogin css -->
+  <link rel="stylesheet" type="text/css" href="styleLogin.css">
+</head>
+
+<body>
+
+  <!-- login -->
+  <div class="container d-flex flex-column flex-lg-row justify-content-evenly mt5 pt-5">
+    <!-- heading -->
+    <div class="text-center text-lg-start mt-lg-5 pt-lg-5">
+      <h1 class="text-primary fw-bold fs-0">Nutridaily</h1>
+      <p class="w-75 mx-auto mx-lg-0 fs-4">
+        Il tuo diario alimentare giornaliero
+      </p>
+    </div>
+    <!-- form -->
+    <div style="max-width: 28rem; width:100%" class="container d-flex justify-content-evenly">
+      <div class="bg-white shadow rounded p-3 input-group-lg">
+        <input type="email" class="form-control my-3" placeholder="Email" autofocus required>
+        <input type="password" class="form-control my-3" placeholder="Password" required>
+        <a href="#">
+          <button class="btn btn-primary w-100 my-3">Accedi</button>
+        </a>
+        <a href="#" class="text-decoration-none text-center">
+          <p>Password dimenticata?</p>
+        </a>
+        <!-- create form -->
+        <hr>
+        <div class="text-center my-4">
+          <button class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#createModal">Crea nuovo
+            account</button>
+        </div>
+        <!-- create modal -->
+        <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <!-- head -->
+              <div class="modal-header">
+                <div>
+                  <h2 class="modal-title" id="createModalLabel">
+                    Iscriviti
+                  </h2>
+                  <p class="text-muted fs-7"> &Egrave semplice e veloce</p>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <!-- body -->
+              <div class="modal-body">
+                <form>
+                  <!-- nome -->
+                  <div class="row">
+                    <div class="col">
+                      <input type="text" class="form-control" placeholder="Nome" required>
+                    </div>
+                    <div class="col">
+                      <input type="text" class="form-control" placeholder="Cognome" required>
+                    </div>
+                  </div>
+                  <!-- email e pass -->
+                  <input type="email" class="form-control my-3" placeholder="Email" required>
+                  <input type="password" class="form-control my-3" placeholder="nuova password" required>
+                  <!-- datanascita -->
+                  <div class="row my-3">
+                    <span class="text-muted fs-7">Data di nascita <i type="button" class="fa-solid fa-circle-question"
+                        data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right"
+                        data-bs-content="Indica la tua data di nascita"></i></span>
+                    <div class="col">
+                      <select class="form-select date-of-b" id="day" name="dd" required>
+                      </select>
+                    </div>
+                    <div class="col">
+                      <select class="form-select date-of-b" id="month" name="mm" onchange="change_month(this)">
+                      </select>
+                    </div>
+                    <div class="col">
+                      <select class="form-select date-of-b" id="year" name="yyyy" onchange="change_year(this)">
+                      </select>
+                    </div>
+                  </div>
+                  <!-- sesso -->
+                  <!-- selezione sesso -->
+                  <!-- peso -->
+                  <!-- altezza -->
+                  <!-- disclaimer -->
+                  <!-- btn -->
+                </form>
+              </div>
+              <!-- footer -->
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end -->
+      </div>
+    </div>
+  </div>
+  <!-- footer -->
+
+
+
+
+  <!--
+  <main class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <img src="../assets/verticalbowl.jpg" class="img-fluid">
+      </div>
+      <div class="col">
+        <h4>Entra nel tuo account</h4>
+        <form action="">
+          <div class="form-row">
+            <div class="col-md-7">
+              <input type="email" class="form-control" placeholder="E-mail" autofocus />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-7">
+              <input type="password" class="form-control" placeholder="Password" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-7">
+              <button class="btn btn-success form-control" type="submit" onclick="">Accedi</button>
+            </div>
+          </div>
+          <p>Non sei ancora registrato? <a href="#">Crea un account</a></p>
+        </form>
+      </div>
+    </div>
+  </main> -->
+
+
+
+  <!-- 
+  <section class="Form text-center">
+    <div class="container vert">
+      <div class="row g-0">
+        <div class="col-lg-5">
+          <img src="" class="img-fluid">
+        </div>
+        <div class="col-lg-7 px-5 pt-5">
+          <img src="" class="img-fluid logo">
+          <h4>Entra nel tuo account</h4>
+          <form action="">
+            <div class="form-row">
+              <div class="col-lg-7">
+                <input type="email" placeholder="Email" class="form-control my-3 p-3">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-lg-7">
+                <input type="password" placeholder="Password" class="form-control my-3 p-3">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-lg-7">
+                <button type="button" class="btn1 mb-5">Login</button>
+              </div>
+            </div>
+            <a href="#">Password dimenticata?</a>
+            <p>Non sei ancora registrato? <a href="#">Crea un account</a></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <!--
+       <form action="login.php" method="post" name="myForm" class="form-signin" onsubmit="valida()">
+        <h1>Loggati</h1>
+        <input type="email" class="form-control" placeholder="Inserisci la tua email" name="myEmail" 
+        required autofocus>
+        <input type="password" class="form-control" placeholder="Inserisci la password" name="myPassword">
+        <div class="mb-4">
+            <input type="checkbox" name="rememberMe" class="mb-3" id="rmb">
+            <label for="rmb">Ricordami!</label>
+        </div>
+        <button class="btn btn-success" type="submit" onclick="funzione2()">Invia</button>
+    </form>
+  -->
+
+  <!-- Data di nascita - script JQuery spunto da stackoverflow-->
+  <!-- https://stackoverflow.com/questions/7574678/is-there-a-semantic-way-of-using-3-select-boxes-to-choose-dateofbirth -->
+  <script>
+
+    var Days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];// index => month [0-11]
+    //const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    const months = ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"];
+    $(document).ready(function () {
+      const d = new Date();
+      var d_day = d.getDate();
+      var d_month = months[d.getMonth()]; //i mesi partono da 0 in javascript
+      var d_year = d.getFullYear();
+      var option = '<option value="' + d_day + '"selected hidden>' + d_day + '</option>';
+      var selectedDay = d_day;
+      for (var i = 1; i <= Days[0]; i++) { //add option days
+        option += '<option value="' + i + '">' + i + '</option>';
+      }
+      $("#day").append(option);
+      $("#day").val(selectedDay);
+
+      var option = '<option value="' + d_month + '"selected hidden>' + d_month + '</option>';
+      var selectedMon = d_month;
+      for (var i = 0; i <= months.length - 1; i++) {
+        option += '<option value="' + months[i] + '">' + months[i] + '</option>';
+      }
+      $('#month').append(option);
+      $('#month').val(selectedMon);
+
+      var option = '<option value="' + d_year + '"selected hidden>' + d_year + '</option>';
+      selectedYear = d_year;
+      for (var i = d_year; i >= 1930; i--) { // years start i
+        option += '<option value="' + i + '">' + i + '</option>';
+      }
+      $('#year').append(option);
+      $('#year').val(selectedYear);
+    });
+    function isLeapYear(year) {
+      year = parseInt(year);
+      if (year % 4 != 0) {
+        return false;
+      } else if (year % 400 == 0) {
+        return true;
+      } else if (year % 100 == 0) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+
+    function change_year(select) {
+      Days[1] = 28;
+      if (isLeapYear($(select).val())) {
+        Days[1] = 29;
+      }
+      if (months.indexOf($('#month').val()) == 1) {
+        var day = $('#day');
+        var val = $(day).val();
+        $(day).empty();
+        var option = '<option value="day" selected hidden>day</option>';
+        for (var i = 1; i <= Days[1]; i++) { //add option days
+          option += '<option value="' + i + '">' + i + '</option>';
+        }
+        $(day).append(option);
+        if (val > Days[1]) {
+          val = 1;
+        }
+        $(day).val(val);
+      }
+    }
+
+    function change_month(select) {
+      var day = $('#day');
+      var val = $(day).val();
+      $(day).empty();
+      var option = '<option value="day" selected hidden>day</option>';
+      var month = months.indexOf($('#month').val());
+      for (var i = 1; i <= Days[month]; i++) { //add option days
+        option += '<option value="' + i + '">' + i + '</option>';
+      }
+      $(day).append(option);
+      if (val > Days[month]) {
+        val = 1;
+      }
+      $(day).val(val);
+    }
+  </script>
+
+  <!-- form validation -->
+  <script>
+    var forms = document.querySelectorAll("select.date-of-b");
+    Array.prototype.slice.call(forms).forEach(function (form) {
+      form.addEventListener("change", function (e) {
+        var CurrentDate = new Date();
+        var SelectedDate = new Date(
+          $('[id=year]').val(),
+          months.indexOf($('[id=month]').val()),
+          $('[id=day]').val()
+        );
+        if (CurrentDate <= SelectedDate) {
+          //CurrentDate is more than SelectedDate
+          $('[id=year]').addClass("is-invalid");
+          $('[id=month]').addClass("is-invalid");
+          $('[id=day]').addClass("is-invalid");
+        } else {
+          $('[id=year]').removeClass("is-invalid");
+          $('[id=month]').removeClass("is-invalid");
+          $('[id=day]').removeClass("is-invalid");
+        }
+      }, false);
+    });
+  </script>
+
+  <!-- bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+  <!-- main js -->
+  <script src="./main.js"></script>
+
+</body>
+
+</html>
