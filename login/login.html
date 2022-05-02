@@ -20,24 +20,24 @@
   <link rel="stylesheet" type="text/css" href="styleLogin.css">
 </head>
 
-<body>
+<body class="container d-flex align-items-lg-center">
 
   <!-- login -->
-  <div class="container d-flex flex-column flex-lg-row justify-content-evenly mt5 pt-5">
+  <div class="container d-flex flex-column flex-lg-row justify-content-lg-evenly align-items-lg-center">
     <!-- heading -->
-    <div class="text-center text-lg-start mt-lg-5 pt-lg-5">
+    <div class="text-center text-lg-start ">
       <h1 class="text-primary fw-bold fs-0">Nutridaily</h1>
       <p class="w-75 mx-auto mx-lg-0 fs-4">
         Il tuo diario alimentare giornaliero
       </p>
     </div>
     <!-- form -->
-    <div style="max-width: 28rem; width:100%" class="container d-flex justify-content-evenly">
+    <div style="max-width: 30rem; width:100%" class="container justify-content-evenly">
       <div class="bg-white shadow rounded p-3 input-group-lg">
         <input type="email" class="form-control my-3" placeholder="Email" autofocus required>
         <input type="password" class="form-control my-3" placeholder="Password" required>
         <a href="#">
-          <button class="btn btn-primary w-100 my-3">Accedi</button>
+          <button class="btn btn-primary w-100 mb-3 p-2">Accedi</button>
         </a>
         <a href="#" class="text-decoration-none text-center">
           <p>Password dimenticata?</p>
@@ -95,7 +95,28 @@
                       </select>
                     </div>
                   </div>
-                  <!-- sesso -->
+                  <!-- genere -->
+                  <div class="row my-3">
+                    <span class="text-muted fs-7">Genere <i type="button" class="fa-solid fa-circle-question"
+                        data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right"
+                        data-bs-content="Indica il tuo genere"></i></span>
+                    <div class="col">
+                      <div class="border rounded p-2">
+                        <label class="form-check-label" for="flexRadioDefault2">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                          Uomo
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="border rounded p-2">
+                        <label class="form-check-label" for="flexRadioDefault2">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                          Donna
+                        </label>
+                      </div>
+                    </div>
+                  </div>
                   <!-- selezione sesso -->
                   <!-- peso -->
                   <!-- altezza -->
