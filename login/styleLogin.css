@@ -41,6 +41,10 @@ body{
   background-image: url(../assets/verticalbowl.jpg);
 }
 
+.mask{
+  background-color:rgba(0, 0, 0, 0.6);
+}
+
 /* Desktop view */
 @media screen and (min-width: 992px){ /* lg bootstrap breakpoint*/
   .bd-ovflow{

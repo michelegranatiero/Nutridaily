@@ -26,9 +26,8 @@
   <div class="container d-flex flex-column flex-lg-row shadow bd-ovflow p-0 h-bg-75 h-100">
     <!-- heading + image -->
     <div class="bg-image h-50"> <!-- shrink??? -->
-      <div class="mask d-flex flex-lg-column justify-content-evenly align-items-center h-100 w-100" style="background-color:rgba(0, 0, 0, 0.6);">
+      <div class="mask d-flex flex-lg-column justify-content-evenly align-items-center h-100 w-100" >
         <div class="text-center shadow-1-strong rounded text-white ">
-
           <h1 class="text-success fw-bold fs-0 tx-shad-black">Nutridaily</h1>
           <p class="w-75 mx-auto fs-4 tx-shad-white">
             Il tuo diario alimentare giornaliero
@@ -38,7 +37,9 @@
     </div>
     <!-- form -->
     <div class="container d-flex align-items-center justify-content-evenly bg-white p-0 m-0 h-100">
-      <div style="max-width: 30rem; width: 100%; " class=" bg-white py-3 px-5 input-group-lg">
+      <div style="max-width: 30rem; width: 100%; " class=" bg-white py-3 px-5 input-group-lg text-center">
+        <img src="../assets/nutrilogo.png" class="img-fluid w-75 p-3">
+        <h2 class="text-success">Login</h3>
         <input type="email" class="form-control my-3" placeholder="Email" required> <!-- add autofocus -->
         <input type="password" class="form-control my-3" placeholder="Password" required>
         <a href="#">
@@ -146,7 +147,7 @@
   </div>
   <!-- footer -->
 
-  <!-- form validation -->
+  <!-- dateofbirth validation -->
   <script>
     var forms = document.querySelectorAll("select.date-of-b");
     Array.prototype.slice.call(forms).forEach(function (form) {
