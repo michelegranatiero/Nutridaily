@@ -23,13 +23,22 @@
 <body class="container d-flex align-items-lg-center">
 
   <!-- login -->
-  <div class="container d-flex flex-column flex-lg-row justify-content-lg-evenly align-items-lg-center">
-    <!-- heading -->
-    <div class="text-center text-lg-start ">
-      <h1 class="text-primary fw-bold fs-0">Nutridaily</h1>
-      <p class="w-75 mx-auto mx-lg-0 fs-4">
-        Il tuo diario alimentare giornaliero
-      </p>
+  <div class="container d-flex flex-column flex-lg-row justify-content-lg-center align-items-center border">
+    <!-- heading + image -->
+    <div class="bg-image d-flex w-lg-100 ">
+      <!-- SISTEMARE QUA!!! -->
+      <div class="mask w-100" style="background-color: rgba(0, 0, 0, 0.6);">
+        <div class="d-flex justify-content-center align-items-center h-100">
+          <div class="text-center shadow-1-strong rounded text-white ">
+            <h1 class="text-success fw-bold fs-0">Nutridaily</h1>
+            <p class="w-75 mx-auto  fs-4">
+              Il tuo diario alimentare giornaliero
+            </p>
+          </div>
+        </div>
+      </div>
+
+
     </div>
     <!-- form -->
     <div style="max-width: 30rem; width:100%" class="container justify-content-evenly">
@@ -37,15 +46,16 @@
         <input type="email" class="form-control my-3" placeholder="Email" autofocus required>
         <input type="password" class="form-control my-3" placeholder="Password" required>
         <a href="#">
-          <button class="btn btn-primary w-100 mb-3 p-2">Accedi</button>
+          <button class="btn btn-success w-100 mb-3 p-2">Accedi</button>
         </a>
-        <a href="#" class="text-decoration-none text-center">
+        <a href="#" class="text-decoration-none text-success text-center">
           <p>Password dimenticata?</p>
         </a>
         <!-- create form -->
         <hr>
         <div class="text-center my-4">
-          <button class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#createModal">Crea nuovo
+          <button class="btn btn-outline-success  btn-lg" data-bs-toggle="modal" data-bs-target="#createModal">Crea
+            nuovo
             account</button>
         </div>
         <!-- create modal -->
@@ -55,7 +65,7 @@
               <!-- head -->
               <div class="modal-header">
                 <div>
-                  <h2 class="modal-title" id="createModalLabel">
+                  <h2 class="modal-title text-success" id="createModalLabel">
                     Iscriviti
                   </h2>
                   <p class="text-muted fs-7"> &Egrave semplice e veloce</p>
@@ -101,20 +111,21 @@
                         data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right"
                         data-bs-content="Indica il tuo genere"></i></span>
                     <div class="col">
-                      <div class="border rounded p-2">
-                        <label class="form-check-label" for="flexRadioDefault2">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                      <label class="form-check-label d-flex" for="flexRadioDefault1">
+                        <div class="border rounded p-2 w-100">
+                          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
+                            checked>
                           Uomo
-                        </label>
-                      </div>
+                        </div>
+                      </label>
                     </div>
                     <div class="col">
-                      <div class="border rounded p-2">
-                        <label class="form-check-label" for="flexRadioDefault2">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                      <label class="form-check-label d-flex" for="flexRadioDefault2">
+                        <div class="border rounded p-2 w-100">
+                          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
                           Donna
-                        </label>
-                      </div>
+                        </div>
+                      </label>
                     </div>
                   </div>
                   <!-- selezione sesso -->
@@ -127,7 +138,7 @@
               <!-- footer -->
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-success">Save changes</button>
               </div>
             </div>
           </div>
@@ -137,176 +148,6 @@
     </div>
   </div>
   <!-- footer -->
-
-
-
-
-  <!--
-  <main class="container">
-    <div class="row">
-      <div class="col-sm-6">
-        <img src="../assets/verticalbowl.jpg" class="img-fluid">
-      </div>
-      <div class="col">
-        <h4>Entra nel tuo account</h4>
-        <form action="">
-          <div class="form-row">
-            <div class="col-md-7">
-              <input type="email" class="form-control" placeholder="E-mail" autofocus />
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="col-md-7">
-              <input type="password" class="form-control" placeholder="Password" />
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="col-md-7">
-              <button class="btn btn-success form-control" type="submit" onclick="">Accedi</button>
-            </div>
-          </div>
-          <p>Non sei ancora registrato? <a href="#">Crea un account</a></p>
-        </form>
-      </div>
-    </div>
-  </main> -->
-
-
-
-  <!-- 
-  <section class="Form text-center">
-    <div class="container vert">
-      <div class="row g-0">
-        <div class="col-lg-5">
-          <img src="" class="img-fluid">
-        </div>
-        <div class="col-lg-7 px-5 pt-5">
-          <img src="" class="img-fluid logo">
-          <h4>Entra nel tuo account</h4>
-          <form action="">
-            <div class="form-row">
-              <div class="col-lg-7">
-                <input type="email" placeholder="Email" class="form-control my-3 p-3">
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="col-lg-7">
-                <input type="password" placeholder="Password" class="form-control my-3 p-3">
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="col-lg-7">
-                <button type="button" class="btn1 mb-5">Login</button>
-              </div>
-            </div>
-            <a href="#">Password dimenticata?</a>
-            <p>Non sei ancora registrato? <a href="#">Crea un account</a></p>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section> -->
-
-  <!--
-       <form action="login.php" method="post" name="myForm" class="form-signin" onsubmit="valida()">
-        <h1>Loggati</h1>
-        <input type="email" class="form-control" placeholder="Inserisci la tua email" name="myEmail" 
-        required autofocus>
-        <input type="password" class="form-control" placeholder="Inserisci la password" name="myPassword">
-        <div class="mb-4">
-            <input type="checkbox" name="rememberMe" class="mb-3" id="rmb">
-            <label for="rmb">Ricordami!</label>
-        </div>
-        <button class="btn btn-success" type="submit" onclick="funzione2()">Invia</button>
-    </form>
-  -->
-
-  <!-- Data di nascita - script JQuery spunto da stackoverflow-->
-  <!-- https://stackoverflow.com/questions/7574678/is-there-a-semantic-way-of-using-3-select-boxes-to-choose-dateofbirth -->
-  <script>
-
-    var Days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];// index => month [0-11]
-    //const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    const months = ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"];
-    $(document).ready(function () {
-      const d = new Date();
-      var d_day = d.getDate();
-      var d_month = months[d.getMonth()]; //i mesi partono da 0 in javascript
-      var d_year = d.getFullYear();
-      var option = '<option value="' + d_day + '"selected hidden>' + d_day + '</option>';
-      var selectedDay = d_day;
-      for (var i = 1; i <= Days[0]; i++) { //add option days
-        option += '<option value="' + i + '">' + i + '</option>';
-      }
-      $("#day").append(option);
-      $("#day").val(selectedDay);
-
-      var option = '<option value="' + d_month + '"selected hidden>' + d_month + '</option>';
-      var selectedMon = d_month;
-      for (var i = 0; i <= months.length - 1; i++) {
-        option += '<option value="' + months[i] + '">' + months[i] + '</option>';
-      }
-      $('#month').append(option);
-      $('#month').val(selectedMon);
-
-      var option = '<option value="' + d_year + '"selected hidden>' + d_year + '</option>';
-      selectedYear = d_year;
-      for (var i = d_year; i >= 1930; i--) { // years start i
-        option += '<option value="' + i + '">' + i + '</option>';
-      }
-      $('#year').append(option);
-      $('#year').val(selectedYear);
-    });
-    function isLeapYear(year) {
-      year = parseInt(year);
-      if (year % 4 != 0) {
-        return false;
-      } else if (year % 400 == 0) {
-        return true;
-      } else if (year % 100 == 0) {
-        return false;
-      } else {
-        return true;
-      }
-    }
-
-    function change_year(select) {
-      Days[1] = 28;
-      if (isLeapYear($(select).val())) {
-        Days[1] = 29;
-      }
-      if (months.indexOf($('#month').val()) == 1) {
-        var day = $('#day');
-        var val = $(day).val();
-        $(day).empty();
-        var option = '<option value="day" selected hidden>day</option>';
-        for (var i = 1; i <= Days[1]; i++) { //add option days
-          option += '<option value="' + i + '">' + i + '</option>';
-        }
-        $(day).append(option);
-        if (val > Days[1]) {
-          val = 1;
-        }
-        $(day).val(val);
-      }
-    }
-
-    function change_month(select) {
-      var day = $('#day');
-      var val = $(day).val();
-      $(day).empty();
-      var option = '<option value="day" selected hidden>day</option>';
-      var month = months.indexOf($('#month').val());
-      for (var i = 1; i <= Days[month]; i++) { //add option days
-        option += '<option value="' + i + '">' + i + '</option>';
-      }
-      $(day).append(option);
-      if (val > Days[month]) {
-        val = 1;
-      }
-      $(day).val(val);
-    }
-  </script>
 
   <!-- form validation -->
   <script>
@@ -339,6 +180,8 @@
     crossorigin="anonymous"></script>
   <!-- main js -->
   <script src="./main.js"></script>
+  <!-- date_of_birth js-->
+  <script src="./date_of_birth.js"></script>
 
 </body>
 

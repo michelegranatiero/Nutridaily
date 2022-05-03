@@ -1,4 +1,43 @@
 /* @import "../bootstrap/css/bootstrap.css"; */
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+body, html{
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.form-control:focus, .form-select:focus{
+  border-color: #198754;
+  box-shadow: 0 0 0 0.2rem #28a74540;
+}
+
+.form-check-input:focus {
+  border-color: #198754;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem #b6edd3;
+}
+.form-check-input:checked {
+  background-color: #198754;
+  border-color: #198754;
+}
+.form-check-input[type=checkbox]:indeterminate {
+  background-color: #198754;
+  border-color: #198754;}
+
+.bg-image{
+  height: 100%;
+  width: 100%;
+  position:relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-image: url(../assets/verticalbowl.jpg);
+}
 
 .fs-0{
   font-size: 4rem;
@@ -13,9 +52,3 @@
   background-color: #198754;
   border-color: #198754;
 */
-html {
-  height: 100%;
-}
-body {
-  min-height: 100%;
-}
