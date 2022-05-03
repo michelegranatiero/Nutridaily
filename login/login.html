@@ -20,30 +20,26 @@
   <link rel="stylesheet" type="text/css" href="styleLogin.css">
 </head>
 
-<body class="container d-flex align-items-lg-center">
+<body class="d-lg-flex">
 
   <!-- login -->
-  <div class="container d-flex flex-column flex-lg-row justify-content-lg-center align-items-center border">
+  <div class="container d-flex flex-column flex-lg-row shadow bd-ovflow p-0 h-bg-75 h-100">
     <!-- heading + image -->
-    <div class="bg-image d-flex w-lg-100 ">
-      <!-- SISTEMARE QUA!!! -->
-      <div class="mask w-100" style="background-color: rgba(0, 0, 0, 0.6);">
-        <div class="d-flex justify-content-center align-items-center h-100">
-          <div class="text-center shadow-1-strong rounded text-white ">
-            <h1 class="text-success fw-bold fs-0">Nutridaily</h1>
-            <p class="w-75 mx-auto  fs-4">
-              Il tuo diario alimentare giornaliero
-            </p>
-          </div>
+    <div class="bg-image h-50"> <!-- shrink??? -->
+      <div class="mask d-flex flex-lg-column justify-content-evenly align-items-center h-100 w-100" style="background-color:rgba(0, 0, 0, 0.6);">
+        <div class="text-center shadow-1-strong rounded text-white ">
+
+          <h1 class="text-success fw-bold fs-0 tx-shad-black">Nutridaily</h1>
+          <p class="w-75 mx-auto fs-4 tx-shad-white">
+            Il tuo diario alimentare giornaliero
+          </p>
         </div>
       </div>
-
-
     </div>
     <!-- form -->
-    <div style="max-width: 30rem; width:100%" class="container justify-content-evenly">
-      <div class="bg-white shadow rounded p-3 input-group-lg">
-        <input type="email" class="form-control my-3" placeholder="Email" autofocus required>
+    <div class="container d-flex align-items-center justify-content-evenly bg-white p-0 m-0 h-100">
+      <div style="max-width: 30rem; width: 100%; " class=" bg-white py-3 px-5 input-group-lg">
+        <input type="email" class="form-control my-3" placeholder="Email" required> <!-- add autofocus -->
         <input type="password" class="form-control my-3" placeholder="Password" required>
         <a href="#">
           <button class="btn btn-success w-100 mb-3 p-2">Accedi</button>
@@ -59,7 +55,8 @@
             account</button>
         </div>
         <!-- create modal -->
-        <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
+        <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true" style="
+        perspective: 2px;">
           <div class="modal-dialog">
             <div class="modal-content">
               <!-- head -->
@@ -93,7 +90,7 @@
                         data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right"
                         data-bs-content="Indica la tua data di nascita"></i></span>
                     <div class="col">
-                      <select class="form-select date-of-b" id="day" name="dd" required>
+                      <select class="form-select date-of-b" id="day" name="dd" required >
                       </select>
                     </div>
                     <div class="col">

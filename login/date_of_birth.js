@@ -82,4 +82,5 @@ function change_month(select) {
     val = 1;
   }
   $(day).val(val);
+  
 }

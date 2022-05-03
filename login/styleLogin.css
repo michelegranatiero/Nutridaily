@@ -5,10 +5,13 @@
     box-sizing: border-box;
 }
 
-body, html{
+html, body{
   height: 100%;
-  margin: 0;
-  padding: 0;
+}
+body{
+  align-items: center;
+  justify-content: center;
+  background-color: #198754;
 }
 
 .form-control:focus, .form-select:focus{
@@ -30,7 +33,6 @@ body, html{
   border-color: #198754;}
 
 .bg-image{
-  height: 100%;
   width: 100%;
   position:relative;
   background-position: center;
@@ -39,11 +41,44 @@ body, html{
   background-image: url(../assets/verticalbowl.jpg);
 }
 
+/* Desktop view */
+@media screen and (min-width: 992px){ /* lg bootstrap breakpoint*/
+  .bd-ovflow{
+  border-radius: 30px;
+  overflow: hidden;
+  }
+  .h-bg-75{
+    height: 75% !important;
+  }
+  .bg-image{
+    height:auto !important;
+  }
+
+}
+
+/* center modal view*/
+  
+body.modal-open .modal {
+  display: flex !important;
+  height: 100%;
+} 
+
+body.modal-open .modal .modal-dialog {
+  margin: auto;
+}
+
 .fs-0{
   font-size: 4rem;
+  
 }
 .fs-7{
   font-size: 0.8rem;
+}
+.tx-shad-black{
+  text-shadow: 0 0 3px #000000;
+}
+.tx-shad-white{
+  text-shadow: 0 0 1px #ffffff;
 }
 
 /*
