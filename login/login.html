@@ -22,26 +22,26 @@
 
 <body>
   <div class="body-mask container-lg">
-  <!-- login -->
-  <div class="container-lg d-lg-flex shadow bd-ovflow p-0 bg-image-2">
-    <!-- heading + image -->
-    <div class="bg-image">
-      <div class="mask d-flex flex-column justify-content-evenly align-items-center h-100 w-100 ">
-        <div class="pt-5 pb-3 logo-disp-sm">
-          <img src="../assets/nutrilogo.png" style="width:180px;">
-        </div>
-        <div class="text-center shadow-1-strong rounded text-white ">
-          <h1 class="text-success fw-bold fs-0 tx-shad-black">Nutridaily</h1>
-          <p class="fs-4 fw-bold tx-shad-black">
-            <i> Il tuo diario alimentare giornaliero</i>
-          </p>
+    <!-- login -->
+    <div class="container-lg d-lg-flex shadow bd-ovflow p-0 bg-image-2">
+      <!-- heading + image -->
+      <div class="bg-image">
+        <div class="mask d-flex flex-column justify-content-evenly align-items-center h-100 w-100 ">
+          <div class="pt-5 pb-3 logo-disp-sm">
+            <img src="../assets/nutrilogo.png" style="width:180px;">
+          </div>
+          <div class="text-center shadow-1-strong rounded text-white ">
+            <h1 class="text-success fw-bold fs-0 tx-shad-black">Nutridaily</h1>
+            <p class="fs-4 fw-bold tx-shad-black">
+              <i> Il tuo diario alimentare giornaliero</i>
+            </p>
+          </div>
         </div>
       </div>
-    </div>
-    <!-- form -->
-    <div class=" container-lg d-flex justify-content-evenly mask bg-lg-white h-100">
+      <!-- form -->
+      <div class=" container-lg d-flex justify-content-evenly mask bg-lg-white h-100 p-lg-5">
         <div style="max-width: 30rem; width: 100%;" class="py-3 px-5 text-center back-empty input-group-lg">
-          <div class="p-5 logo-disp-lg">
+          <div class="pb-4 logo-disp-lg">
             <img src="../assets/nutrilogo.png" style="width:180px;">
           </div>
           <h2 class="text-success">Login</h3>
@@ -93,7 +93,7 @@
                       <input type="password" class="form-control my-3" placeholder="nuova password" required>
                       <!-- datanascita -->
                       <div class="row my-3">
-                        <span class="text-muted fs-7">Data di nascita <i type="button"
+                        <span class="text-muted fs-7 text-start">Data di nascita <i type="button"
                             class="fa-solid fa-circle-question" data-bs-container="body" data-bs-toggle="popover"
                             data-bs-placement="right" data-bs-content="Indica la tua data di nascita"></i></span>
                         <div class="col">
@@ -110,7 +110,7 @@
                         </div>
                       </div>
                       <!-- genere -->
-                      <div class="row my-3">
+                      <div class="row my-3 text-start">
                         <span class="text-muted fs-7">Genere <i type="button" class="fa-solid fa-circle-question"
                             data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right"
                             data-bs-content="Indica il tuo genere"></i></span>
@@ -151,44 +151,44 @@
             <!-- end -->
         </div>
 
+      </div>
     </div>
+    <!-- footer -->
+
+    <!-- dateofbirth validation -->
+    <script>
+      var forms = document.querySelectorAll("select.date-of-b");
+      Array.prototype.slice.call(forms).forEach(function (form) {
+        form.addEventListener("change", function (e) {
+          var CurrentDate = new Date();
+          var SelectedDate = new Date(
+            $('[id=year]').val(),
+            months.indexOf($('[id=month]').val()),
+            $('[id=day]').val()
+          );
+          if (CurrentDate <= SelectedDate) {
+            //CurrentDate is more than SelectedDate
+            $('[id=year]').addClass("is-invalid");
+            $('[id=month]').addClass("is-invalid");
+            $('[id=day]').addClass("is-invalid");
+          } else {
+            $('[id=year]').removeClass("is-invalid");
+            $('[id=month]').removeClass("is-invalid");
+            $('[id=day]').removeClass("is-invalid");
+          }
+        }, false);
+      });
+    </script>
+
+    <!-- bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"></script>
+    <!-- main js -->
+    <script src="./main.js"></script>
+    <!-- date_of_birth js-->
+    <script src="./date_of_birth.js"></script>
   </div>
-  <!-- footer -->
-
-  <!-- dateofbirth validation -->
-  <script>
-    var forms = document.querySelectorAll("select.date-of-b");
-    Array.prototype.slice.call(forms).forEach(function (form) {
-      form.addEventListener("change", function (e) {
-        var CurrentDate = new Date();
-        var SelectedDate = new Date(
-          $('[id=year]').val(),
-          months.indexOf($('[id=month]').val()),
-          $('[id=day]').val()
-        );
-        if (CurrentDate <= SelectedDate) {
-          //CurrentDate is more than SelectedDate
-          $('[id=year]').addClass("is-invalid");
-          $('[id=month]').addClass("is-invalid");
-          $('[id=day]').addClass("is-invalid");
-        } else {
-          $('[id=year]').removeClass("is-invalid");
-          $('[id=month]').removeClass("is-invalid");
-          $('[id=day]').removeClass("is-invalid");
-        }
-      }, false);
-    });
-  </script>
-
-  <!-- bootstrap -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-    crossorigin="anonymous"></script>
-  <!-- main js -->
-  <script src="./main.js"></script>
-  <!-- date_of_birth js-->
-  <script src="./date_of_birth.js"></script>
-</div>
 </body>
 
 </html>
