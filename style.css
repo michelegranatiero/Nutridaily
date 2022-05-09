@@ -1,11 +1,153 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+:root{
+  /* verde: #198754 */
+  --main-color: #198754;
+  --secondary-color: #ffffff;
+  --body-color:var(--main-color);
+  --navbar-color: var(--secondary-color);
+  --nav-text-color: var(--main-color);
+  --text-color: var(--secondary-color);
   
-  body {
-    min-height: 100vh;
-    background-color: #198754;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background-color: var(--body-color);
+}
+
+.bg-light{
+  /* navbar color */
+  background-color: var(--navbar-color) !important;
+}
+
+.nav-text-color{
+  color: var(--nav-text-color) !important;
+  opacity: 1;
+}
+
+.text-color{
+  color: var(--text-color) !important;
+  opacity: 1;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;/* rimuovere? */
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.nav-item {
+  align-self: baseline;
+}
+
+.rounding{
+  /* border-radius: 30px; */
+  border-bottom-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+}
+
+.navbar-light .navbar-toggler{
+  border-color: rgba(0, 0, 0, 0);
+  color: var(--main-color);
+  border-bottom-right-radius: 30px;
+}
+
+/* sm breakpoint - mobile view */
+@media screen and (max-width: 575px) {
+
+  .nav-item {
+    align-self: center;
   }
 
+}
+
+/* bisognerebbe cambiare il colore della testa della tabella, sfondo verde con testo bianco */
+.row-header{
+  height: 70px;
+  border: 5px solid var(--secondary-color);
+  border-top-right-radius: 30px;
+  border-top-left-radius: 30px;
+  background-color: rgba(255, 255, 255, 0.2);
+  width: 100%;
+}
+
+.col-header{
+  /* contenuto della prima colonna */
+  display: flex;
+  padding: 2px;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-around;
+  
+  
+  
+  
+  
+}
+
+input[type="date"]{
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  color: #fff;
+  font-family: "Roboto mono", monospace;
+  border: none;
+  font-size: 20px;
+  outline: none;  /*?*/
+  width: 150px;
+  
+  
+}
+
+input:focus{
+  border: 5px solid #334756;
+}
+
+input[type='date']::-webkit-calendar-picker-indicator{
+  opacity: 1;
+  display: block;
+  width: 25px;
+  height: 25px;
+  border-width: thin;
+  filter: invert(1);
+  
+}
+
+
+
+.testo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.25rem;
+  color: var(--secondary-color);
+}
+
+.testo-pasto{
+  display: flex;
+  align-items: center; 
+  font-size: 1.25rem;
+  color: var(--secondary-color);
+}
+
+.row-pasto{
+  height: 70px;
+  border: 5px solid var(--secondary-color);
+  background-color: rgba(255, 255, 255, 0.2);
+  width: 100%;
+  border-width: 1px;
+  border-top: 0;
+}
+
+
+
+
+        
+
+    
