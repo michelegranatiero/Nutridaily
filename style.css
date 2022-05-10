@@ -95,6 +95,37 @@ main {
   color: var(--secondary-color);
 }
 
+/* Plus Button */
+.button{
+  height: 50px;
+  width: 50px;
+  padding: 0;
+  background-color: #009578;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  
+}
+
+.botton:hover{
+  background-color: #008168;
+}
+.button:active{
+  background-color: #006a58;
+}
+
+
+/*classe per il simbolo + del bottone*/
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48;
+  color: #ffffff;
+  align-self: center;
+}
+  
 
 
 
@@ -130,37 +161,6 @@ input[type='date']::-webkit-calendar-picker-indicator{
   filter: invert(1);
   
 }
-
-.button{
-  height: 50px;
-  width: 50px;
-  padding: 0;
-  background-color: #009578;
-  border: none;
-  outline: none;
-  border-radius: 10px;
-  
-}
-
-.botton:hover{
-  background-color: #008168;
-}
-.button:active{
-  background-color: #006a58;
-}
-
-
-/*classe per il simbolo + del bottone*/
-.material-symbols-outlined {
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 48;
-  color: #ffffff;
-  align-self: center;
-}
-  
 
 
 
