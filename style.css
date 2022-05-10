@@ -20,27 +20,11 @@ body {
   background-color: var(--body-color);
 }
 
+/* -------------NAVBAR----------------- */
+
 .bg-light{
   /* navbar color */
   background-color: var(--navbar-color) !important;
-}
-
-.nav-text-color{
-  color: var(--nav-text-color) !important;
-  opacity: 1;
-}
-
-.text-color{
-  color: var(--text-color) !important;
-  opacity: 1;
-}
-
-.main-content {
-  display: flex;
-  flex-direction: column;/* rimuovere? */
-  justify-content: center;
-  align-items: center;
-  height: 100%;
 }
 
 .nav-item {
@@ -48,7 +32,7 @@ body {
 }
 
 .rounding{
-  /* border-radius: 30px; */
+  /* navbar border-radius: 30px; */
   border-bottom-right-radius: 30px;
   border-bottom-left-radius: 30px;
 }
@@ -68,30 +52,60 @@ body {
 
 }
 
-/* bisognerebbe cambiare il colore della testa della tabella, sfondo verde con testo bianco */
-.row-header{
-  height: 70px;
-  border: 5px solid var(--secondary-color);
-  border-top-right-radius: 30px;
-  border-top-left-radius: 30px;
+.nav-text-color{
+  color: var(--nav-text-color) !important;
+  opacity: 1;
+}
+
+/* ---------------MAIN----------------- */
+
+.text-color{
+  color: var(--text-color) !important;
+  opacity: 1;
+}
+
+main {
+  display: flex;
+  flex-direction: column;/* rimuovere? */
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.cont1{
+  border-radius: 30px;
+  border: 1px solid var(--secondary-color);
   background-color: rgba(255, 255, 255, 0.2);
+  justify-content: center;
   width: 100%;
 }
 
-.col-header{
-  /* contenuto della prima colonna */
-  display: flex;
-  padding: 2px;
-  justify-content: center;
-  align-items: center;
-  justify-content: space-around;
-  
-  
-  
-  
-  
+.cont1 > .row {
+  /* righe */
+  height: 70px;
+  border-bottom: 1px solid var(--secondary-color);
 }
 
+.cont1 > .row > .col {
+  /* colonne */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  color: var(--secondary-color);
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ---------------CALENDAR----------------- */
 input[type="date"]{
   background-color: rgba(255, 255, 255, 0.7);
   border-radius: 10px;
@@ -101,8 +115,6 @@ input[type="date"]{
   font-size: 20px;
   outline: none;  /*?*/
   width: 150px;
-  
-  
 }
 
 input:focus{
@@ -117,32 +129,6 @@ input[type='date']::-webkit-calendar-picker-indicator{
   border-width: thin;
   filter: invert(1);
   
-}
-
-
-
-.testo{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.25rem;
-  color: var(--secondary-color);
-}
-
-.testo-pasto{
-  display: flex;
-  align-items: center; 
-  font-size: 1.25rem;
-  color: var(--secondary-color);
-}
-
-.row-pasto{
-  height: 70px;
-  border: 5px solid var(--secondary-color);
-  background-color: rgba(255, 255, 255, 0.2);
-  width: 100%;
-  border-width: 1px;
-  border-top: 0;
 }
 
 .button{
@@ -173,8 +159,10 @@ input[type='date']::-webkit-calendar-picker-indicator{
   'opsz' 48;
   color: #ffffff;
   align-self: center;
-  
 }
+  
+
+
 
 
 
