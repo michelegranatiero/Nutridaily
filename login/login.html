@@ -46,9 +46,6 @@
             <a href="#">
               <button class="btn btn-success w-100 mb-3 p-2 fs-5 fw-bold">Accedi</button>
             </a>
-            <!-- <a href="#" class="text-decoration-none text-success text-center">
-              <p>Password dimenticata?</p>
-            </a>  -->
             <!-- create form -->
             <hr>
             <div class="text-center my-4">
@@ -129,8 +126,38 @@
                           </label>
                         </div>
                       </div>
-                      <!-- peso -->
-                      <!-- altezza -->
+                      <!-- peso e altezza -->
+                      <div class="row">
+                        <!-- peso -->
+                        <div class="col">
+                          <div class="row">
+                            <label class=" col col-form-label px-0" for="peso">
+                              Peso:
+                            </label>
+                            <div class="col px-0">
+                              <input type="number" min=0 class="form-control" id="peso" required>
+                            </div>
+                            <label class="col col-form-label px-0">
+                              kg
+                            </label>
+                          </div>
+                        </div>
+                        <!-- altezza -->
+                        <div class="col">
+                          <div class="row">
+                            <label class="col col-form-label px-0" for="altezza">
+                              Altezza:
+                            </label>
+                            <div class="col px-0">
+                              <input type="number" min=0 class="form-control" id="altezza" required>
+                            </div>
+                            <label class="col col-form-label px-0">
+                              cm
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+
                       <!-- disclaimer -->
                       <!-- btn -->
                     </form>

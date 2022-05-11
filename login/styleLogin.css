@@ -110,6 +110,10 @@ body {
   .logo-disp-lg {
     display: none;
   }
+
+  hr{
+    background-color: #ffffff;
+  }
 }
 
 /* center modal view*/
