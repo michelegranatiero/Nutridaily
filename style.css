@@ -140,17 +140,15 @@ main {
 input[type="date"]{
   background-color: rgba(255, 255, 255, 0.7);
   border-radius: 10px;
-  color: #fff;
   font-family: "Roboto mono", monospace;
   border: none;
+  color: var(--main-color);
   font-size: 20px;
   outline: none;  /*?*/
-  width: 150px;
+  width: 160px;
+  cursor:text
 }
 
-input:focus{
-  border: 5px solid #334756;
-}
 
 input[type='date']::-webkit-calendar-picker-indicator{
   opacity: 1;
@@ -158,7 +156,9 @@ input[type='date']::-webkit-calendar-picker-indicator{
   width: 25px;
   height: 25px;
   border-width: thin;
-  filter: invert(1);
+  cursor: pointer;
+  /* https://codepen.io/sosuke/pen/Pjoqqp */
+  filter: invert(45%) sepia(32%) saturate(955%) hue-rotate(100deg) brightness(88%) contrast(93%);
   
 }
 
