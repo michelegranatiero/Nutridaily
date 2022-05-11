@@ -7,11 +7,14 @@
   <title>Index</title>
   <!-- Bootstrap -->
   <link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap.css" />
-  <script type="application/javascript" src="js/bootstrap.min.js"></script>
+  <!--   <script type="application/javascript" src="./bootstrap/js/bootstrap.js"></script> -->
+  <!-- JQuery -->
+  <script src="//code.jquery.com/jquery-3.6.0.js"></script>
   <!-- style css -->
   <link rel="stylesheet" type="text/css" href="style.css" />
   <!-- google fonts -->
-  <link rel="stylesheet" href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+  <link rel="stylesheet"
+    href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 
 
 
@@ -55,7 +58,7 @@
       <div class="row">
         <div class="col calendar-header text-color fs-5">
           <!-- Data:&nbsp -->
-          <input type="date">
+          <input type="date" id="calendario">
         </div>
         <div class="col">
           Carboidrati
@@ -105,13 +108,13 @@
               </span>
             </button>
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-            <span>Pranzo</span>
+              data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              <span>Pranzo</span>
             </button>
           </div>
-        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-        data-bs-parent="#accordionExample">
-        <div class="accordion-body">
+          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body">
               <!-- tabella alimenti colazione -->
             </div>
           </div>
@@ -124,19 +127,19 @@
               </span>
             </button>
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-            <span>Cena</span>
-          </button>
-        </div>
-        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-        data-bs-parent="#accordionExample">
-        <div class="accordion-body">
+              data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              <span>Cena</span>
+            </button>
+          </div>
+          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body">
               <!-- tabella alimenti colazione -->
             </div>
           </div>
         </div>
       </div>
-      
+
 
     </div>
 
@@ -144,29 +147,31 @@
 
     <div class="popup">
       <div class="popup-content">
-          <span class="close">+</span>
-          <form>
-              Cerca un Alimento:
-              <input type="text" placeholder="Inserisci un alimento">
-          </form>
-          <form action="" class="tabella-macronutrienti flex"> <!-- tabella con tutti i macronutrienti -->
-              <table>
-                  <th>Grassi </th>
-                  <th>Proteine </th>
-                  <th>Carboidrati </th>
-                  <th>Calorie</th>
-                  <tr>    <!-- serve solo una riga -->
-                      <td>valore1</td>
-                      <td>valore2</td>
-                      <td>valore3</td>
-                      <td>vlaore4</td>
-                  </tr>
-              </table>
-          </form>
-          <button type="buttom" class="button-popup-save">Salva</button>
+        <span class="close">+</span>
+        <form>
+          Cerca un Alimento:
+          <input type="text" placeholder="Inserisci un alimento">
+        </form>
+        <form action="" class="tabella-macronutrienti flex">
+          <!-- tabella con tutti i macronutrienti -->
+          <table>
+            <th>Grassi </th>
+            <th>Proteine </th>
+            <th>Carboidrati </th>
+            <th>Calorie</th>
+            <tr>
+              <!-- serve solo una riga -->
+              <td>valore1</td>
+              <td>valore2</td>
+              <td>valore3</td>
+              <td>vlaore4</td>
+            </tr>
+          </table>
+        </form>
+        <button type="buttom" class="button-popup-save">Salva</button>
       </div>
-  </div>
-    
+    </div>
+
 
 
 
@@ -182,25 +187,45 @@
 
 
 
-  <!-- bootstrap -->
+  <!-- bootstrap js -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-    crossorigin="anonymous">
-  </script>
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
 
   <!-- popup -->
-
   <script>
     document.getElementById('bottone-colazione').addEventListener('click',
-    function(){
-    document.querySelector('.popup').style.display = 'flex';
-    })
+      function () {
+        document.querySelector('.popup').style.display = 'flex';
+      })
 
     document.querySelector('.close').addEventListener('click',
-    function(){
+      function () {
         document.querySelector('.popup').style.display = 'none';
-    })
-</script>
+      })
+  </script>
+
+  <!-- calendar deny future dates -->
+  <script>
+
+    var todayDate = new Date();
+    var month = todayDate.getMonth() + 1; //04 - current month
+    var year = todayDate.getFullYear(); //2021 - current year
+    var tdate = todayDate.getDate(); // 27 - current date 
+    if (month < 10) {
+      month = "0" + month //'0' + 4 = 04
+    }
+    if (tdate < 10) {
+      tdate = "0" + tdate;
+    }
+    var maxDate = year + "-" + month + "-" + tdate;
+    $(document).ready(function () {
+      $("#calendario").attr("max", maxDate);
+      $("#calendario").attr("value", maxDate);
+    });
+
+  </script>
+
 
 
 
