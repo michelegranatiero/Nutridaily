@@ -34,20 +34,27 @@
           </div>
         </div>
       </div>
-      <!-- form -->
+      <!-- login -->
       <div class=" container-lg d-flex justify-content-evenly mask bg-lg-white h-100 p-lg-5">
         <div style="max-width: 30rem; width: 100%;" class="py-3 px-5 text-center back-empty input-group-lg">
           <div class="pb-4 logo-disp-lg">
             <img src="../assets/nutrilogo.png" style="width:180px;">
           </div>
           <h2 class="text-success">Login</h3>
-            <input type="email" class="form-control my-3" placeholder="Email" required autofocus> <!-- autofocus -->
-            <input type="password" class="form-control my-3" placeholder="Password" required>
-            <a href="#">
-              <button class="btn btn-success w-100 mb-3 p-2 fs-5 fw-bold">Accedi</button>
-            </a>
-            <!-- create form -->
-            <hr>
+            <!-- login form -->
+            <form action="#">
+              <input type="email" class="form-control my-3" placeholder="Email" required autofocus> <!-- autofocus -->
+              <input type="password" class="form-control my-3" placeholder="Password" required>
+              <div class="form-check my-3 text-start">
+                <input type="checkbox" class="form-check-input" name="rememberMe" id="rembme">
+                <label class="form-check-label" for="rembme">Resta connesso</label>
+              </div>
+              <a href="#">
+                <button class="btn btn-success w-100 mb-3 p-2 fs-5 fw-bold">Accedi</button>
+              </a>
+            </form>
+            <!-- create registration form -->
+            <hr class="horizRowLogin">
             <div class="text-center my-4">
               <button class="btn btn-outline-success  btn-lg" data-bs-toggle="modal" data-bs-target="#createModal">Crea
                 nuovo
@@ -135,7 +142,7 @@
                               Peso:
                             </label>
                             <div class="col px-0">
-                              <input type="number" min=0 class="form-control" id="peso" required>
+                              <input type="number" min="0" max="999" class="form-control" id="peso" required>
                             </div>
                             <label class="col col-form-label px-0">
                               kg
@@ -149,7 +156,7 @@
                               Altezza:
                             </label>
                             <div class="col px-0">
-                              <input type="number" min=0 class="form-control" id="altezza" required>
+                              <input type="number" min="0" max="999" class="form-control" id="altezza" required>
                             </div>
                             <label class="col col-form-label px-0">
                               cm
@@ -157,14 +164,11 @@
                           </div>
                         </div>
                       </div>
-
-                      <!-- disclaimer -->
-                      <!-- btn -->
+                      <!-- iscriviti -->
+                      <div class="mt-3 text-center">
+                        <button type="button" class="btn btn-success fs-5 px-5">Iscriviti</button>
+                      </div>
                     </form>
-                  </div>
-                  <!-- footer -->
-                  <div class="modal-footer justify-content-center">
-                    <button type="button" class="btn btn-success fs-5 px-5">Iscriviti</button>
                   </div>
                 </div>
               </div>

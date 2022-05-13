@@ -111,8 +111,12 @@ body {
     display: none;
   }
 
-  hr{
+  .horizRowLogin{
     background-color: #ffffff;
+  }
+
+  .form-check-label[for="rembme"]{
+    color: #ffffff;
   }
 }
 
