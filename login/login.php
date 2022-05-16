@@ -1,3 +1,10 @@
+<?php
+  if (isset($_POST[])){
+    $username = $POST
+  }
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
