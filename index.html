@@ -78,14 +78,17 @@
       <!-- tabella -->
       <div class="w-100 accordion" id="accordionMeals">
         <div class="accordion-item">
-          <div class="accordion-header d-flex" id="headingOne">
-            <button type="button" class="btn btn-success" onclick="vistaPasto()">+</button>
+          <div class="accordion-header d-flex" id="Colazione">
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal"
+              onclick="vistaPasto()">
+              +
+            </button>
             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
               aria-expanded="true" aria-controls="collapseOne">
               <span>Colazione</span>
             </button>
           </div>
-          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="Colazione"
             data-bs-parent="#accordionExample">
             <div class="accordion-body">
               <!-- tabella alimenti colazione -->
@@ -93,18 +96,17 @@
           </div>
         </div>
         <div class="accordion-item">
-          <div class="accordion-header d-flex" id="headingTwo">
-            <button type="button" class="button" onclick="vistaPasto()">
-              <span class="button-icon material-symbols-outlined">
-                add
-              </span>
+          <div class="accordion-header d-flex" id="Pranzo">
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal"
+              onclick="vistaPasto()">
+              +
             </button>
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
               data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
               <span>Pranzo</span>
             </button>
           </div>
-          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="Pranzo"
             data-bs-parent="#accordionExample">
             <div class="accordion-body">
               <!-- tabella alimenti pranzo -->
@@ -112,18 +114,17 @@
           </div>
         </div>
         <div class="accordion-item">
-          <div class="accordion-header d-flex" id="headingThree">
-            <button type="button" class="button" onclick="vistaPasto()">
-              <span class="button-icon material-symbols-outlined">
-                add
-              </span>
+          <div class="accordion-header d-flex" id="Cena">
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal"
+              onclick="vistaPasto()">
+              +
             </button>
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
               data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
               <span>Cena</span>
             </button>
           </div>
-          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="Cena"
             data-bs-parent="#accordionExample">
             <div class="accordion-body">
               <!-- tabella alimenti cena -->
@@ -131,18 +132,17 @@
           </div>
         </div>
         <div class="accordion-item">
-          <div class="accordion-header d-flex" id="headingThree">
-            <button type="button" class="button" onclick="vistaPasto()">
-              <span class="button-icon material-symbols-outlined">
-                add
-              </span>
+          <div class="accordion-header d-flex" id="Spuntini">
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal"
+              onclick="vistaPasto()">
+              +
             </button>
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
               data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
               <span>Spuntini</span>
             </button>
           </div>
-          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="Spuntini"
             data-bs-parent="#accordionExample">
             <div class="accordion-body">
               <!-- tabella alimenti spuntini -->
@@ -150,25 +150,25 @@
           </div>
         </div>
       </div>
-      <!--Modale-->
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel"></h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              Cerca un alimento: <input type="text" placeholder="Inserisci un alimento" id="searchText">
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-success" data-bs-dismiss="modal">Chiudi</button>
-              <button type="button" class="btn btn-success" id="save-button">Salva</button>
-            </div>
+    </div>
+
+    <!--Modale-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Cerca un alimento: <input type="text" placeholder="Inserisci un alimento" id="searchText">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" data-bs-dismiss="modal">Chiudi</button>
+            <button type="button" class="btn btn-success" id="save-button">Salva</button>
           </div>
         </div>
       </div>
-
     </div>
 
 
@@ -192,8 +192,7 @@
     var tbody;
     var count = 0;
     function vistaPasto() {
-      tbody = event.composedPath()[4];
-      console.log(event.target);
+      tbody = event.composedPath()[1];
       document.getElementById("exampleModalLabel").innerHTML = tbody.id;
 
     }
@@ -202,7 +201,7 @@
       var alimento = document.getElementById('searchText').value;
       if (alimento != '') {
         count += 1;
-        let template1 = `<tr id='riga${count.toString()}'>
+        let template1 = `<div id='riga${count.toString()}'>
                             <td>
                                 <span>
                                     <button type="button" onclick="remove_tr('riga${count.toString()}')" class="button-remove">-</button>
@@ -213,11 +212,11 @@
                             <td>ProteineAlim</td>
                             <td>GrassiAlim</td>
                             <td>CalorieAlim</td>
-                        </tr>`;
+                          </div>`;
 
         tbody.innerHTML += template1;
       }
-      else{
+      else {
         alert('Inserisci un alimento')
       }
     })
