@@ -78,7 +78,7 @@
                   </div>
                   <!-- body -->
                   <div class="modal-body">
-                    <form name="RegistrationForm" method="POST" action="validateRegistration.php" onsubmit="return validaForm()">
+                    <form name="RegistrationForm" method="POST" action="validateRegistration.php" onsubmit="return validaReg()">
                       <!-- nome -->
                       <div class="row">
                         <div class="col">

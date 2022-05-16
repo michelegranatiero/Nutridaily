@@ -12,7 +12,7 @@
 
     <?php
     if (!isset($_POST["mailReg"])) {
-        header("Location: ./login.html");
+        header("Location: ./login.php");
     } else {
         $dbconn = pg_connect("host=localhost dbname=Nutridaily port=5432 user=postgres password=postgres");
         $email = $_POST["mailReg"];
@@ -25,8 +25,8 @@
         } else {
             $nome = $_POST["nomeReg"];
             $cognome = $_POST["cognomeReg"];
-            $passwd = hash("sha512",$_POST["passReg"]);
-            //$passwd = $_POST["passReg"];
+            $pass = $_POST["passReg"];
+            $passwd = hash("sha512", $pass);
             //nascita
             $day = $_POST["dd"];
             $monthName= $_POST["mm"];

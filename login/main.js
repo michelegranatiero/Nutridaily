@@ -7,3 +7,9 @@ var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
 function validaLogin(){
     
 }
+
+function validaReg(){
+    
+}
+
+
