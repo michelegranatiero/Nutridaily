@@ -36,4 +36,5 @@ app.component("meal", {
         }
     }
 })
+
 app.mount("#accordionMeals")
