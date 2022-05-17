@@ -11,7 +11,7 @@
 <body>
 
     <?php
-    if (!isset($_POST["mailReg"])) {
+    if (!isset($_POST["regButton"])) {
         header("Location: ./login.php");
     } else {
         $dbconn = pg_connect("host=localhost dbname=Nutridaily port=5432 user=postgres password=postgres");
@@ -38,9 +38,15 @@
             $genere = $_POST["genereReg"];
             $peso = $_POST["pesoReg"];
             $altezza = $_POST["altezzaReg"];
-            $query2 = "INSERT into utente (nome,cognome,email,passwd,nascita,genere,peso,altezza) values ($1,$2,$3,$4,$5,$6,$7,$8)";
+            $query2 = "INSERT into utente (nome,cognome,email,passwd,nascita,genere,peso,altezza) values ($1,$2,$3,$4,$5,$6,$7,$8) returning id as id";
             $result = pg_query_params($dbconn, $query2, array($nome, $cognome, $email, $passwd, $nascita, $genere, $peso, $altezza));
             if($result){
+                $tuple = pg_fetch_array($result, null, PGSQL_ASSOC);
+                session_start();
+                $_SESSION["idutente"] = $tuple["id"];
+                $_SESSION["nomeutente"] = $nome;
+                $_SESSION["msg"] = "Benvenuto/a";
+                header("Location: ../index.php");
                 echo "La registrazione e' andata a buon fine <br/>";
             }
             else{

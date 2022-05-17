@@ -1,10 +1,3 @@
-<?php
-  if (isset($_POST[])){
-    $username = $POST
-  }
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,9 +9,8 @@
   <script src="https://unpkg.com/vue@3"></script>
   <!-- JQuery -->
   <script src="//code.jquery.com/jquery-3.6.0.js"></script>
-  <!-- bootstrap -->
+  <!-- bootstrap css -->
   <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css">
-  <!-- <script type="application/javascript" src="../bootstrap/js/bootstrap.min.js"></script> -->
   <!-- styleLogin css -->
   <link rel="stylesheet" type="text/css" href="styleLogin.css">
 </head>
@@ -104,7 +96,7 @@
                             class="fa-solid fa-circle-question" data-bs-container="body" data-bs-toggle="popover"
                             data-bs-placement="right" data-bs-content="Indica la tua data di nascita"></i></span>
                         <div class="col">
-                          <select class="form-select date-of-b" id="day" name="dd" required>
+                          <select class="form-select date-of-b" id="day" name="dd">
                           </select>
                         </div>
                         <div class="col">
@@ -212,7 +204,7 @@
       });
     </script>
 
-    <!-- bootstrap -->
+    <!-- bootstrap js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"></script>

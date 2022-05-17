@@ -9,7 +9,8 @@
 <body>
     
     <?php
-        if (!isset($_POST["mailLogin"])){
+        
+        if (!isset($_POST["loginButton"])){
             header("Location: ./login.php");
         }
         else{
@@ -30,27 +31,32 @@
                 if ($tuple=pg_fetch_array($result, null, PGSQL_ASSOC)){
                     
                     //passare nome al link tramite get...?name=$nome
-                    $nome = $tuple["nome"];
                     //session
-                    $_SESSION["id_utente"] = $tuple["id"];
-                    if (!empty($_POST["rememberLogin"])){
-                        $remember_checkbox = $_POST["rememberLogin"];
+                    session_start();
+                    $_SESSION["idutente"] = $tuple["id"];
+                    $_SESSION["nomeutente"] = $tuple["nome"];
+                    $_SESSION["msg"] = "Ciao";
+
+                    if (isset($_POST["rememberLogin"])){
+                        //$remember_checkbox = $_POST["rememberLogin"];
                         //set cookie
-                        setcookie("email", $email, time()+3600*24*7);
-                        setcookie("password", $pass, time()+3600*24*7);
+                        //setcookie("email", $email, time()+3600*24*7);
+                        //setcookie("password", $pass, time()+3600*24*7);
+                        
+                        
                     }
                     else{
                         //expire cookie
-                        setcookie("email", $email, 30);
-                        setcookie("password", $pass, 30);
+                        //setcookie("email", $email, -30);
+                        //setcookie("password", $pass, -30);
                     }
-
-
+                    header("Location: ../index.php");
+                    
                     echo "Il login e' andato a buon fine";
                 }
                 else echo "Il login non e' andato a buon fine <br/> La password e' errata";
             }
-        }
+        } 
     ?>
 
 </body>
