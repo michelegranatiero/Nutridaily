@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <!-- colazione -->
+    <div class="accordion-item ">
+        <div class="accordion-header d-flex" id="Colazione">
+          <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            onclick="vistaPasto()">
+            +
+          </button>
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+            aria-expanded="true" aria-controls="collapseOne">
+            <span>Colazione</span>
+          </button>
+        </div>
+        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="Colazione"
+          data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <!-- tabella alimenti colazione -->
+          </div>
+        </div>
+      </div>
+      <!-- pranzo -->
+      <div class="accordion-item">
+        <div class="accordion-header d-flex" id="Pranzo">
+          <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            onclick="vistaPasto()">
+            +
+          </button>
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            <span>Pranzo</span>
+          </button>
+        </div>
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="Pranzo"
+          data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <!-- tabella alimenti pranzo -->
+          </div>
+        </div>
+      </div>
+      <!-- cena -->
+      <div class="accordion-item">
+        <div class="accordion-header d-flex" id="Cena">
+          <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            onclick="vistaPasto()">
+            +
+          </button>
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            <span>Cena</span>
+          </button>
+        </div>
+        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="Cena"
+          data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <!-- tabella alimenti cena -->
+          </div>
+        </div>
+      </div>
+      <!-- spuntini -->
+      <div class="accordion-item">
+        <div class="accordion-header d-flex" id="Spuntini">
+          <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            onclick="vistaPasto()">
+            +
+          </button>
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+            <span>Spuntini</span>
+          </button>
+        </div>
+        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="Spuntini"
+          data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <!-- tabella alimenti spuntini -->
+          </div>
+        </div>
+      </div>
+
+
+</body>
+</html>
