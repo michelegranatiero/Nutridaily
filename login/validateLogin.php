@@ -14,7 +14,7 @@
             header("Location: ./login.php");
         }
         else{
-            $dbconn = pg_connect("host=localhost dbname=Nutridaily port=5432 user=postgres password=postgres");
+            include("db.php");
             $email = $_POST["mailLogin"];
             $query = "SELECT * from utente where email=$1";
             $result = pg_query_params($dbconn, $query, array($email));

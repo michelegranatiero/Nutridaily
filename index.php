@@ -35,7 +35,7 @@
   <header>
     <nav class="navbar navbar-expand-sm navbar-light bg-light shadow fixed-top rounding">
       <div class="container-fluid">
-        <a class="navbar-brand d-flex align-items-center fw-bold fs-3 nav-text-color" href="#">
+        <a class="navbar-brand d-flex align-items-center fw-bold fs-3 nav-text-color" href="./index.php">
           <img src="./assets/nutrilogo.png" width="55px" class="d-inline-block">
           Nutridaily
         </a>
@@ -50,7 +50,7 @@
                   <?php
                     echo $_SESSION["msg"]." ".$_SESSION["nomeutente"];
                     $_SESSION["msg"] = "Ciao";
-                  ?>
+                  ?> 
               </span>
             </li>
             <li class="nav-item ms-sm-5">
