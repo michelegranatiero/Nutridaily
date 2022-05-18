@@ -108,9 +108,9 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <input type="text" class="form-control" placeholder="Inserisci un alimento" id="searchText">
+            <input type="text" class="form-control" placeholder="Inserisci un alimento" id="searchText" spellcheck="false">
             <!-- live search -->
-            <div id="display" class="border"></div>
+            <div id="display"></div>
 
           </div>
           <div class="modal-footer">
@@ -135,6 +135,12 @@
     var tbody;
     var count = 0;
     function vistaPasto() {
+      //reset search on close
+      if (!($(tbody).is($(event.target).closest("div")))){
+        $('#searchText').val(null);
+        $("#display").html("");
+      }
+
       tbody = $(event.target).closest("div");
       $("#exampleModalLabel").html(tbody.attr("id"));
     }
@@ -157,9 +163,9 @@
       //live search-------------------------------------------------------------------
       //On pressing a key on "Search box" in "search.php" file. This function will be called.
       $("#searchText").keyup(function() {
-          //Assigning search box value to javascript variable named as "name".
+          //Assigning search box value to javascript variable named as "txt".
           var txt = $(this).val();
-          //Validating, if "name" is empty.
+          //Validating, if "txt" is empty.
           if (txt == "") {
               //Assigning empty value to "display" div in "search.php" file.
               $("#display").html("");

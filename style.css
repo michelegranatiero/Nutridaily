@@ -167,6 +167,13 @@ input[type='date']::-webkit-calendar-picker-indicator{
 }
 
 
+/* search */
+
+#display{
+  max-height: 200px;
+  overflow: hidden;
+  overflow-y: scroll;
+}
 
 
 
