@@ -1,9 +1,9 @@
 <?php
-  session_start();
-  if (!isset($_SESSION["idutente"])){
-    header("Location: ./login/login.php");
-    die();
-  }
+session_start();
+if (!isset($_SESSION["idutente"])) {
+  header("Location: ./login/login.php");
+  die();
+}
 ?>
 
 <!DOCTYPE html>
@@ -23,8 +23,7 @@
   <!-- style css -->
   <link rel="stylesheet" type="text/css" href="style.css" />
   <!-- google fonts -->
-  <link rel="stylesheet"
-    href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+  <link rel="stylesheet" href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 
 
 
@@ -39,22 +38,21 @@
           <img src="./assets/nutrilogo.png" width="55px" class="d-inline-block">
           Nutridaily
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span> <!-- cambiare -->
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-sm-auto d-flex align-items-baseline">
             <li class="nav-item">
               <span class="fs-6 fw-bold nav-text-color">
-                  <?php
-                    echo $_SESSION["msg"]." ".$_SESSION["nomeutente"];
-                    $_SESSION["msg"] = "Ciao";
-                  ?> 
+                <?php
+                echo $_SESSION["msg"] . " " . $_SESSION["nomeutente"];
+                $_SESSION["msg"] = "Ciao";
+                ?>
               </span>
             </li>
             <li class="nav-item ms-sm-5">
-              <a class="nav-link active fs-5 nav-text-color" href="#">Esci</a>
+              <a class="nav-link active fs-5 nav-text-color" href="./logout.php">Esci</a>
             </li>
           </ul>
         </div>
@@ -110,9 +108,9 @@
           <div class="modal-body">
             <input type="button" class="form-control" value="" id="searchedItem">
             <input type="text" class="form-control" placeholder="Inserisci un alimento" id="searchText" spellcheck="false">
-            
+
             <!-- live search -->
-            <div id="display" ></div>
+            <div id="display"></div>
 
           </div>
           <div class="modal-footer">
@@ -133,12 +131,12 @@
 
   <!-- eventi alimenti pasti-->
   <script>
-
     var tbody;
     var count = 0;
+
     function vistaPasto() {
       //reset search on close
-      if (!($(tbody).is($(event.target).closest("div")))){
+      if (!($(tbody).is($(event.target).closest("div")))) {
         $('#searchText').val("");
         $("#display").html("");
         $('#searchedItem').hide();
@@ -151,10 +149,10 @@
     }
 
     function remove_tr(id_riga) {
-      let riga = $("#"+id_riga);
+      let riga = $("#" + id_riga);
       riga.remove();
     }
-    
+
     /* live search.......... */
     function fill(value) {
       //Assigning value to "search" div in "search.php" file.
@@ -167,7 +165,7 @@
 
     }
 
-    $(document).ready(function () {
+    $(document).ready(function() {
 
       $('#accordion .panel').on("click", function() {
         $(this).siblings().find(".panel-heading").removeClass("panel-heading-active");
@@ -177,7 +175,7 @@
       //live search-------------------------------------------------------------------
       $('#searchedItem').hide();
 
-      $('#searchedItem').click(function(){
+      $('#searchedItem').click(function() {
         $('#searchedItem').hide();
         $('#searchText').show();
         $('#searchedItem').val("");
@@ -185,40 +183,40 @@
 
       //On pressing a key on "Search box" in "search.php" file. This function will be called.
       $("#searchText").keyup(function() {
-          //Assigning search box value to javascript variable named as "txt".
-          var txt = $(this).val();
-          //Validating, if "txt" is empty.
-          if (txt == "") {
-              //Assigning empty value to "display" div in "search.php" file.
-              $("#display").html("");
-          }
-          //If name is not empty.
-          else {
-              //AJAX is called.
-              $.ajax({
-                  //AJAX type is "Post".
-                  type: "POST",
-                  //Data will be sent to "search.php".
-                  url: "search.php",
-                  //Data, that will be sent to "search.php".
-                  data: {
-                      //Assigning value of "name" into "search" variable.
-                      search:txt
-                  },
-                  //If result found, this funtion will be called.
-                  success: function(html) {
-                      //Assigning result to "display" div in "search.php" file.
-                      $('#display').show();
-                      $("#display").html(html).show;
-                  }
-              });
-          }
+        //Assigning search box value to javascript variable named as "txt".
+        var txt = $(this).val();
+        //Validating, if "txt" is empty.
+        if (txt == "") {
+          //Assigning empty value to "display" div in "search.php" file.
+          $("#display").html("");
+        }
+        //If name is not empty.
+        else {
+          //AJAX is called.
+          $.ajax({
+            //AJAX type is "Post".
+            type: "POST",
+            //Data will be sent to "search.php".
+            url: "search.php",
+            //Data, that will be sent to "search.php".
+            data: {
+              //Assigning value of "name" into "search" variable.
+              search: txt
+            },
+            //If result found, this funtion will be called.
+            success: function(html) {
+              //Assigning result to "display" div in "search.php" file.
+              $('#display').show();
+              $("#display").html(html).show;
+            }
+          });
+        }
       });
 
 
       //button aggiungi alimento
-      $("#add-button").click(function () {
-        if ($('#searchedItem').val()!="") {
+      $("#add-button").click(function() {
+        if ($('#searchedItem').val() != "") {
           var alimento = $('#searchedItem').val();
           count += 1;
           let template1 = `
@@ -248,12 +246,10 @@
           var expand = tbody.next(); //da espandere dopo
           tbody = tbody.next().find(".accordion-body");
           $(tbody).append(template1);
-          if (!$(expand).hasClass("show")){
+          if (!$(expand).hasClass("show")) {
             $(expand).collapse('toggle'); //espansione al click
-          }
-          ; //azzera search
-        }
-        else {
+          }; //azzera search
+        } else {
           alert('Inserisci un alimento');
         }
       });
@@ -264,7 +260,6 @@
 
   <!-- calendar deny future dates -->
   <script>
-
     var todayDate = new Date();
     var month = todayDate.getMonth() + 1; //04 - current month
     var year = todayDate.getFullYear(); //2021 - current year
@@ -276,17 +271,16 @@
       tdate = "0" + tdate;
     }
     var maxDate = year + "-" + month + "-" + tdate;
-    $(document).ready(function () {
+    $(document).ready(function() {
       $("#calendario").attr("max", maxDate);
       $("#calendario").attr("value", maxDate);
     });
-
   </script>
 
+
   <!-- bootstrap js -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-    </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+  </script>
   <!-- vue app -->
   <script type="application/javascript" src="app.js"></script>
 </body>
