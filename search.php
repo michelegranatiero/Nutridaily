@@ -12,7 +12,7 @@ if (isset($_POST['search'])) {
    $alim = $_POST['search'];
 //Search query.
    $query = "SELECT * from alimento where nome LIKE UPPER('%$alim%')
-      ORDER BY CASE WHEN nome LIKE UPPER('$alim%') THEN 0 ELSE 1 END";
+      ORDER BY CASE WHEN nome LIKE UPPER('$alim%') THEN 1 ELSE 2 END";
 //Query execution------------------------------------------------------------------
    $exeQuery = pg_query($dbconn, $query);
 //Creating unordered list to display result.
