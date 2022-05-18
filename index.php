@@ -90,7 +90,7 @@
       </div>
       <!-- colazione -->
 
-      <!-- tabella (vue.js)-->
+      <!-- tabella accordion (vue.js)-->
       <div class="accordion p-0" id="accordionMeals">
         <meal pasto="Colazione" coll-id="coll1"></meal>
         <meal pasto="Pranzo" coll-id="coll2"></meal>
@@ -108,7 +108,10 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            Cerca un alimento: <input type="text" placeholder="Inserisci un alimento" id="searchText">
+            <input type="text" class="form-control" placeholder="Inserisci un alimento" id="searchText">
+            <!-- live search -->
+            <div id="display" class="border"></div>
+
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-success" data-bs-dismiss="modal" id="add-button">Aggiungi</button>
@@ -140,9 +143,51 @@
       let riga = $("#"+id_riga);
       riga.remove();
     }
+    
+    /* live search.......... */
+    function fill(value) {
+      //Assigning value to "search" div in "search.php" file.
+      $('#searchText').val(value);
+        //Hiding "display" div in "search.php" file.
+      $('#display').hide();
+    }
 
     $(document).ready(function () {
 
+      //live search-------------------------------------------------------------------
+      //On pressing a key on "Search box" in "search.php" file. This function will be called.
+      $("#searchText").keyup(function() {
+          //Assigning search box value to javascript variable named as "name".
+          var txt = $(this).val();
+          //Validating, if "name" is empty.
+          if (txt == "") {
+              //Assigning empty value to "display" div in "search.php" file.
+              $("#display").html("");
+          }
+          //If name is not empty.
+          else {
+              //AJAX is called.
+              $.ajax({
+                  //AJAX type is "Post".
+                  type: "POST",
+                  //Data will be sent to "search.php".
+                  url: "search.php",
+                  //Data, that will be sent to "search.php".
+                  data: {
+                      //Assigning value of "name" into "search" variable.
+                      search:txt
+                  },
+                  //If result found, this funtion will be called.
+                  success: function(html) {
+                      //Assigning result to "display" div in "search.php" file.
+                      $("#display").html(html).show;
+                  }
+              });
+          }
+      });
+
+
+      //button aggiungi alimento
       $("#add-button").click(function () {
         var alimento = $('#searchText').val();
         if (!($(alimento).is(':empty'))) {
@@ -179,9 +224,7 @@
         else {
           alert('Inserisci un alimento');
         }
-      })
-
-
+      });
 
     })
   </script>

@@ -140,12 +140,6 @@ main {
 
 
 
-
-
-
-
-
-
 /* ---------------CALENDAR----------------- */
 input[type="date"]{
   background-color: rgba(255, 255, 255, 0.7);
@@ -171,96 +165,6 @@ input[type='date']::-webkit-calendar-picker-indicator{
   filter: invert(45%) sepia(32%) saturate(955%) hue-rotate(100deg) brightness(88%) contrast(93%);
   
 }
-
-/* ---------------POPUP----------------- */
-  
-.popup{
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  position: absolute;
-  top: 0;
-  justify-content: center;
-  align-items: center;
-  display: none;
-  
-}
-
-.popup-content{
-  color: white;
-  width: 500px;
-  height: 250px;
-  background-color: rgba(0, 128, 0, 0.7);
-  border-radius: 10px;
-  text-align: center;
-  padding: 30px;
-  position: relative;
-  border: solid #fff 2px;
-
-}
-
-
-input{
-  margin: 10px;
-  width: 50%;
-  padding: 8px;
-  border: 1px solid gray;
-  border-radius: 10px;
-  border: none;
-}
-
-.close{
-  position: absolute;
-  top: 7px;
-  right: 12px;
-  left: 1x;
-  top: 5px;
-  font-size: 24px;
-  transform: rotate(45deg);
-  cursor: pointer;
-  color: #fff;
-}
-
-.tabella-macronutrienti{
-  border: 2px solid white;
-  border-radius: 5px;
-  margin-top: 10px;
-  background-color: rgba(25, 135, 84, 0.5);
-  color: #fff;
-  
-}
-
-.flex{
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  
-  
-}
-
-.button-popup-save{
-  margin-top: 20px;
-  color: #fff;
-  font-size: medium;
-  border: #fff;
-  text-align: center;
-  width: 60px;
-  height: 40px;
-  border-radius: 10px;
-  border: 2px solid #fff;
-}
-
-.button-popup-save{
-  background-color: #008168;
-}
-.button-popup-save:active{
-  background-color: #006a58;
-}
-
-th{
-  text-align: center;
-}
-  
 
 
 

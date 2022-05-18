@@ -41,7 +41,7 @@
           </div>
           <h2 class="text-success">Login</h3>
             <!-- login form -->
-            <form name="loginForm" action="validateLogin.php" method="POST" onsubmit="return validaLogin()">
+            <form id="loginForm" action="validateLogin.php" method="POST" onsubmit="return validaLogin()">
               <input type="email" name="mailLogin" class="form-control my-3" placeholder="Email" required autofocus> <!-- autofocus -->
               <input type="password" name="passLogin" class="form-control my-3" placeholder="Password" required>
               <div class="form-check my-3 text-start">
@@ -77,7 +77,7 @@
                   </div>
                   <!-- body -->
                   <div class="modal-body">
-                    <form name="RegistrationForm" method="POST" action="validateRegistration.php" onsubmit="return validaReg()">
+                    <form id="RegistrationForm" method="POST" action="validateRegistration.php" onsubmit="return validaReg()">
                       <!-- nome -->
                       <div class="row">
                         <div class="col">
@@ -163,11 +163,12 @@
                           </div>
                         </div>
                       </div>
-                      <!-- iscriviti -->
-                      <div class="mt-3 text-center">
-                        <button type="submit" name="regButton" class="btn btn-success fs-5 px-5">Iscriviti</button>
-                      </div>
                     </form>
+                  </div>
+                  <!-- footer -->
+                  <!-- Iscritivi -->
+                  <div class="modal-footer">
+                    <button type="submit" form="RegistrationForm" name="regButton" class="btn btn-success fs-5 px-5">Iscriviti</button>
                   </div>
                 </div>
               </div>

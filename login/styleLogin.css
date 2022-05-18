@@ -48,6 +48,9 @@ body {
 .mask {
   background-color: rgba(0, 0, 0, 0.7);
 }
+.modal-footer{
+  justify-content: center;
+}
 
 /* Desktop view */
 /* lg bootstrap breakpoint up */
