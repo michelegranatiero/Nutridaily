@@ -110,7 +110,7 @@
           <div class="modal-body">
             <input type="text" class="form-control" placeholder="Inserisci un alimento" id="searchText" spellcheck="false">
             <!-- live search -->
-            <div id="display"></div>
+            <div id="display" ></div>
 
           </div>
           <div class="modal-footer">

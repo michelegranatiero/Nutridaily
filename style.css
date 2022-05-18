@@ -175,6 +175,10 @@ input[type='date']::-webkit-calendar-picker-indicator{
   overflow-y: scroll;
 }
 
+.list-group-item{
+  cursor:pointer
+}
+
 
 
 
