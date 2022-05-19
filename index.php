@@ -171,7 +171,8 @@ if (!isset($_SESSION["idutente"])) {
     var maxDate = year + "-" + month + "-" + tdate;
     $(document).ready(function() {
       $("#calendario").attr("max", maxDate);
-      $("#calendario").attr("value", maxDate);
+      $("#calendario").val(maxDate);
+      aggiornaData($("#calendario").val());
     });
   </script>
   <!-- main js -->

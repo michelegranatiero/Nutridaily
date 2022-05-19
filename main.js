@@ -31,7 +31,11 @@ function fill(value) {
     $("#searchText").hide();
     $('#searchedGroup').show();
     $('#searchText').val(null);
+}
 
+//aggiorna la pagina con la data dell'argomento
+function aggiornaData(date){
+/* implementa */
 }
 
 
@@ -122,6 +126,14 @@ $(document).ready(function () {
             alert('Inserisci un alimento');
         }
     });
+
+
+    $(calendario).change(function(){ 
+        aggiornaData($("calendario").val());
+        
+    });
+
+
 
 })
 
