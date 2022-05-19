@@ -60,29 +60,36 @@ if (!isset($_SESSION["idutente"])) {
     </nav>
   </header>
 
-  <main class="container">
-    <!-- Diario Alimentare Titolo-->
-    <div class="row align-self-start">
-      <h2 class="">Diario Alimentare</h2>
+  <main class="container-lg container-fluid">
+    <!-- riga diario e calendario-->
+    <div class="row w-100">
+      <!-- Diario Alimentare Titolo-->
+      <div class="col ">
+        <h2>Diario Alimentare</h2>
+      </div>
+      <!-- Calendario-->
+      <div class="col flex-row calendar-header">
+        <div>Data:&nbsp</div>
+        <input type="date" id="calendario" class="text-center">
+      </div>
     </div>
     <!-- Contenitore Principale -->
-    <div class="row cont1 p-3">
+    <div class="row cont1">
       <!-- header tabella -->
-      <div class="row">
-        <div class="col calendar-header text-color fs-5">
-          Giorno:&nbsp
-          <input type="date" id="calendario" class="text-center">
+      <div class="row pb-3">
+        <div class="col" id="alim">
+          Alimento
         </div>
-        <div class="col">
+        <div class="col" id="carb">
           Carboidrati
         </div>
-        <div class="col">
+        <div class="col" id="prot">
           Proteine
         </div>
-        <div class="col">
+        <div class="col" id="gras">
           Grassi
         </div>
-        <div class="col">
+        <div class="col" id="cal">
           Calorie
         </div>
       </div>
@@ -119,8 +126,6 @@ if (!isset($_SESSION["idutente"])) {
         </div>
       </div>
     </div>
-
-
 
 
 
