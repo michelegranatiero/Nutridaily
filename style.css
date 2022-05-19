@@ -18,6 +18,7 @@
 body {
   height: 100vh;
   background-color: var(--body-color);
+  padding-top: 65px;
 }
 
 /* -------------NAVBAR----------------- */
@@ -59,12 +60,13 @@ body {
 }
 
 main {
+  padding-top: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   /* allineamento verticale */
   align-items: center;
-  height: 100%;
+  position: relative;
 }
 
 .cont1 {
@@ -245,8 +247,9 @@ input[type='date']::-webkit-calendar-picker-indicator {
     align-self: center;
   }
 
-  .container-lg {
-    padding: 0px;
+  main {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
   }
 
   .cont1 {
