@@ -1,4 +1,3 @@
-//eventi alimenti pasti
 var tbody;
 var count = 0;
 
