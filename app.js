@@ -8,9 +8,9 @@ app.component("meal", {
     template: `
     <div class="accordion-item">
         <div class="accordion-header d-flex" v-bind:id="pasto">
-            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            <button type="button" class="btn btn-success plus-button" data-bs-toggle="modal" data-bs-target="#exampleModal"
                 onclick="vistaPasto()">
-                +
+                <i class="bi bi-plus"></i>
             </button>
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" v-bind:data-bs-target="'#'+collId"
                 aria-expanded="false" v-bind:aria-controls="collId">

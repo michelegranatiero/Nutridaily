@@ -1,3 +1,4 @@
+//eventi alimenti pasti
 var tbody;
 var count = 0;
 
@@ -12,7 +13,7 @@ function vistaPasto() {
         $('#searchText').show();
     }
     tbody = $(window.event.target).closest("div");
-    $("#titoloPasto").html(tbody.attr("id"));
+    $("#exampleModalLabel").html(tbody.attr("id"));
 }
 
 //rimuovi alimento
