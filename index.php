@@ -72,7 +72,7 @@ if (!isset($_SESSION["idutente"])) {
       <!-- Calendario-->
       <div class="col flex-row calendar-header pb-3">
         <div>Data:&nbsp</div>
-        <input type="date" id="calendario" class="text-center">
+        <input type="date" id="calendario" class="text-center" required>
       </div>
     </div>
     <!-- Contenitore Principale -->
@@ -132,7 +132,10 @@ if (!isset($_SESSION["idutente"])) {
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <input type="button" class="form-control" value="" id="searchedItem">
+            <div class="input-group" id="searchedGroup">
+              <input type="button" class="form-control" value="" id="searchedItem" disabled>
+              <button class="btn btn-danger" id="searchDelete"><i class="bi bi-x-lg"></i></button>
+            </div>
             <input type="text" class="form-control" placeholder="Inserisci un alimento" id="searchText" spellcheck="false">
 
             <!-- live search -->

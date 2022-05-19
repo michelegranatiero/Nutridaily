@@ -8,7 +8,7 @@ function vistaPasto() {
     if (!($(tbody).is($(window.event.target).closest("div")))) {
         $('#searchText').val("");
         $("#display").html("");
-        $('#searchedItem').hide();
+        $('#searchedGroup').hide();
         $('#searchedItem').val("");
         $('#searchText').show();
     }
@@ -29,7 +29,7 @@ function fill(value) {
     //Hiding "display" div in "search.php" file.
     $('#display').hide();
     $("#searchText").hide();
-    $('#searchedItem').show();
+    $('#searchedGroup').show();
     $('#searchText').val(null);
 
 }
@@ -44,10 +44,10 @@ $(document).ready(function () {
     });
 
     //live search-------------------------------------------------------------------
-    $('#searchedItem').hide();
+    $('#searchedGroup').hide();
 
-    $('#searchedItem').click(function () {
-        $('#searchedItem').hide();
+    $('#searchDelete').click(function () {
+        $('#searchedGroup').hide();
         $('#searchText').show();
         $('#searchedItem').val("");
     });
@@ -110,10 +110,8 @@ $(document).ready(function () {
                 60
               </div>
             </div>
-          `;
-            console.log($('#searchedItem').val());
+            `;
             $('#searchedItem').val("");
-            console.log($('#searchedItem').val());
             var expand = tbody.next(); //da espandere dopo
             tbody = tbody.next().find(".accordion-body");
             $(tbody).append(template1);

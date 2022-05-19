@@ -8,7 +8,7 @@ app.component("meal", {
     template: `
     <div class="accordion-item">
         <div class="accordion-header d-flex" v-bind:id="pasto">
-            <button type="button" class="btn btn-success plus-button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            <button type="button" class="btn btn-success plus-button shadow-sm" data-bs-toggle="modal" data-bs-target="#exampleModal"
                 onclick="vistaPasto()">
                 <i class="bi bi-plus"></i>
             </button>
