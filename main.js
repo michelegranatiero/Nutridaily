@@ -4,7 +4,7 @@ var count = 0;
 
 function vistaPasto() {
     //reset search on close
-    if (!($(tbody).is($(event.target).closest("div")))) {
+    if (!($(tbody).is($(window.event.target).closest("div")))) {
         $('#searchText').val("");
         $("#display").html("");
         $('#searchedItem').hide();

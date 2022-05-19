@@ -64,36 +64,53 @@ if (!isset($_SESSION["idutente"])) {
     <!-- riga diario e calendario-->
     <div class="row w-100">
       <!-- Diario Alimentare Titolo-->
-      <div class="col ">
-        <h2>Diario Alimentare</h2>
+      <div class="col flex-row pb-3 space-nowrap">
+        <h2 class="m-0">Diario Alimentare</h2>
       </div>
       <!-- Calendario-->
-      <div class="col flex-row calendar-header">
+      <div class="col flex-row calendar-header pb-3">
         <div>Data:&nbsp</div>
         <input type="date" id="calendario" class="text-center">
       </div>
     </div>
     <!-- Contenitore Principale -->
     <div class="row cont1">
-      <!-- header tabella -->
-      <div class="row pb-3">
-        <div class="col" id="alim">
+      <!-- header tabella desktop-->
+      <div class="row pb-3 head-large">
+        <div class="col">
           Alimento
         </div>
-        <div class="col" id="carb">
+        <div class="col">
           Carboidrati
         </div>
-        <div class="col" id="prot">
+        <div class="col">
           Proteine
         </div>
-        <div class="col" id="gras">
+        <div class="col">
           Grassi
         </div>
-        <div class="col" id="cal">
+        <div class="col">
           Calorie
         </div>
       </div>
-      <!-- colazione -->
+      <!-- header tabella mobile-->
+      <div class="row head-small">
+        <div class="col">
+          Alimento
+        </div>
+        <div class="col">
+          car
+        </div>
+        <div class="col">
+          pro
+        </div>
+        <div class="col">
+          gra
+        </div>
+        <div class="col">
+          cal
+        </div>
+      </div>
 
       <!-- tabella accordion (vue.js)-->
       <div class="accordion p-0" id="accordionMeals">

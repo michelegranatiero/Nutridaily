@@ -100,6 +100,11 @@ main {
   border: 1px solid #000000;
 }
 
+.space-nowrap{
+  white-space: nowrap;
+}
+
+
 /* Plus Button */
 .button{
   height: 50px;
@@ -176,9 +181,6 @@ input[type='date']::-webkit-calendar-picker-indicator{
   border: 3px solid var(--main-color);
   
 }
-#searchedItem:hover{
-  border-color: red;
-}
 
 .list-group-item{
   cursor:pointer
@@ -226,8 +228,13 @@ input[type='date']::-webkit-calendar-picker-indicator{
 
 
 
+.head-small{
+  flex-wrap: nowrap;
+  min-width: 310px;
+}
 
-/* sm breakpoint - mobile view */
+
+/* <sm breakpoint - mobile view */
 @media screen and (max-width: 575px) {
 
   .nav-item {
@@ -242,6 +249,18 @@ input[type='date']::-webkit-calendar-picker-indicator{
     border-radius: 0px;
     border: none;
     width: 100%;
+    padding: 0;
   }
 
+  .head-large{
+    display: none;
+  }
+
+}
+
+/* >sm breakpoint - desktop view */
+@media screen and (min-width:576px) {
+  .head-small{
+    display: none;
+  }  
 }
