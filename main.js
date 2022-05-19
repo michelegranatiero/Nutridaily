@@ -2,6 +2,7 @@
 var tbody;
 var count = 0;
 
+//popup scelta alimento
 function vistaPasto() {
     //reset search on close
     if (!($(tbody).is($(window.event.target).closest("div")))) {
@@ -11,17 +12,17 @@ function vistaPasto() {
         $('#searchedItem').val("");
         $('#searchText').show();
     }
-
-    tbody = $(event.target).closest("div");
-    $("#exampleModalLabel").html(tbody.attr("id"));
+    tbody = $(window.event.target).closest("div");
+    $("#titoloPasto").html(tbody.attr("id"));
 }
 
+//rimuovi alimento
 function remove_tr(id_riga) {
     let riga = $("#" + id_riga);
     riga.remove();
 }
 
-/* live search.......... */
+/* chiamata da search.php per inserire l'alimento selezionato nella casella*/
 function fill(value) {
     //Assigning value to "search" div in "search.php" file.
     $('#searchedItem').val(value);
@@ -33,6 +34,8 @@ function fill(value) {
 
 }
 
+
+/*----------------DOCUMENT READY------------------------- */
 $(document).ready(function () {
 
     $('#accordion .panel').on("click", function () {
