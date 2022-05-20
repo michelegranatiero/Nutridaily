@@ -35,7 +35,7 @@ function fill(value) {
 
 //aggiorna la pagina con la data dell'argomento
 function aggiornaData(date){
-    /* variabile con l'id utente */
+    
     if (/* non esiste un diario nel database per la data 'date' e id utente*/ true){
         /* crea diario per id utente e giorno 'date'*/
         /* crea 4 pasti */
