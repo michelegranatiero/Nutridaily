@@ -35,7 +35,17 @@ function fill(value) {
 
 //aggiorna la pagina con la data dell'argomento
 function aggiornaData(date){
-/* implementa */
+    /* variabile con l'id utente */
+    if (/* non esiste un diario nel database per la data 'date' e id utente*/ true){
+        /* crea diario per id utente e giorno 'date'*/
+        /* crea 4 pasti */
+    }
+    else{
+        /* prende in input 'date' e id utente */
+        /* PHP: (array con 4 array dentro) per ogni pasto esegui query per ogni alimento*/
+        /* template client o server??? */
+        /* $(#body).html(..array1..) */ 
+    }
 }
 
 
