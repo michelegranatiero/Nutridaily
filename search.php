@@ -1,6 +1,6 @@
 <?php
 //Including Database configuration file.
-include("db.php");
+include("./db/db.php");
 //Getting value of "search" variable from "script.js".
 if (isset($_POST['search'])) {
    $output = "";

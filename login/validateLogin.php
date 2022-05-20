@@ -14,7 +14,7 @@
             header("Location: ./login.php");
         }
         else{
-            include("../db.php");
+            include("../db/db.php");
             $email = $_POST["mailLogin"];
             $query = "SELECT * from utente where email=$1";
             $result = pg_query_params($dbconn, $query, array($email));
