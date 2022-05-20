@@ -51,11 +51,10 @@ if ((!(isset($_SESSION["arrayid"]))) && (!(isset($_COOKIE["userarray"])))) {
                 if (!isset($_SESSION["arrayid"]["msg"])) {
                   $arr = stripslashes($_COOKIE["userarray"]);
                   $arr = json_decode($arr, true);
-                  echo $arr["msg"] . " " . $arr["nomeutente"];
-                } else {
-                  echo $_SESSION["arrayid"]["msg"] . " " . $_SESSION["arrayid"]["nomeutente"];
-                  $_SESSION["arrayid"]["msg"] = "Ciao";
+                  $_SESSION["arrayid"] = $arr;
                 }
+                echo $_SESSION["arrayid"]["msg"] . " " . $_SESSION["arrayid"]["nomeutente"];
+                $_SESSION["arrayid"]["msg"] = "Ciao";
                 ?>
               </span>
             </li>

@@ -141,7 +141,7 @@
                               Peso:
                             </label>
                             <div class="col px-0">
-                              <input type="number" name="pesoReg" min="0" max="999" class="form-control" id="peso" required>
+                              <input type="number" name="pesoReg" min="1" max="999" class="form-control" id="peso" required>
                             </div>
                             <label class="col col-form-label px-0">
                               kg
@@ -155,7 +155,7 @@
                               Altezza:
                             </label>
                             <div class="col px-0">
-                              <input type="number" name="altezzaReg" min="0" max="999" class="form-control" id="altezza" required>
+                              <input type="number" name="altezzaReg" min="1" max="999" class="form-control" id="altezza" required>
                             </div>
                             <label class="col col-form-label px-0">
                               cm
