@@ -17,7 +17,6 @@ if ((!(isset($_SESSION["arrayid"]))) && (!(isset($_COOKIE["userarray"])))) {
   <link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap.css" />
   <!-- Bootstrap icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
-  <!--   <script type="application/javascript" src="./bootstrap/js/bootstrap.js"></script> -->
   <!-- Vue -->
   <script src="https://unpkg.com/vue@3"></script>
   <!-- JQuery -->
@@ -180,13 +179,14 @@ if ((!(isset($_SESSION["arrayid"]))) && (!(isset($_COOKIE["userarray"])))) {
       aggiornaData($("#calendario").val());
     });
   </script>
-  <!-- main js -->
-  <script type="application/javascript" src="main.js"></script>
+  
 
   <!-- bootstrap js -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
   </script>
-  <!-- vue app -->
+  <!-- main js -->
+  <script type="application/javascript" src="main.js"></script>
+  <!-- app js -->
   <script type="application/javascript" src="app.js"></script>
 </body>
 
