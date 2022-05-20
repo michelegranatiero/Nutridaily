@@ -120,10 +120,10 @@ if ((!(isset($_SESSION["arrayid"]))) && (!(isset($_COOKIE["userarray"])))) {
 
       <!-- tabella accordion (vue.js)-->
       <div class="accordion p-0" id="accordionMeals">
-        <meal pasto="Colazione" coll-id="coll1"></meal>
-        <meal pasto="Pranzo" coll-id="coll2"></meal>
-        <meal pasto="Cena" coll-id="coll3"></meal>
-        <meal pasto="Spuntini" coll-id="coll4"></meal>
+        <meal pasto="Colazione" coll-id="coll1" body-id="body-colazione"></meal>
+        <meal pasto="Pranzo" coll-id="coll2" body-id="body-pranzo"></meal>
+        <meal pasto="Cena" coll-id="coll3" body-id="body-cena"></meal>
+        <meal pasto="Spuntini" coll-id="coll4" body-id="body-spuntini"></meal>
       </div>
     </div>
 

@@ -214,6 +214,14 @@ input[type='date']::-webkit-calendar-picker-indicator {
   border-radius: 30px;
   margin: 5px;
 }
+
+.acc-header {
+  padding: 1rem 1.25rem;
+  padding-bottom: 0;
+}
+.accordion-body {
+  padding-bottom: 0;
+}
 /* --------------------------------------------- */
 .accordion-button:not(.collapsed) {
   color: #198754;

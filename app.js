@@ -19,7 +19,10 @@ app.component("meal", {
         </div>
         <div v-bind:id="collId" class="accordion-collapse collapse" v-bind:aria-labelledby="pasto"
         data-bs-parent="#accordionExample">
-            <div class="accordion-body">
+            <div class="acc-header">
+                <!-- header tabella alimento carb prot gra cal -->
+            </div>
+            <div class="accordion-body" v-bind:id="bodyId">
                 <!-- tabella alimenti pasto -->
             </div>
         </div>
@@ -29,10 +32,13 @@ app.component("meal", {
     props: {
         //camelCase viene converito in kebab-case (html)
         pasto: {
-            type: String,
+            type: String
         },
         collId: {
-            type: String,
+            type: String
+        },
+        bodyId:{
+            type: String
         }
     }
 })
