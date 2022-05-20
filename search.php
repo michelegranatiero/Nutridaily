@@ -3,7 +3,6 @@
 include("./db/db.php");
 //Getting value of "search" variable from "script.js".
 if (isset($_POST['search'])) {
-   $output = "";
    //Search box value assigning to $Name variable.
    $alim = $_POST['search'];
    //Search query.
@@ -28,6 +27,7 @@ if (isset($_POST['search'])) {
       <!-- Below php code is just for closing parenthesis and close ul tag. -->
 <?php
    }
+   echo '</div>';
 }
-echo '</div>';
+
 ?>

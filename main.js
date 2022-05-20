@@ -35,13 +35,63 @@ function fill(value) {
 
 //aggiorna la pagina con la data dell'argomento
 function aggiornaData(date){
-    
-    if (/* non esiste un diario nel database per la data 'date' e id utente*/ true){
-        /* crea diario per id utente e giorno 'date'*/
-        /* crea 4 pasti */
+    //check esistenza diario
+    var diario;
+    $.ajax({
+        type: 'POST',
+        url: 'checkDay.php',
+        data: date,
+        success: function(data){
+            diario = JSON.parse(data); //array
+            
+        }
+    });
+    if (!diario){ //se non esiste un diario
+        /* crea diario per id utente e giorno 'date' e i pasti*/
+        $.ajax({
+            type: 'POST',
+            url: 'addDay.php',
+            data: date,
+            success: function(data){
+                if(data != "1"){
+                    alert("errore del database nella creazione del diario");
+                }
+            }
+        });
     }
-    else{
+    else{ //se esiste il diario
         /* prende in input 'date' e id utente */
+        var dbArray;
+        $.ajax({
+            type: "POST",
+            url: "fetchDay.php",
+            data: diario,
+            success: function (data) {
+                dbArray = JSON.parse(data);
+            }
+        });
+        let template1 = `
+            <!-- header tabella -->
+            <div class="row alim-row" id="riga${count.toString()}">
+              <div class="col">
+                <button type="button" onclick="remove_tr('riga${count.toString()}')" class="button-remove">-</button>
+                ${dbArray[0][2]}
+              </div>
+              <div class="col">
+                10
+              </div>
+              <div class="col">
+                20
+              </div>
+              <div class="col">
+                30
+              </div>
+              <div class="col">
+                60
+              </div>
+            </div>
+            `;
+        $("body-colazione").html(template1);
         /* PHP: (array con 4 array dentro) per ogni pasto esegui query per ogni alimento*/
         /* template client o server??? */
         /* $(#body).html(..array1..) */ 
@@ -85,7 +135,7 @@ $(document).ready(function () {
                 url: "search.php",
                 //Data, that will be sent to "search.php".
                 data: {
-                    //Assigning value of "name" into "search" variable.
+                    //Assigning value of "txt" into "search" variable.
                     search: txt
                 },
                 //If result found, this funtion will be called.
@@ -132,6 +182,18 @@ $(document).ready(function () {
             if (!$(expand).hasClass("show")) {
                 $(expand).collapse('toggle'); //espansione al click
             }; //azzera search
+
+            $.ajax({
+                type: 'POST',
+                url: 'addFood.php',
+                data: alimento,
+                success:function(data){
+                    console.log(data); //da rivedere-------------------
+                }
+            });
+
+
+
         } else {
             alert('Inserisci un alimento');
         }
