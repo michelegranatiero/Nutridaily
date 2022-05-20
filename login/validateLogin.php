@@ -30,25 +30,13 @@
                 $result = pg_query_params($dbconn, $query2, array($email, $password));
                 if ($tuple=pg_fetch_array($result, null, PGSQL_ASSOC)){
                     
-                    //passare nome al link tramite get...?name=$nome
                     //session
                     session_start();
-                    $_SESSION["idutente"] = $tuple["id"];
-                    $_SESSION["nomeutente"] = $tuple["nome"];
-                    $_SESSION["msg"] = "Ciao";
+                    $arrayid = array("idutente"=>$tuple["id"],"nomeutente"=>$tuple["nome"],"msg"=>"Ciao");
+                    $_SESSION["arrayid"] = $arrayid;
 
                     if (isset($_POST["rememberLogin"])){
-                        //$remember_checkbox = $_POST["rememberLogin"];
-                        //set cookie
-                        //setcookie("email", $email, time()+3600*24*7);
-                        //setcookie("password", $pass, time()+3600*24*7);
-                        
-                        
-                    }
-                    else{
-                        //expire cookie
-                        //setcookie("email", $email, -30);
-                        //setcookie("password", $pass, -30);
+                        setcookie("userarray", json_encode($arrayid), time()+500, '/');
                     }
                     header("Location: ../index.php");
                     

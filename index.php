@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION["idutente"])) {
+if ((!(isset($_SESSION["arrayid"]))) && (!(isset($_COOKIE["userarray"])))) {
   header("Location: ./login/login.php");
   die();
 }
@@ -48,8 +48,14 @@ if (!isset($_SESSION["idutente"])) {
             <li class="nav-item">
               <span class="fs-6 fw-bold nav-text-color">
                 <?php
-                echo $_SESSION["msg"] . " " . $_SESSION["nomeutente"];
-                $_SESSION["msg"] = "Ciao";
+                if (!isset($_SESSION["arrayid"]["msg"])) {
+                  $arr = stripslashes($_COOKIE["userarray"]);
+                  $arr = json_decode($arr, true);
+                  echo $arr["msg"] . " " . $arr["nomeutente"];
+                } else {
+                  echo $_SESSION["arrayid"]["msg"] . " " . $_SESSION["arrayid"]["nomeutente"];
+                  $_SESSION["arrayid"]["msg"] = "Ciao";
+                }
                 ?>
               </span>
             </li>

@@ -43,9 +43,8 @@
             if($result){
                 $tuple = pg_fetch_array($result, null, PGSQL_ASSOC);
                 session_start();
-                $_SESSION["idutente"] = $tuple["id"];
-                $_SESSION["nomeutente"] = $nome;
-                $_SESSION["msg"] = "Benvenuto/a";
+                $arrayid = array("idutente"=>$tuple["id"],"nomeutente"=>$nome,"msg"=>"Benvenuto/a");
+                $_SESSION["arrayid"] = $arrayid;
                 header("Location: ../index.php");
                 echo "La registrazione e' andata a buon fine <br/>";
             }
