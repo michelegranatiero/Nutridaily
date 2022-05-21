@@ -61,9 +61,9 @@ function rowTemplate(sezione, alim, car, pro, gra, cal) {
 }
 
 //FUNZIONE CHE CONVERTE ARR OF OBJ IN ARR OF ARR
-function objToArray(arrObj, arr){
+function objToArray(arrObj, arr) {
     arrObj.forEach(elem => {
-        for (let key in elem){
+        for (let key in elem) {
             arr.push([key, elem[key]]);
         }
     });
@@ -95,7 +95,7 @@ function aggiornaData(date) {
                         console.log(arrOfObj);
                         //FUNZIONE CHE CONVERTE ARR OF OBJ IN ARR OF ARR
                         objToArray(arrOfObj, pastiArray);
-                        
+
                         console.log(pastiArray);
                         console.log(pastiArray[0]);
                         if (!pastiArray) {
@@ -108,25 +108,30 @@ function aggiornaData(date) {
             else { //se esiste il diario
                 /* prende in input 'date' e id utente */
                 var dbArray;
+                console.log(dbArray);
                 $.ajax({
                     type: "POST",
                     url: "fetchDay.php",
                     data: { diario: diario },
                     success: function (data) {
                         dbArray = JSON.parse(data);
+                        console.log(dbArray);
+                        //add
+
+                        /* PHP: (array con 4 array dentro) per ogni pasto esegui query per ogni alimento*/
+                        /* template client o server??? */
+                        /* $(#body).html(..array1..) */
+                        /* dbArray.forEach(row => {
+                            for (const key in pastiArray) {
+                                const value = pastiArray[key];
+                                if (row[0] === key) {
+                                    rowTemplate('#body-' + key, row[1], row[2], row[3], row[4], row[5]);
+                                }
+                            }
+                        }); */
                     }
                 });
-                /* PHP: (array con 4 array dentro) per ogni pasto esegui query per ogni alimento*/
-                /* template client o server??? */
-                /* $(#body).html(..array1..) */
-                dbArray.forEach(row => {
-                    for (const key in pastiArray) {
-                        const value = pastiArray[key];
-                        if (row[0] === key) {
-                            rowTemplate('#body-' + key, row[1], row[2], row[3], row[4], row[5]);
-                        }
-                    }
-                });
+
             }
         }
     });
