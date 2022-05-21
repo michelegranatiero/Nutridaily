@@ -23,8 +23,6 @@ if ((!(isset($_SESSION["arrayid"]))) && (!(isset($_COOKIE["userarray"])))) {
   <script src="//code.jquery.com/jquery-3.6.0.js"></script>
   <!-- style css -->
   <link rel="stylesheet" type="text/css" href="style.css" />
-  <!-- google fonts -->
-  <link rel="stylesheet" href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 
 
 

@@ -5,7 +5,7 @@ session_start();
 $id = $_SESSION["arrayid"]["idutente"];
 $pasto = $_POST['pasto'];
 
-$query = "INSERT into diario values(giorno, utente) ($1, $2)";
+$query = "INSERT into diario (giorno, utente) values ($1, $2)";
 
 $exeQuery = pg_query_params($dbconn, $query, array($data, $id));
 if($exeQuery){

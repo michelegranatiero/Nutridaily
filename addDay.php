@@ -5,24 +5,30 @@ session_start();
 $id = $_SESSION["arrayid"]["idutente"];
 $data = $_POST['date'];
 
-$query = "INSERT into diario values(giorno, utente) ($1, $2)";
+$query = "INSERT into diario (giorno, utente) values ($1, $2)";
 
 $exeQuery = pg_query_params($dbconn, $query, array($data, $id));
+$result=array();
 if($exeQuery){
-    $pastiArr=array("colazione", "pranzo", "cena", "spuntini");
-    foreach($pastiArr as &$value){
-        $query2 = "INSERT into pasto values(nome, diarioutente, diariogiorno) ($1, $2, $3) returning id"; // !!!
+    $pastiArr=array("colazione","pranzo","cena","spuntini");
+    foreach($pastiArr as $value){
+        $query2 = "INSERT into pasto (nome, diarioutente, diariogiorno) values ($1, $2, $3) returning id as id"; // !!!
         $exeQuery2 = pg_query_params($dbconn, $query2, array($value, $id, $data));
         if(!$exeQuery2){
-            echo "0";
+            $result[] = $exeQuery2;
+            break;
+        }
+        else{
+            //manda id pasto al client
+            $tuple = pg_fetch_array($exeQuery2, null, PGSQL_ASSOC);
+            $result[] = [$value => $tuple["id"]];
         }
     }
-    echo "1";
 }
 else{
-    echo "0";
+    $result[] = $exeQuery;
 }
 
-
+echo json_encode($result);
 
 ?>
