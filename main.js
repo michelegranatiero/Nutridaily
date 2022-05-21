@@ -60,6 +60,15 @@ function rowTemplate(sezione, alim, car, pro, gra, cal) {
     $(sezione).append(template1);
 }
 
+//FUNZIONE CHE CONVERTE ARR OF OBJ IN ARR OF ARR
+function objToArray(arrObj, arr){
+    arrObj.forEach(elem => {
+        for (let key in elem){
+            arr.push([key, elem[key]]);
+        }
+    });
+}
+
 
 //aggiorna la pagina con la data dell'argomento
 function aggiornaData(date) {
@@ -84,11 +93,8 @@ function aggiornaData(date) {
                     success: function (data) {
                         var arrOfObj = JSON.parse(data);
                         console.log(arrOfObj);
-                        arrOfObj.forEach(elem => {
-                            for (let key in elem){
-                                pastiArray.push([key, elem[key]]);
-                            }
-                        });
+                        //FUNZIONE CHE CONVERTE ARR OF OBJ IN ARR OF ARR
+                        objToArray(arrOfObj, pastiArray);
                         
                         console.log(pastiArray);
                         console.log(pastiArray[0]);
