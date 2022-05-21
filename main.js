@@ -81,7 +81,7 @@ function aggiornaData(date) {
         success: function (data) {
             diario = JSON.parse(data);
             console.log(Array.isArray(diario));
-            console.log(diario);
+            console.log(diario);//-----------------------------------------------------------
             console.log(typeof (diario[0]));
             if (!diario[0]) { //se non esiste un diario
                 /* crea diario per id utente e giorno 'date' e i pasti*/
