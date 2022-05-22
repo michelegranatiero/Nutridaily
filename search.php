@@ -16,11 +16,15 @@ if (isset($_POST['search'])) {
    while ($result = pg_fetch_array($exeQuery, null, PGSQL_ASSOC)) {
       $nome = $result["nome"];
       $nome = str_replace("'", "&#039", $nome);
+      $carb = $result["carboidrati"];
+      $prot = $result["proteine"];
+      $gras = $result["grassi"];
+      $cal = $result["calorie"];
 ?>
       <!-- Creating unordered list items.
         Calling javascript function named as "fill" found in "script.js" file.
         By passing fetched result as parameter. -->
-      <a class="list-group-item list-group-item-action" onclick='fill("<?php echo $nome; ?>")'>
+      <a class="list-group-item list-group-item-action" onclick='fill("<?php echo $nome, $carb, $prot, $gras, $cal; ?>")'>
          <!-- Assigning searched result in "Search box" in "search.php" file. -->
          <?php echo $nome; ?>
       </a>

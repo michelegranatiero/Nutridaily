@@ -1,7 +1,9 @@
 //eventi alimenti pasti
 var tbody;
 var count = 0;
-var pastiArray = []; //[pasto:id]
+var pastiArray = []; //[pasto,id]
+var tempAlim = [];
+
 
 //popup scelta alimento
 function vistaPasto() {
@@ -13,7 +15,7 @@ function vistaPasto() {
         $('#searchedItem').val("");
         $('#searchText').show();
     }
-    tbody = $(window.event.target).closest("div");
+    tbody = $(window.event.target).closest("div"); //accordion-header
     $("#exampleModalLabel").html(tbody.attr("id"));
 }
 
@@ -24,14 +26,19 @@ function remove_tr(id_riga) {
 }
 
 /* chiamata da search.php per inserire l'alimento selezionato nella casella*/
-function fill(value) {
+function fill(alim, carb, prot, gras, cal) {
     //Assigning value to "search" div in "search.php" file.
-    $('#searchedItem').val(value);
+    $('#searchedItem').val(alim);
     //Hiding "display" div in "search.php" file.
     $('#display').hide();
     $("#searchText").hide();
     $('#searchedGroup').show();
     $('#searchText').val(null);
+    tempAlim = []; //svuota
+    tempAlim.push[carb];
+    tempAlim.push[prot];
+    tempAlim.push[gras];
+    tempAlim.push[cal];
 }
 
 function rowTemplate(sezione, alim, car, pro, gra, cal) {
@@ -60,42 +67,59 @@ function rowTemplate(sezione, alim, car, pro, gra, cal) {
     $(sezione).append(template1);
 }
 
+function displayAlimenti(arr){
+     arr.forEach(al =>{
+         pastiArray.forEach(pas=>{
+             if (al[0] == pas[1]){
+                 rowTemplate('#body-'+pas[0], al[1], al[2], al[3], al[4], al[5]);
+             }
+         });
+     } );
+ }
+
 //FUNZIONE CHE CONVERTE ARR OF OBJ IN ARR OF ARR
 function objToArray(arrObj, arr) {
-    arrObj.forEach(elem => {
+    arrObj.forEach((elem, index) => {
+        arr.push([]);
         for (let key in elem) {
-            arr.push([key, elem[key]]);
+            arr[index].push(elem[key]);
         }
     });
 }
 
+/* function objToArray2(arrObj, arr) {
+    arrObj.forEach((elem, index) => {
+        arr.push([]);
+        for (let key in elem) {
+            arr[index].push([key, elem[key]]);
+        }
+    });
+} */
 
 //aggiorna la pagina con la data dell'argomento
 function aggiornaData(date) {
     //check esistenza diario
-    var diario;
+    var idPasti;
     $.ajax({
         type: 'POST',
         url: 'checkDay.php',
         data: { date: date },
         success: function (data) {
-            diario = JSON.parse(data);
-            console.log(Array.isArray(diario));
-            console.log(diario);//-----------------------------------------------------------
-            console.log(typeof (diario[0]));
-            if (!diario[0]) { //se non esiste un diario
-                /* crea diario per id utente e giorno 'date' e i pasti*/
-                console.log("prova");
+            idPasti = data;
+            console.log(data);            
+            if (!idPasti) { //se non esiste un diario 
+                /* crea diario e pasti per id utente e giorno 'date' e i pasti*/
+                console.log("il diario non esiste");
                 $.ajax({
                     type: 'POST',
                     url: 'addDay.php',
-                    data: { date: date },//checkpoint
+                    data: { date: date },
                     success: function (data) {
+                        //ritorna array con id pasti
                         var arrOfObj = JSON.parse(data);
                         console.log(arrOfObj);
-                        //FUNZIONE CHE CONVERTE ARR OF OBJ IN ARR OF ARR
-                        objToArray(arrOfObj, pastiArray);
-
+                        pastiArray = []; //svuota
+                        objToArray(arrOfObj, pastiArray); //aggiorna pastiArray
                         console.log(pastiArray);
                         console.log(pastiArray[0]);
                         if (!pastiArray) {
@@ -106,29 +130,28 @@ function aggiornaData(date) {
                 });
             }
             else { //se esiste il diario
+                //assegna id pasti
+                console.log("esiste il diario");
+                idPasti = JSON.parse(data);
+                pastiArray = []; //svuota
+                objToArray(idPasti, pastiArray);//aggiorna pastiArray
+                console.log(pastiArray);
                 /* prende in input 'date' e id utente */
-                var dbArray;
-                console.log(dbArray);
-                $.ajax({
+                var dbArray = []; //conterrà tutti gli alimenti associati ai pasti
+                $.ajax({ //------------------------------------
                     type: "POST",
                     url: "fetchDay.php",
-                    data: { diario: diario },
+                    data: {date: date},
                     success: function (data) {
-                        dbArray = JSON.parse(data);
-                        console.log(dbArray);
-                        //add
-
-                        /* PHP: (array con 4 array dentro) per ogni pasto esegui query per ogni alimento*/
-                        /* template client o server??? */
-                        /* $(#body).html(..array1..) */
-                        /* dbArray.forEach(row => {
-                            for (const key in pastiArray) {
-                                const value = pastiArray[key];
-                                if (row[0] === key) {
-                                    rowTemplate('#body-' + key, row[1], row[2], row[3], row[4], row[5]);
-                                }
-                            }
-                        }); */
+                        console.log(data);
+                        var temp = data;
+                        console.log(temp);
+                        if(temp){ //se ci sono alimenti nel db
+                            var temp = JSON.parse(data);
+                            objToArray(temp, dbArray); //aggiorna db
+                            console.log(dbArray);
+                            displayAlimenti(dbArray);
+                        }
                     }
                 });
 
@@ -159,9 +182,9 @@ $(document).ready(function () {
     //On pressing a key on "Search box" in "search.php" file. This function will be called.
     $("#searchText").keyup(function () {
         //Assigning search box value to javascript variable named as "txt".
-        var txt = $(this).val();
+        var text = $(this).val();
         //Validating, if "txt" is empty.
-        if (txt == "") {
+        if (text == "") {
             //Assigning empty value to "display" div in "search.php" file.
             $("#display").html("");
         }
@@ -174,10 +197,7 @@ $(document).ready(function () {
                 //Data will be sent to "search.php".
                 url: "search.php",
                 //Data, that will be sent to "search.php".
-                data: {
-                    //Assigning value of "txt" into "search" variable.
-                    search: txt
-                },
+                data: {search: text},
                 //If result found, this funtion will be called.
                 success: function (html) {
                     //Assigning result to "display" div in "search.php" file.
@@ -194,41 +214,35 @@ $(document).ready(function () {
         if ($('#searchedItem').val() != "") {
             var alimento = $('#searchedItem').val();
             count += 1;
-            let template1 = `
-            <!-- header tabella -->
-            <div class="row alim-row" id="riga${count.toString()}">
-              <div class="col">
-                <button type="button" onclick="remove_tr('riga${count.toString()}')" class="button-remove">-</button>
-                ${alimento}
-              </div>
-              <div class="col">
-                10
-              </div>
-              <div class="col">
-                20
-              </div>
-              <div class="col">
-                30
-              </div>
-              <div class="col">
-                60
-              </div>
-            </div>
-            `;
-            $('#searchedItem').val("");
+            
+            
             var expand = tbody.next(); //da espandere dopo
             tbody = tbody.next().find(".accordion-body");
-            $(tbody).append(template1);
+            //$(tbody).append(template1);
+            rowTemplate(tbody, alimento, tempAlim[0], tempAlim[1], tempAlim[2], tempAlim[3])
+            $('#searchedItem').val("");
             if (!$(expand).hasClass("show")) {
                 $(expand).collapse('toggle'); //espansione al click
             }; //azzera search
 
+            var accId = tbody.attr("id");
+            accId = accId.split('-')[1];
+            console.log(accId);
+            console.log(pastiArray);
+
+            //-----------------------------------
+            
+            for(var i = 0; i < pastiArray.length; i++){
+                if(pastiArray[i] == accId){
+
+                }
+            }
             $.ajax({
                 type: 'POST',
                 url: 'addFood.php',
-                data: { alimento: alimento },
+                data: { alimento: alimento},
                 success: function (data) {
-                    console.log(data); //da rivedere-------------------
+                    console.log(data); 
                 }
             });
 

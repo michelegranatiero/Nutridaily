@@ -12,7 +12,7 @@ $result=array();
 if($exeQuery){
     $pastiArr=array("colazione","pranzo","cena","spuntini");
     foreach($pastiArr as $value){
-        $query2 = "INSERT into pasto (nome, diarioutente, diariogiorno) values ($1, $2, $3) returning id as id"; // !!!
+        $query2 = "INSERT into pasto (nome, diarioutente, diariogiorno) values ($1, $2, $3) returning $1 as pasto, id as id"; // !!!
         $exeQuery2 = pg_query_params($dbconn, $query2, array($value, $id, $data));
         if(!$exeQuery2){
             $result[] = $exeQuery2;
@@ -21,7 +21,7 @@ if($exeQuery){
         else{
             //manda id pasto al client
             $tuple = pg_fetch_array($exeQuery2, null, PGSQL_ASSOC);
-            $result[] = [$value => $tuple["id"]];
+            $result[] = $tuple;
         }
     }
 }
