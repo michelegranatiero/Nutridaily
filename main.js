@@ -3,6 +3,8 @@ var tbody;
 var count = 0;
 var pastiArray = []; //[pasto,id]
 var tempAlim = [];
+var alimentiCorr = [];
+
 
 
 //popup scelta alimento
@@ -20,13 +22,25 @@ function vistaPasto() {
 }
 
 //rimuovi alimento
-function remove_tr(id_riga) {
+function remove_tr(id_riga, alim, pasto) {
     let riga = $("#" + id_riga);
+    $.ajax({
+        type: 'POST',
+        url: 'removeFood.php',
+        data: {
+            idAlim: alim,
+            idPasto: pasto
+        },
+
+        success: function (data) {
+            console.log(data);
+        }
+    });
     riga.remove();
 }
 
 /* chiamata da search.php per inserire l'alimento selezionato nella casella*/
-function fill(alim, carb, prot, gras, cal) {
+function fill(alim, carb, prot, gras, cal, idAlim) {
     //Assigning value to "search" div in "search.php" file.
     $('#searchedItem').val(alim);
     //Hiding "display" div in "search.php" file.
@@ -35,18 +49,19 @@ function fill(alim, carb, prot, gras, cal) {
     $('#searchedGroup').show();
     $('#searchText').val(null);
     tempAlim = []; //svuota
-    tempAlim.push[carb];
-    tempAlim.push[prot];
-    tempAlim.push[gras];
-    tempAlim.push[cal];
+    tempAlim.push(carb);
+    tempAlim.push(prot);
+    tempAlim.push(gras);
+    tempAlim.push(cal);
+    tempAlim.push(idAlim);
 }
 
-function rowTemplate(sezione, alim, car, pro, gra, cal) {
+function rowTemplate(sezione, alim, car, pro, gra, cal, alId, pasId) {
     let template1 = `
             <!-- header tabella -->
             <div class="row alim-row" id="riga${count.toString()}">
               <div class="col">
-                <button type="button" onclick="remove_tr('riga${count.toString()}')" class="button-remove">-</button>
+                <button type="button" onclick="remove_tr('riga${count.toString()}',${alId}, ${pasId})" class="button-remove">-</button>
                 ${alim}
               </div>
               <div class="col">
@@ -67,15 +82,15 @@ function rowTemplate(sezione, alim, car, pro, gra, cal) {
     $(sezione).append(template1);
 }
 
-function displayAlimenti(arr){
-     arr.forEach(al =>{
-         pastiArray.forEach(pas=>{
-             if (al[0] == pas[1]){
-                 rowTemplate('#body-'+pas[0], al[1], al[2], al[3], al[4], al[5]);
-             }
-         });
-     } );
- }
+function displayAlimenti(arr) {
+    arr.forEach(al => {
+        pastiArray.forEach(pas => {
+            if (al[0] == pas[1]) {
+                rowTemplate('#body-' + pas[0], al[1], al[2], al[3], al[4], al[5], al[6], al[0]);
+            }
+        });
+    });
+}
 
 //FUNZIONE CHE CONVERTE ARR OF OBJ IN ARR OF ARR
 function objToArray(arrObj, arr) {
@@ -99,6 +114,20 @@ function objToArray(arrObj, arr) {
 //aggiorna la pagina con la data dell'argomento
 function aggiornaData(date) {
     //check esistenza diario
+    count = 0; //azzera
+    pastiArray.length = 0;
+    pastiArray = []; //svuota
+    alimentiCorr = []; //svuota
+    $("#body-colazione").html("");
+    $("#body-pranzo").html("");
+    $("#body-cena").html("");
+    $("#body-spuntini").html("");/* 
+    var headers = $(".accordion-header");
+    headers.forEach(element =>{
+        if (element.html())
+    }); */
+
+
     var idPasti;
     $.ajax({
         type: 'POST',
@@ -106,7 +135,7 @@ function aggiornaData(date) {
         data: { date: date },
         success: function (data) {
             idPasti = data;
-            console.log(data);            
+            console.log(data);
             if (!idPasti) { //se non esiste un diario 
                 /* crea diario e pasti per id utente e giorno 'date' e i pasti*/
                 console.log("il diario non esiste");
@@ -117,11 +146,7 @@ function aggiornaData(date) {
                     success: function (data) {
                         //ritorna array con id pasti
                         var arrOfObj = JSON.parse(data);
-                        console.log(arrOfObj);
-                        pastiArray = []; //svuota
                         objToArray(arrOfObj, pastiArray); //aggiorna pastiArray
-                        console.log(pastiArray);
-                        console.log(pastiArray[0]);
                         if (!pastiArray) {
                             alert("errore del database nella creazione del diario");
                         }
@@ -133,7 +158,6 @@ function aggiornaData(date) {
                 //assegna id pasti
                 console.log("esiste il diario");
                 idPasti = JSON.parse(data);
-                pastiArray = []; //svuota
                 objToArray(idPasti, pastiArray);//aggiorna pastiArray
                 console.log(pastiArray);
                 /* prende in input 'date' e id utente */
@@ -141,12 +165,10 @@ function aggiornaData(date) {
                 $.ajax({ //------------------------------------
                     type: "POST",
                     url: "fetchDay.php",
-                    data: {date: date},
+                    data: { date: date },
                     success: function (data) {
-                        console.log(data);
                         var temp = data;
-                        console.log(temp);
-                        if(temp){ //se ci sono alimenti nel db
+                        if (temp) { //se ci sono alimenti nel db
                             var temp = JSON.parse(data);
                             objToArray(temp, dbArray); //aggiorna db
                             console.log(dbArray);
@@ -177,6 +199,7 @@ $(document).ready(function () {
         $('#searchedGroup').hide();
         $('#searchText').show();
         $('#searchedItem').val("");
+        tempAlim = [];
     });
 
     //On pressing a key on "Search box" in "search.php" file. This function will be called.
@@ -197,7 +220,7 @@ $(document).ready(function () {
                 //Data will be sent to "search.php".
                 url: "search.php",
                 //Data, that will be sent to "search.php".
-                data: {search: text},
+                data: { search: text },
                 //If result found, this funtion will be called.
                 success: function (html) {
                     //Assigning result to "display" div in "search.php" file.
@@ -214,37 +237,34 @@ $(document).ready(function () {
         if ($('#searchedItem').val() != "") {
             var alimento = $('#searchedItem').val();
             count += 1;
-            
-            
             var expand = tbody.next(); //da espandere dopo
             tbody = tbody.next().find(".accordion-body");
-            //$(tbody).append(template1);
-            rowTemplate(tbody, alimento, tempAlim[0], tempAlim[1], tempAlim[2], tempAlim[3])
             $('#searchedItem').val("");
             if (!$(expand).hasClass("show")) {
                 $(expand).collapse('toggle'); //espansione al click
             }; //azzera search
-
-            var accId = tbody.attr("id");
-            accId = accId.split('-')[1];
-            console.log(accId);
-            console.log(pastiArray);
-
-            //-----------------------------------
-            
-            for(var i = 0; i < pastiArray.length; i++){
-                if(pastiArray[i] == accId){
-
+            var pasId;
+            var accId = (tbody.attr("id")).split('-')[1]; //nome pasto a cui è stato aggiunto l'alimento
+            for (var i = 0; i < pastiArray.length; i++) {
+                if (pastiArray[i][0] == accId) {
+                    pasId = pastiArray[i][1];
+                    break;
                 }
             }
+            rowTemplate(tbody, alimento, tempAlim[0], tempAlim[1], tempAlim[2], tempAlim[3], tempAlim[4], pasId)
+
             $.ajax({
                 type: 'POST',
                 url: 'addFood.php',
-                data: { alimento: alimento},
+                data: {
+                    idAlim: tempAlim[4],
+                    idpasto: pasId
+                },
                 success: function (data) {
-                    console.log(data); 
+                    console.log(data);
                 }
             });
+
 
 
 
@@ -254,9 +274,8 @@ $(document).ready(function () {
     });
 
 
-    $(calendario).change(function () {
-        aggiornaData($("calendario").val());
-
+    $("#calendario").change(function () {
+        aggiornaData($("#calendario").val());
     });
 
 

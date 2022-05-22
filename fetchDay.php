@@ -6,7 +6,7 @@ $data = $_POST['date'];
 
 
 //provare a sistemare con alimento.* oppure al.id etc...
-$query = "SELECT pas.id, al.nome, al.carboidrati, al.proteine, al.grassi, al.calorie
+$query = "SELECT pas.id as idpasto, al.nome, al.carboidrati, al.proteine, al.grassi, al.calorie, al.id as idAlim
             from alimento as al, alimpasto as alpas, pasto as pas
             where al.id = alpas.alimento and alpas.pasto = pas.id
             and pas.diarioutente = $1 and pas.diariogiorno = $2

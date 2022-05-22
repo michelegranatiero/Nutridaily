@@ -1,12 +1,10 @@
 <?php
 
-use LDAP\Result;
-
 include("./db/db.php");
 session_start();
 $id = $_SESSION["arrayid"]["idutente"];
 $giorno = $_POST['date'];
-$query = "SELECT p.nome as nomePasto, p.id as idPasto from diario as d, pasto as p where d.utente = $1 and d.giorno = $2";
+$query = "SELECT nome as nomePasto, id as idPasto from pasto where pasto.diarioutente = $1 and pasto.diariogiorno = $2";
 $exeQuery = pg_query_params($dbconn, $query, array($id, $giorno));
 //$result=array();
 if(!$exeQuery){

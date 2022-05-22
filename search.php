@@ -20,11 +20,17 @@ if (isset($_POST['search'])) {
       $prot = $result["proteine"];
       $gras = $result["grassi"];
       $cal = $result["calorie"];
+      $idAlim = $result["id"];
+
+
+      
+      
 ?>
       <!-- Creating unordered list items.
         Calling javascript function named as "fill" found in "script.js" file.
         By passing fetched result as parameter. -->
-      <a class="list-group-item list-group-item-action" onclick='fill("<?php echo $nome, $carb, $prot, $gras, $cal; ?>")'>
+        
+      <a class="list-group-item list-group-item-action" onclick='fill("<?php echo $nome ?>", "<?php echo $carb ?>", "<?php echo $prot ?>", "<?php echo $gras ?>", "<?php echo $cal ?>", "<?php echo $idAlim ?>")'>
          <!-- Assigning searched result in "Search box" in "search.php" file. -->
          <?php echo $nome; ?>
       </a>
