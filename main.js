@@ -4,6 +4,7 @@ var count = 0;
 var pastiArray = []; //[pasto,id]
 var tempAlim = [];
 var alimentiCorr = [];
+var collAccordions = ["#coll1", "#coll2", "#coll3", "#coll4"];
 
 
 
@@ -102,15 +103,6 @@ function objToArray(arrObj, arr) {
     });
 }
 
-/* function objToArray2(arrObj, arr) {
-    arrObj.forEach((elem, index) => {
-        arr.push([]);
-        for (let key in elem) {
-            arr[index].push([key, elem[key]]);
-        }
-    });
-} */
-
 //aggiorna la pagina con la data dell'argomento
 function aggiornaData(date) {
     //check esistenza diario
@@ -121,13 +113,10 @@ function aggiornaData(date) {
     $("#body-colazione").html("");
     $("#body-pranzo").html("");
     $("#body-cena").html("");
-    $("#body-spuntini").html("");/* 
-    var headers = $(".accordion-header");
-    headers.forEach(element =>{
-        if (element.html())
-    }); */
+    $("#body-spuntini").html("");
 
-
+    // $("#coll1").collapse("toggle"); -------------------------------------------------------
+    
     var idPasti;
     $.ajax({
         type: 'POST',
@@ -135,7 +124,6 @@ function aggiornaData(date) {
         data: { date: date },
         success: function (data) {
             idPasti = data;
-            console.log(data);
             if (!idPasti) { //se non esiste un diario 
                 /* crea diario e pasti per id utente e giorno 'date' e i pasti*/
                 console.log("il diario non esiste");
@@ -159,10 +147,10 @@ function aggiornaData(date) {
                 console.log("esiste il diario");
                 idPasti = JSON.parse(data);
                 objToArray(idPasti, pastiArray);//aggiorna pastiArray
-                console.log(pastiArray);
+                
                 /* prende in input 'date' e id utente */
                 var dbArray = []; //conterrà tutti gli alimenti associati ai pasti
-                $.ajax({ //------------------------------------
+                $.ajax({
                     type: "POST",
                     url: "fetchDay.php",
                     data: { date: date },
@@ -171,7 +159,6 @@ function aggiornaData(date) {
                         if (temp) { //se ci sono alimenti nel db
                             var temp = JSON.parse(data);
                             objToArray(temp, dbArray); //aggiorna db
-                            console.log(dbArray);
                             displayAlimenti(dbArray);
                         }
                     }
@@ -180,7 +167,11 @@ function aggiornaData(date) {
             }
         }
     });
-
+    /* collAccordions.forEach(elem=>{
+        if (!$(elem).hasClass("show")) {
+            $(elem).collapse('toggle'); //espansione accordion all'aggiunta dell'alimento
+        };
+    }) */
 }
 
 
@@ -192,7 +183,7 @@ $(document).ready(function () {
         $(this).find(".panel-heading").toggleClass("panel-heading-active");
     });
 
-    //live search-------------------------------------------------------------------
+    //live search
     $('#searchedGroup').hide();
 
     $('#searchDelete').click(function () {
@@ -237,12 +228,9 @@ $(document).ready(function () {
         if ($('#searchedItem').val() != "") {
             var alimento = $('#searchedItem').val();
             count += 1;
-            var expand = tbody.next(); //da espandere dopo
+            var expand = tbody.next(); //da espandere DOPO
             tbody = tbody.next().find(".accordion-body");
             $('#searchedItem').val("");
-            if (!$(expand).hasClass("show")) {
-                $(expand).collapse('toggle'); //espansione al click
-            }; //azzera search
             var pasId;
             var accId = (tbody.attr("id")).split('-')[1]; //nome pasto a cui è stato aggiunto l'alimento
             for (var i = 0; i < pastiArray.length; i++) {
@@ -252,7 +240,10 @@ $(document).ready(function () {
                 }
             }
             rowTemplate(tbody, alimento, tempAlim[0], tempAlim[1], tempAlim[2], tempAlim[3], tempAlim[4], pasId)
-
+            if (!$(expand).hasClass("show")) {
+                $(expand).collapse('toggle'); //espansione accordion all'aggiunta dell'alimento
+            };
+            console.log(pasId);
             $.ajax({
                 type: 'POST',
                 url: 'addFood.php',
@@ -278,7 +269,14 @@ $(document).ready(function () {
         aggiornaData($("#calendario").val());
     });
 
+    collAccordions.forEach(elem=>{
+        if (!$(elem).hasClass("show")) {
+            $(elem).collapse('toggle'); //espansione accordion all'aggiunta dell'alimento
+        };
+    })
+
 
 
 })
+
 
