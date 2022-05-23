@@ -24,7 +24,7 @@
 <body>
     <!-- navbar -->
     <header>
-        <nav class="navbar navbar-expand-sm navbar-light bg-light shadow fixed-top rounding">
+        <nav class="navbar navbar-expand-md navbar-light bg-light shadow fixed-top rounding">
             <div class="container-fluid">
                 <a class="navbar-brand d-flex align-items-center fw-bold fs-3 nav-text-color" href="./index.php">
                     <img src="./assets/nutrilogo.png" width="55px" class="d-inline-block">
@@ -35,12 +35,12 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-sm-auto d-flex align-items-baseline">
+                    <ul class="navbar-nav ms-md-auto d-flex align-items-baseline">
                         <li class="nav-item">
                             <span class="fs-6 fw-bold nav-text-color">
                             </span>
                         </li>
-                        <li class="nav-item ms-sm-5">
+                        <li class="nav-item ms-md-5">
                             <a class="nav-link active fs-5 nav-text-color" href="./logout.php">Esci</a>
                         </li>
                     </ul>
@@ -64,7 +64,7 @@
         </div>
         <!-- Contenitore Principale -->
         <div class="row cont1">
-            <!-- header tabella desktop-->
+            <!--  header tabella desktop
             <div class="col p-0 head-large">
                 <div class="row w-100 pb-3">
                     <div class="col">
@@ -84,7 +84,7 @@
                     </div>
                 </div>
             </div>
-            <!-- header tabella mobile-->
+            header tabella mobile
             <div class="col p-0 head-small">
                 <div class="row w-100 py-3">
                     <div class="col">
@@ -103,7 +103,7 @@
                         cal
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- tabella accordion (vue.js)-->
             <div class="accordion p-0" id="accordionMeals">
@@ -120,29 +120,27 @@
                     </div>
                     <div id="collId" class="accordion-collapse collapse show" aria-labelledby="pasto"
                         data-bs-parent="#accordionExample">
-                        <div class="row acc-header d-none d-sm-flex">
+                        <div class="acc-header d-none d-md-block">
                             <!-- header tabella alimento carb prot gra cal -->
-                            <div class="col p-0 head-large">
-                                <div class="row w-100">
-                                    <div class="col">
-                                        Alimento
-                                    </div>
-                                    <div class="col">
-                                        Carboidrati
-                                    </div>
-                                    <div class="col">
-                                        Proteine
-                                    </div>
-                                    <div class="col">
-                                        Grassi
-                                    </div>
-                                    <div class="col">
-                                        Calorie
-                                    </div>
+                            <div class="row head-large flex-nowrap">
+                                <div class="col col-md-4">
+                                    Alimento
+                                </div>
+                                <div class="col">
+                                    Carboidrati
+                                </div>
+                                <div class="col">
+                                    Proteine
+                                </div>
+                                <div class="col">
+                                    Grassi
+                                </div>
+                                <div class="col">
+                                    Calorie
                                 </div>
                             </div>
                         </div>
-                        <div class="accordion-body" id="bodyId">
+                        <div class="accordion-body py-0" id="bodyId">
                             <!-- tabella alimenti pasto -->
 
                             <!-- prima riga -->
@@ -183,28 +181,33 @@
                                 </div>
                             </div> -->
                             <!-- terza riga -->
-                            <div class="row d-sm-none">
-                                <div class="col">
-                                    Alimento
-                                </div>
-                                <div class="col">
-                                    car
-                                </div>
-                                <div class="col">
-                                    pro
-                                </div>
-                                <div class="col">
-                                    gra
-                                </div>
-                                <div class="col">
-                                    cal
-                                </div>
-                            </div>
+
                             <div class="row alim-row">
-                                <div class="col-sm">
+                                <div class="col-md-4">
                                     <div class="row">
-                                        <div class="col-8 col"><button type="button" class="btn btn-primary">-</button></div>
-                                        <div class="col-8 col">ciboaaaaaaaaa aaaaaaaaaaaaaa</div>
+                                        <div class="col p-0" style="max-width: fit-content;">
+                                            <button type="button"
+                                                class="btn btn-danger del-button shadow-sm">
+                                                <i class="bi bi-x"></i>
+                                            </button>
+                                        </div>
+                                        <div class="col col-md-6 flex-wrap">ciboasaaaaaaaaaa aaaaaaaa</div>
+                                    </div>
+                                </div>
+                                <div class="d-md-none">
+                                    <div class="row">
+                                        <div class="col">
+                                            car
+                                        </div>
+                                        <div class="col">
+                                            pro
+                                        </div>
+                                        <div class="col">
+                                            gra
+                                        </div>
+                                        <div class="col">
+                                            cal
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col">

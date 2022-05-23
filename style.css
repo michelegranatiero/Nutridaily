@@ -93,7 +93,6 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: 1.1rem;
   color: var(--secondary-color);
 }
 
@@ -108,7 +107,6 @@ main {
 .space-nowrap {
   white-space: nowrap;
 }
-
 
 
 
@@ -212,9 +210,12 @@ input[type='date']::-webkit-calendar-picker-indicator {
   border-color: white;
 }
 
-/*classe per il simbolo + del bottone*/
+/*classe per il plus button*/
 
 .plus-button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   align-self: center;
   width: 45px;
   height: 45px;
@@ -222,14 +223,30 @@ input[type='date']::-webkit-calendar-picker-indicator {
   margin: 5px;
 }
 
-.acc-header {
+.head-large{
+  align-items: center;
+  justify-content: center;
+  background-color: var(--main-color);
+  border: 1px solid #000000;
+}
+
+/*classe per del button*/
+.del-button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   align-self: center;
+  width: 40px;
+  height: 30px;
+  border-radius: 10px;
+  margin: 5px;
+}
+
+.acc-header {
   padding: 1rem 1.25rem;
-  padding-bottom: 0;
+  display: block;
 }
-.accordion-body {
-  padding-bottom: 0;
-}
+
 /* --------------------------------------------- */
 .accordion-button:not(.collapsed) {
   color: #198754;
@@ -250,14 +267,8 @@ input[type='date']::-webkit-calendar-picker-indicator {
 }
 
 
-
-.head-small {
-  flex-wrap: nowrap;
-}
-
-
-/* <sm breakpoint - mobile view */
-@media screen and (max-width: 575px) {
+/* <md breakpoint - mobile view */
+@media screen and (max-width: 767.98px) {
 
   .nav-item {
     align-self: center;
@@ -278,11 +289,23 @@ input[type='date']::-webkit-calendar-picker-indicator {
   .head-large {
     display: none;
   }
-
+  .plus-button{
+    width: 60px;
+    height: 60px;
+    margin: 10px;
+  }
+  .del-button{
+    width: 50px;
+    height: 40px;
+    margin: 5px;
+  }
+  *{
+    font-size:x-large;
+  }
 }
 
-/* >sm breakpoint - desktop view */
-@media screen and (min-width:576px) {
+/* >md breakpoint - desktop view */
+@media screen and (min-width:768px) {
   .head-small {
     display: none;
   }
