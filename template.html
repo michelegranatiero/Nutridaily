@@ -65,39 +65,43 @@
         <!-- Contenitore Principale -->
         <div class="row cont1">
             <!-- header tabella desktop-->
-            <div class="row pb-3 head-large">
-                <div class="col">
-                    Alimento
-                </div>
-                <div class="col">
-                    Carboidrati
-                </div>
-                <div class="col">
-                    Proteine
-                </div>
-                <div class="col">
-                    Grassi
-                </div>
-                <div class="col">
-                    Calorie
+            <div class="col p-0 head-large">
+                <div class="row w-100 pb-3">
+                    <div class="col">
+                        Alimento
+                    </div>
+                    <div class="col">
+                        Carboidrati
+                    </div>
+                    <div class="col">
+                        Proteine
+                    </div>
+                    <div class="col">
+                        Grassi
+                    </div>
+                    <div class="col">
+                        Calorie
+                    </div>
                 </div>
             </div>
             <!-- header tabella mobile-->
-            <div class="row head-small">
-                <div class="col">
-                    Alimento
-                </div>
-                <div class="col">
-                    car
-                </div>
-                <div class="col">
-                    pro
-                </div>
-                <div class="col">
-                    gra
-                </div>
-                <div class="col">
-                    cal
+            <div class="col p-0 head-small">
+                <div class="row w-100 py-3">
+                    <div class="col">
+                        Alimento
+                    </div>
+                    <div class="col">
+                        car
+                    </div>
+                    <div class="col">
+                        pro
+                    </div>
+                    <div class="col">
+                        gra
+                    </div>
+                    <div class="col">
+                        cal
+                    </div>
                 </div>
             </div>
 
@@ -116,9 +120,70 @@
                     </div>
                     <div id="collId" class="accordion-collapse collapse show" aria-labelledby="pasto"
                         data-bs-parent="#accordionExample">
-                        <div class="row acc-header">
+                        <div class="row acc-header d-none d-sm-flex">
                             <!-- header tabella alimento carb prot gra cal -->
-                            <div class="row ">
+                            <div class="col p-0 head-large">
+                                <div class="row w-100">
+                                    <div class="col">
+                                        Alimento
+                                    </div>
+                                    <div class="col">
+                                        Carboidrati
+                                    </div>
+                                    <div class="col">
+                                        Proteine
+                                    </div>
+                                    <div class="col">
+                                        Grassi
+                                    </div>
+                                    <div class="col">
+                                        Calorie
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-body" id="bodyId">
+                            <!-- tabella alimenti pasto -->
+
+                            <!-- prima riga -->
+                            <!-- <div class="row alim-row" id="riga${count.toString()}">
+                                <div class="col">
+                                    <button type="button" class="btn btn-primary">-</button>
+                                    ciboaaaaaaaaa aaaaaaaaaaaaaa
+                                </div>
+                                <div class="col">
+                                    3453
+                                </div>
+                                <div class="col">
+                                    3.33
+                                </div>
+                                <div class="col">
+                                    5.56
+                                </div>
+                                <div class="col">
+                                    3343
+                                </div>
+                            </div>
+                            <div class="row alim-row" id="riga${count.toString()}">
+                                <div class="col">
+                                    <button type="button" class="btn btn-primary">-</button>
+                                    ciboaaaaaaaaa aaaaaaaaaaaaaa
+                                </div>
+                                <div class="col">
+                                    3453
+                                </div>
+                                <div class="col">
+                                    3.33
+                                </div>
+                                <div class="col">
+                                    5.56
+                                </div>
+                                <div class="col">
+                                    3343
+                                </div>
+                            </div> -->
+                            <!-- terza riga -->
+                            <div class="row d-sm-none">
                                 <div class="col">
                                     Alimento
                                 </div>
@@ -135,54 +200,11 @@
                                     cal
                                 </div>
                             </div>
-                        </div>
-                        <div class="accordion-body" id="bodyId">
-                            <!-- tabella alimenti pasto -->
-
-                            <!-- prima riga -->
-                            <div class="row alim-row" id="riga${count.toString()}">
-                                <div class="col">
-                                    <button type="button" class="btn btn-primary">-</button>
-                                    ciboaaaaaaaaa aaaaaaaaaaaaaa
-                                </div>
-                                <div class="col">
-                                    3453
-                                </div>
-                                <div class="col">
-                                    3.33
-                                </div>
-                                <div class="col">
-                                    5.56
-                                </div>
-                                <div class="col">
-                                    3343
-                                </div>
-                            </div>
-                            <!-- seconda riga -->
-                            <div class="row alim-row" id="riga${count.toString()}">
-                                <div class="col">
-                                    <button type="button" class="btn btn-primary">-</button>
-                                    ciboaaaaaaaaa aaaaaaaaaaaaaa
-                                </div>
-                                <div class="col">
-                                    3453
-                                </div>
-                                <div class="col">
-                                    3.33
-                                </div>
-                                <div class="col">
-                                    5.56
-                                </div>
-                                <div class="col">
-                                    3343
-                                </div>
-                            </div>
-                            <!-- terza riga -->
                             <div class="row alim-row">
-                                <div class="col col-sm-9">
+                                <div class="col-sm">
                                     <div class="row">
-                                        <div class="col-8 col-sm-6"><button type="button" class="btn btn-primary">-</button></div>
-                                        <div class="col-8 col-sm-6">ciboaaaaaaaaa aaaaaaaaaaaaaa</div>
+                                        <div class="col-8 col"><button type="button" class="btn btn-primary">-</button></div>
+                                        <div class="col-8 col">ciboaaaaaaaaa aaaaaaaaaaaaaa</div>
                                     </div>
                                 </div>
                                 <div class="col">

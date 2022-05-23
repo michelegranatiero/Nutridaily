@@ -91,6 +91,11 @@ function displayAlimenti(arr) {
             }
         });
     });
+    collAccordions.forEach(elem=>{
+        if (!$(elem).hasClass("show")) {
+            $(elem).collapse('toggle'); //espansione accordion all'aggiunta dell'alimento
+        };
+    })
 }
 
 //FUNZIONE CHE CONVERTE ARR OF OBJ IN ARR OF ARR
@@ -165,23 +170,20 @@ function aggiornaData(date) {
                 });
 
             }
+     
         }
     });
-    /* collAccordions.forEach(elem=>{
-        if (!$(elem).hasClass("show")) {
-            $(elem).collapse('toggle'); //espansione accordion all'aggiunta dell'alimento
-        };
-    }) */
+    
 }
 
 
 /*----------------DOCUMENT READY------------------------- */
 $(document).ready(function () {
 
-    $('#accordion .panel').on("click", function () {
+    /* $('#accordion .panel').on("click", function () {
         $(this).siblings().find(".panel-heading").removeClass("panel-heading-active");
         $(this).find(".panel-heading").toggleClass("panel-heading-active");
-    });
+    }); */
 
     //live search
     $('#searchedGroup').hide();
@@ -269,11 +271,7 @@ $(document).ready(function () {
         aggiornaData($("#calendario").val());
     });
 
-    collAccordions.forEach(elem=>{
-        if (!$(elem).hasClass("show")) {
-            $(elem).collapse('toggle'); //espansione accordion all'aggiunta dell'alimento
-        };
-    })
+    
 
 
 
