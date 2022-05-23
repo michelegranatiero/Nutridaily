@@ -62,7 +62,7 @@ function rowTemplate(sezione, alim, car, pro, gra, cal, alId, pasId) {
             <!-- header tabella -->
             <div class="row alim-row" id="riga${count.toString()}">
               <div class="col">
-                <button type="button" onclick="remove_tr('riga${count.toString()}',${alId}, ${pasId})" class="button-remove">-</button>
+                <button type="button" onclick="remove_tr('riga${count.toString()}',${alId}, ${pasId})"class="btn">-</button>
                 ${alim}
               </div>
               <div class="col">
