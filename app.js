@@ -40,7 +40,7 @@ app.component("meal", {
                 </div>
             </div>
             <!-- body tabella -->
-            <div class="accordion-body py-2" v-bind:id="bodyId">
+            <div class="accordion-body" v-bind:id="bodyId">
                 <!-- tabella alimenti pasto - zona dinamica-->
             </div>
         </div>

@@ -26,6 +26,8 @@ if ((!(isset($_SESSION["arrayid"]))) && (!(isset($_COOKIE["userarray"])))) {
 
 
 
+
+
 </head>
 
 <body>
@@ -80,6 +82,12 @@ if ((!(isset($_SESSION["arrayid"]))) && (!(isset($_COOKIE["userarray"])))) {
       </div>
       <!-- Contenitore Principale -->
       <div class="row cont1">
+        <div class="col">
+          <div class="chartBox">
+            <!------------------------------------------ chart js ------------------------------------>
+            <canvas id="chartTotale"></canvas>
+          </div>
+        </div>
         <!-- tabella accordion (vue.js)-->
         <div class="accordion p-0" id="accordionMeals">
           <meal pasto="Colazione" coll-id="coll1" body-id="body-colazione"></meal>
@@ -120,36 +128,46 @@ if ((!(isset($_SESSION["arrayid"]))) && (!(isset($_COOKIE["userarray"])))) {
     </main>
 
 
-
-
-    <!-- calendar deny future dates -->
-    <script>
-      var todayDate = new Date();
-      var month = todayDate.getMonth() + 1; //04 - current month
-      var year = todayDate.getFullYear(); //2021 - current year
-      var tdate = todayDate.getDate(); // 27 - current date 
-      if (month < 10) {
-        month = "0" + month //'0' + 4 = 04
-      }
-      if (tdate < 10) {
-        tdate = "0" + tdate;
-      }
-      var maxDate = year + "-" + month + "-" + tdate;
-      $(document).ready(function() {
-        $("#calendario").attr("max", maxDate);
-        $("#calendario").val(maxDate);
-        aggiornaData($("#calendario").val());
-      });
-    </script>
-
   </div>
+
+
+  <!-- calendar deny future dates -->
+  <script>
+    var todayDate = new Date();
+    var month = todayDate.getMonth() + 1; //04 - current month
+    var year = todayDate.getFullYear(); //2021 - current year
+    var tdate = todayDate.getDate(); // 27 - current date 
+    if (month < 10) {
+      month = "0" + month //'0' + 4 = 04
+    }
+    if (tdate < 10) {
+      tdate = "0" + tdate;
+    }
+    var maxDate = year + "-" + month + "-" + tdate;
+    $(document).ready(function() {
+      $("#calendario").attr("max", maxDate);
+      $("#calendario").val(maxDate);
+      aggiornaData($("#calendario").val());
+    });
+  </script>
+
+
+
+
   <!-- bootstrap js -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
   </script>
-  <!-- main js -->
-  <script type="application/javascript" src="main.js"></script>
   <!-- app js -->
   <script type="application/javascript" src="app.js"></script>
+  <!-- Chart js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+  <!-- labels plugin chart js -->
+  <script src="https://unpkg.com/chart.js-plugin-labels-dv/dist/chartjs-plugin-labels.min.js"></script>
+  <!-- File grafica -->
+  <script type="application/javascript" src="chart.js"></script>
+  <!-- main js -->
+  <script type="application/javascript" src="main.js"></script>
+
 </body>
 
 </html>

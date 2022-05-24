@@ -1,6 +1,6 @@
 :root {
   /* verde: #198754 */
-  --main-color: rgb(25, 135, 84);
+  --main-color: #198754;
   --second-color: #ffffff;
   --terz-color: #51A077;
 
@@ -67,6 +67,7 @@ body {
 /* ---------------MAIN----------------- */
 main {
   padding-top: 50px;
+  padding-bottom:50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -99,7 +100,7 @@ main {
 
 /* ---------------CALENDAR----------------- */
 input[type="date"] {
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.5);
   border-radius: 30px;
   border: none;
   color: var(--main-color);
@@ -203,13 +204,11 @@ input[type='date']::-webkit-calendar-picker-indicator {
 }
 
 .accordion-item {
-  background-color: rgba(255, 255, 255, 0.4);
-  border: 1px solid var(--second-color);
+  background-color: rgba(255, 255, 255, 0.5);
   border-radius: 30px !important;
-  box-shadow: 1 0.5rem 1rem rgba(0, 0, 0, 0.15);
   overflow: hidden;
   margin-top: 10px;
-
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
 
 /* -----------accordion button------------- */
@@ -289,23 +288,19 @@ input[type='date']::-webkit-calendar-picker-indicator {
 
 }
 
-.cont-alim{
-  /* background-color: var(--terz-color); */
+.alim-row{
   padding-left: 5px;
   padding: 5px;
   background-color: var(--main-color);
-}
-
-.alim-row{
   border-radius: 30px;
   gap: 2px;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
   /* background-color: var(--main-color); */
 }
 
 .alim-row>*:not(.small-header) { /* columns */
   min-height: 60px;
   background-color: var(--terz-color);
-  border: 1px solid var(--second-color);
   /* background-color: var(--main-color); */
 }
 
@@ -325,6 +320,16 @@ input[type='date']::-webkit-calendar-picker-indicator {
 .testo-alim{
   font-size: calc(80% + 0.1vw);
 }
+
+
+
+
+/* ---------------- CHART JS -----------*/
+
+.chartBox{
+  width: 250px;
+}
+
 
 
 
@@ -393,7 +398,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
     border-bottom-left-radius: 25px;
   }
   
-  .cont-alim{
+  .alim-row{
     background-color: var(--terz-color);
   }
 
@@ -402,10 +407,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
   .alim-row>*:not(.small-header) { /* columns */
     /* background-color: var(--terz-color); */
     background-color: var(--main-color);
-    border: 1px solid var(--second-color);
-
   }
-
 
 }
 
@@ -413,12 +415,11 @@ input[type='date']::-webkit-calendar-picker-indicator {
 @media screen and (min-width:768px) {
 
   .alim-row{
-    border: 1px solid var(--second-color);
+    /* border: 1px solid var(--second-color); */
     padding: 0px;
   }
 
   .alim-row>*:not(.small-header) {
-    border: none;
     gap: 0px;
   }
 
