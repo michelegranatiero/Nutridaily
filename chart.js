@@ -50,8 +50,10 @@
                     '#187498', //terza città, etc
                 ],/*qui posso passare un solo colore oppure tanti colori, tramite array, per quanti sono
                  gli elmenti in label, vedere w3school per i colori e le sfumature*/
-                hoverBorderColor: 'white',
+                 hoverOffset: 4,
+                hoverBorderColor: 'transparent',
                 borderColor: 'transparent',
+                
             }]
         },
         options: {
