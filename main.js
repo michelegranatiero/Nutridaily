@@ -59,24 +59,51 @@ function fill(alim, carb, prot, gras, cal, idAlim) {
 
 function rowTemplate(sezione, alim, car, pro, gra, cal, alId, pasId) {
     let template1 = `
-            <!-- header tabella -->
-            <div class="row alim-row" id="riga${count.toString()}">
-              <div class="col">
-                <button type="button" onclick="remove_tr('riga${count.toString()}',${alId}, ${pasId})"class="btn">-</button>
-                ${alim}
-              </div>
-              <div class="col">
-                ${car}
-              </div>
-              <div class="col">
-                ${pro}
-              </div>
-              <div class="col">
-                ${gra}
-              </div>
-              <div class="col">
-                ${cal}
-              </div>
+
+    <div class="row alim-row cont-alim mt-2 overflow-hidden" id="riga${count.toString()}">
+                <!-- bottone + alimento -->
+                <div class="col-md-4 d-flex flex-row align-items-center alim-only ">
+                    <div class="row w-100">
+                        <div class="col px-2" style="max-width: fit-content;">
+                            <button type="button" class="btn btn-danger del-button shadow-sm" onclick="remove_tr('riga${count.toString()}',${alId}, ${pasId})">
+                                <i class="bi bi-x"></i>
+                            </button>
+                        </div>
+                        <div class="col p-0 testo-alim">
+                            ${alim}
+                        </div>
+                    </div>
+                </div>
+                <!-- header alimento mobile view-->
+                <div class="d-md-none small-header p-1">
+                    <div class="row">
+                        <div class="col">
+                            CAR
+                        </div>
+                        <div class="col">
+                            PRO
+                        </div>
+                        <div class="col">
+                            GRA
+                        </div>
+                        <div class="col text-black">
+                            CAL
+                        </div>
+                    </div>
+                </div>
+                <!-- dati -->
+                <div class="col bord-bl">
+                    ${car}g
+                </div>
+                <div class="col">
+                    ${pro}g
+                </div>
+                <div class="col">
+                    ${gra}g
+                </div>
+                <div class="col bord-br">
+                    ${cal}
+                </div>
             </div>
             `;
 
@@ -91,7 +118,7 @@ function displayAlimenti(arr) {
             }
         });
     });
-    collAccordions.forEach(elem=>{
+    collAccordions.forEach(elem => {
         if (!$(elem).hasClass("show")) {
             $(elem).collapse('toggle'); //espansione accordion all'aggiunta dell'alimento
         };
@@ -121,7 +148,7 @@ function aggiornaData(date) {
     $("#body-spuntini").html("");
 
     // $("#coll1").collapse("toggle"); -------------------------------------------------------
-    
+
     var idPasti;
     $.ajax({
         type: 'POST',
@@ -152,7 +179,7 @@ function aggiornaData(date) {
                 console.log("esiste il diario");
                 idPasti = JSON.parse(data);
                 objToArray(idPasti, pastiArray);//aggiorna pastiArray
-                
+
                 /* prende in input 'date' e id utente */
                 var dbArray = []; //conterrà tutti gli alimenti associati ai pasti
                 $.ajax({
@@ -170,10 +197,10 @@ function aggiornaData(date) {
                 });
 
             }
-     
+
         }
     });
-    
+
 }
 
 
@@ -271,7 +298,7 @@ $(document).ready(function () {
         aggiornaData($("#calendario").val());
     });
 
-    
+
 
 
 

@@ -19,11 +19,29 @@ app.component("meal", {
         </div>
         <div v-bind:id="collId" class="accordion-collapse collapse" v-bind:aria-labelledby="pasto"
         data-bs-parent="#accordionExample">
-            <div class="acc-header">
-                <!-- header tabella alimento carb prot gra cal -->
+            <!-- header desktop view-->
+            <div class="acc-header d-none d-md-block">
+                <div class="row head-large">
+                    <div class="col col-md-4">
+                        Alimento
+                    </div>
+                    <div class="col">
+                        Carboidrati
+                    </div>
+                    <div class="col">
+                        Proteine
+                    </div>
+                    <div class="col">
+                        Grassi
+                    </div>
+                    <div class="col text-black">
+                        Calorie
+                    </div>
+                </div>
             </div>
-            <div class="accordion-body" v-bind:id="bodyId">
-                <!-- tabella alimenti pasto -->
+            <!-- body tabella -->
+            <div class="accordion-body py-2" v-bind:id="bodyId">
+                <!-- tabella alimenti pasto - zona dinamica-->
             </div>
         </div>
     </div>

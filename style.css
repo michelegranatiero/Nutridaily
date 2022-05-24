@@ -1,11 +1,8 @@
 :root {
   /* verde: #198754 */
-  --main-color: #198754;
-  --secondary-color: #ffffff;
-  --body-color: var(--main-color);
-  --navbar-color: var(--secondary-color);
-  --nav-text-color: var(--main-color);
-  --text-color: var(--secondary-color);
+  --main-color: rgb(25, 135, 84);
+  --second-color: #ffffff;
+  --terz-color: #51A077;
 
 }
 
@@ -13,19 +10,31 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-size: 1.1rem;
 }
 
 body {
   height: 100vh;
-  background-color: var(--body-color);
+  background-color: var(--main-color);
+
+  /*   background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("assets/verticalbowl.jpg"); */
+}
+
+.body-mask {
   padding-top: 65px;
+  height: 100vh;
+  /*   background-color: rgba(0, 0, 0, 0.8); */
+  width: 100%;
 }
 
 /* -------------NAVBAR----------------- */
 
 .bg-light {
   /* navbar color */
-  background-color: var(--navbar-color) !important;
+  background-color: var(--second-color) !important;
 }
 
 .nav-item {
@@ -45,20 +54,17 @@ body {
 }
 
 .nav-text-color {
-  color: var(--nav-text-color) !important;
+  color: var(--main-color) !important;
   opacity: 1;
 }
 
 
-
+/* diario alimentare */
+.space-nowrap {
+  white-space: nowrap;
+}
 
 /* ---------------MAIN----------------- */
-
-.text-color {
-  color: var(--text-color) !important;
-  opacity: 1;
-}
-
 main {
   padding-top: 50px;
   display: flex;
@@ -70,8 +76,7 @@ main {
 }
 
 .cont1 {
-  border-radius: 30px;
-  border: 1px solid var(--secondary-color);
+  border-radius: 45px;
   background-color: rgba(255, 255, 255, 0.2);
   justify-content: center;
   align-items: center;
@@ -82,40 +87,20 @@ main {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
 
-.cont1>.row {
-  /* righe */
-  height: 60px;
-}
-
-.col {
+.col{
   /* colonne */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: var(--secondary-color);
+  color: var(--second-color);
 }
-
-.alim-row>*{
-  /* colonne */
-  align-items: center;
-  justify-content: center;
-  background-color: var(--main-color);
-  border: 1px solid #000000;
-}
-
-.space-nowrap {
-  white-space: nowrap;
-}
-
 
 
 /* ---------------CALENDAR----------------- */
 input[type="date"] {
-  
   background-color: rgba(255, 255, 255, 0.7);
   border-radius: 30px;
-  font-family: "Roboto mono", monospace;
   border: none;
   color: var(--main-color);
   min-width: 125px;
@@ -127,12 +112,12 @@ input[type="date"] {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
 
-
 input[type='date']::-webkit-calendar-picker-indicator {
   /* https://codepen.io/sosuke/pen/Pjoqqp */
   /*filter: invert(45%) sepia(32%) saturate(955%) hue-rotate(100deg) brightness(88%) contrast(93%);*/
   background: transparent;
   bottom: 0;
+  font-family: "Roboto mono", monospace;
   color: transparent;
   cursor: pointer;
   height: auto;
@@ -144,7 +129,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
 }
 
 
-/* search */
+/* modal - popup search */
 
 #display {
   max-height: 200px;
@@ -160,7 +145,8 @@ input[type='date']::-webkit-calendar-picker-indicator {
 .list-group-item {
   cursor: pointer
 }
-/* center modal */
+
+/* per centrare modal */
 /* .modal-dialog {
   min-height: calc(100vh - 60px);
   display: flex;
@@ -192,6 +178,8 @@ input[type='date']::-webkit-calendar-picker-indicator {
   border-color: #198754;
 }
 
+/*----------cambio colori icone (frecce) ACCORDIONS (bootstrap)--------- */
+
 .accordion-button:not(.collapsed)::after {
   /* replace color: insert after fill='%23---hex color without # */
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23198754'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
@@ -200,19 +188,48 @@ input[type='date']::-webkit-calendar-picker-indicator {
 .accordion-button::after {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23FFFFFF'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
 }
-/* ----------------ACCORDION COLORS--------------- */
-.accordion-button{
+
+/* ---------------------------ACCORDION----------------------- */
+.accordion {
+  border-radius: 30px !important;
+}
+
+.accordion-button {
   background-color: transparent;
-  border-bottom-left-radius: 30px;
+  border-radius: 0px !important;
+  border-bottom-left-radius: 30px !important;
+  border-top-right-radius: 30px !important;
+  /* uguale a sotto */
 }
-.accordion-item{
+
+.accordion-item {
   background-color: rgba(255, 255, 255, 0.4);
-  border-color: white;
+  border: 1px solid var(--second-color);
+  border-radius: 30px !important;
+  box-shadow: 1 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  margin-top: 10px;
+
 }
 
-/*classe per il plus button*/
+/* -----------accordion button------------- */
+.accordion-button:not(.collapsed) {
+  color: var(--main-color);
+}
 
-.plus-button{
+.accordion-button:focus {
+  border-color: var(--main-color);
+  box-shadow: none;
+}
+
+.accordion-button[aria-expanded='true'] {
+  background-color: var(--second-color);
+}
+
+
+/*classe per il plus-button*/
+
+.plus-button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -223,15 +240,8 @@ input[type='date']::-webkit-calendar-picker-indicator {
   margin: 5px;
 }
 
-.head-large{
-  align-items: center;
-  justify-content: center;
-  background-color: var(--main-color);
-  border: 1px solid #000000;
-}
-
-/*classe per del button*/
-.del-button{
+/*classe per del-button*/
+.del-button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -242,33 +252,89 @@ input[type='date']::-webkit-calendar-picker-indicator {
   margin: 5px;
 }
 
-.acc-header {
-  padding: 1rem 1.25rem;
-  display: block;
-}
-
-/* --------------------------------------------- */
-.accordion-button:not(.collapsed) {
-  color: #198754;
-}
-
-.accordion-button:focus {
-  border-color: #198754;
-  box-shadow: none;
-}
-
-.accordion-button[aria-expanded='true'] {
-  background-color: #ffffff;
-}
-
 .btn-check:focus+.btn-success,
 .btn-success:focus {
   box-shadow: none;
 }
 
+/* -------------------------TABELLE--------------------- */
+
+.acc-header {
+  /* stessa larghezza di accordion-body */
+  padding: 0.5rem 1.2rem;
+  overflow: hidden;
+}
+
+.accordion-body {
+  /* stessa larghezza di acc-header */
+  padding: 0.5rem 1.2rem;
+  padding-top: 0rem !important;
+  overflow: hidden;
+}
+
+.head-large{
+  flex-wrap:nowrap;
+  column-gap:2px;
+  border-radius: 30px;
+  /* background-color: var(--main-color); */
+  background-color: var(--terz-color);
+  overflow: hidden;
+}
+
+.head-large >*{ /* columns */
+  align-self: center;
+  background-color: var(--main-color);
+  padding-top: 2px;
+  padding-bottom: 2px;
+
+}
+
+.cont-alim{
+  /* background-color: var(--terz-color); */
+  padding-left: 5px;
+  padding: 5px;
+  background-color: var(--main-color);
+}
+
+.alim-row{
+  border-radius: 30px;
+  gap: 2px;
+  /* background-color: var(--main-color); */
+}
+
+.alim-row>*:not(.small-header) { /* columns */
+  min-height: 60px;
+  background-color: var(--terz-color);
+  border: 1px solid var(--second-color);
+  /* background-color: var(--main-color); */
+}
+
+.small-header{
+  flex-wrap:nowrap;
+  column-gap:2px;
+  /* background-color: var(--main-color); */
+  background-color: var(--terz-color);
+}
+
+.small-header > .row >.col{
+  font-size: medium;
+}
+
+/* alim */
+
+.testo-alim{
+  font-size: calc(80% + 0.1vw);
+}
+
+
+
+/* ----------- MEDIA QUERIES --------- */
 
 /* <md breakpoint - mobile view */
 @media screen and (max-width: 767.98px) {
+  * {
+    font-size: 1.1rem;
+  }
 
   .nav-item {
     align-self: center;
@@ -280,34 +346,83 @@ input[type='date']::-webkit-calendar-picker-indicator {
   }
 
   .cont1 {
-    border-radius: 0px;
-    border: none;
     width: 100%;
     padding: 0;
+    border-radius: 30px !important;
   }
 
   .head-large {
     display: none;
   }
-  .plus-button{
+
+  .plus-button {
     width: 60px;
     height: 60px;
     margin: 10px;
   }
-  .del-button{
+
+  .del-button {
     width: 50px;
     height: 40px;
     margin: 5px;
   }
-  *{
-    font-size:x-large;
+
+
+  .testo-alim{
+    font-size:0.9rem;
   }
+
+  .alim-only{
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+  }
+
+  .bord-tr{
+    border-top-right-radius: 25px;
+  }
+
+  .bord-tl{
+    border-top-left-radius: 25px;
+  }
+  
+  .bord-br{
+    border-bottom-right-radius: 25px;
+  }
+
+  .bord-bl{
+    border-bottom-left-radius: 25px;
+  }
+  
+  .cont-alim{
+    background-color: var(--terz-color);
+  }
+
+
+  
+  .alim-row>*:not(.small-header) { /* columns */
+    /* background-color: var(--terz-color); */
+    background-color: var(--main-color);
+    border: 1px solid var(--second-color);
+
+  }
+
+
 }
 
 /* >md breakpoint - desktop view */
 @media screen and (min-width:768px) {
-  .head-small {
-    display: none;
+
+  .alim-row{
+    border: 1px solid var(--second-color);
+    padding: 0px;
+  }
+
+  .alim-row>*:not(.small-header) {
+    border: none;
+    gap: 0px;
+  }
+
+  .alim-only{
+    background-color: var(--main-color) !important;
   }
 }
-
