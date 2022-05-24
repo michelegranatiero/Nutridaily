@@ -21,8 +21,9 @@ function vistaPasto() {
         $('#searchedItem').val("");
         $('#searchText').show();
     }
-    tbody = $(window.event.target).closest("div"); //accordion-header
+    tbody = $(window.event.target).closest(".accordion-header"); //accordion-header
     $("#exampleModalLabel").html(tbody.attr("id"));
+    console.log(tbody);
 }
 
 //rimuovi alimento
@@ -302,6 +303,7 @@ $(document).ready(function () {
             tbody = tbody.next().find(".accordion-body").attr("id");
             $('#searchedItem').val("");
             var pasId;
+            console.log(tbody);
             var accId = tbody.split('-')[1]; //nome pasto a cui è stato aggiunto l'alimento
             console.log(accId);
             for (var i = 0; i < pastiArray.length; i++) {
