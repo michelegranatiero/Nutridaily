@@ -89,7 +89,7 @@ function rowTemplate(sezione, alim, car, pro, gra, cal, alId, pasId) {
 
     <div class="row alim-row mt-2 overflow-hidden" id="riga${count.toString()}">
                 <!-- bottone + alimento -->
-                <div class="col-md-4 d-flex flex-row align-items-center alim-only ">
+                <div class="col-md-5 d-flex flex-row align-items-center alim-only ">
                     <div class="row w-100">
                         <div class="col px-2" style="max-width: fit-content;">
                             <button type="button" class="btn btn-danger del-button shadow-sm" data-bs-toggle="modal" data-bs-target="#remModal"

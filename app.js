@@ -24,7 +24,7 @@ app.component("meal", {
             <!-- header desktop view-->
             <div class="acc-header d-none d-md-block">
                 <div class="row head-large">
-                    <div class="col col-md-4">
+                    <div class="col col-md-5">
                         Alimento
                     </div>
                     <div class="col">
