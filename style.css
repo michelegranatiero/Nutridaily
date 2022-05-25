@@ -156,6 +156,10 @@ input[type='date']::-webkit-calendar-picker-indicator {
   justify-content: center;
 } */
 
+.btn-default {
+  border-color: #ccc;
+}
+
 
 /* hover, click,... default color */
 .form-control:focus,

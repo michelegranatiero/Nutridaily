@@ -22,7 +22,7 @@ function vistaPasto() {
         $('#searchText').show();
     }
     tbody = $(window.event.target).closest(".accordion-header"); //accordion-header
-    $("#exampleModalLabel").html(tbody.attr("id"));
+    $("#addModalLabel").html(tbody.attr("id"));
     console.log(tbody);
 }
 
@@ -74,8 +74,14 @@ function fill(alim, carb, prot, gras, cal, idAlim) {
     tempAlim.push(idAlim);
 }
 
-function getVal (val){
-    return val;
+
+function prepRemove(riga, alim, pasto, car, pro, gra, cal, sez){
+    $("#deleteReally").one('click', function(e){
+        e.preventDefault();
+        remove_tr(riga, alim, pasto, car, pro, gra, cal, sez);
+        $(this).prop('disabled', true);
+        console.log("premuto");
+    });
 }
 
 function rowTemplate(sezione, alim, car, pro, gra, cal, alId, pasId) {
@@ -86,8 +92,8 @@ function rowTemplate(sezione, alim, car, pro, gra, cal, alId, pasId) {
                 <div class="col-md-4 d-flex flex-row align-items-center alim-only ">
                     <div class="row w-100">
                         <div class="col px-2" style="max-width: fit-content;">
-                            <button type="button" class="btn btn-danger del-button shadow-sm"
-                            onclick="remove_tr('riga${count.toString()}',${alId}, ${pasId}, ${car}, ${pro}, ${gra}, ${cal}, '${sezione}')">
+                            <button type="button" class="btn btn-danger del-button shadow-sm" data-bs-toggle="modal" data-bs-target="#remModal"
+                            onclick="prepRemove('riga${count.toString()}',${alId}, ${pasId}, ${car}, ${pro}, ${gra}, ${cal}, '${sezione}')">
                                 <i class="bi bi-x"></i>
                             </button>
                         </div>
@@ -173,11 +179,16 @@ function objToArray(arrObj, arr) {
 }
 
 /* function checkEmptyBody(){
-    if ($("#body-colazione").html() == ""){
-        $("#body-colazione").html("Aggiungi Alimento");
-    }
-} */
+    collAccordions.forEach(elem => {
+        let body = $("#"+elem);
+        if (body.html() == ""){
+            body.html("Aggiungi Alimento");
 
+        }
+    });
+    
+}
+ */
 //aggiorna la pagina con la data dell'argomento
 function aggiornaData(date) {
     //check esistenza diario
@@ -220,7 +231,6 @@ function aggiornaData(date) {
 
                     }
                 });
-                updateChart();
             }
             else { //se esiste il diario
                 //assegna id pasti

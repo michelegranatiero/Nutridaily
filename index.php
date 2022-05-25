@@ -97,12 +97,12 @@ if ((!(isset($_SESSION["arrayid"]))) && (!(isset($_COOKIE["userarray"])))) {
         </div>
       </div>
 
-      <!--Modal Alimento-->
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <!--Modal add Alimento-->
+      <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel"></h5>
+              <h5 class="modal-title" id="addModalLabel"></h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -118,6 +118,25 @@ if ((!(isset($_SESSION["arrayid"]))) && (!(isset($_COOKIE["userarray"])))) {
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-success" data-bs-dismiss="modal" id="add-button">Aggiungi</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Modal remove alimento -->
+      <div class="modal fade" id="remModal" tabindex="-1" role="dialog" aria-labelledby="remModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="remModalLabel">Elimina</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+              </button>
+            </div>
+            <div class="modal-body">
+              Sei sicuro di voler eliminare questo alimento?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-bs-dismiss="modal">Chiudi</button>
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="deleteReally">Elimina</button>
             </div>
           </div>
         </div>

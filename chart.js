@@ -42,7 +42,7 @@
             datasets: [{ //riceve degli oggetti
                 label: 'Popolazione',  //quello che trovo all'interno del grafico
                 data: [
-                    1,1,1
+                    0.0001,0.0001,0.0001
                 ],
                 backgroundColor: [
                     '#B22727', //prima città
