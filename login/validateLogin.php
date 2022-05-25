@@ -42,7 +42,16 @@
                     
                     echo "Il login e' andato a buon fine";
                 }
-                else echo "Il login non e' andato a buon fine <br/> La password e' errata";
+                /* else echo "Il login non e' andato a buon fine <br/> La password e' errata"; */
+                else{
+                    
+                    echo "<script>
+                        alert('Login non andato a buon fine');
+                    </script>";
+                    header("Location: ./login.php");
+                }
+                
+                
             }
         } 
     ?>

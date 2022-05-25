@@ -207,9 +207,13 @@
     </script>
 
     <script>
+      function validaLogin(){
+        
+      }; 
       function validaReg(){
 
       };
+
     </script>
 
     <!-- bootstrap js -->
