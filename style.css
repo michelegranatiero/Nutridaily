@@ -67,13 +67,14 @@ body {
 /* ---------------MAIN----------------- */
 main {
   padding-top: 50px;
-  padding-bottom:50px;
+  padding-bottom: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   /* allineamento verticale */
   align-items: center;
   position: relative;
+
 }
 
 .cont1 {
@@ -85,11 +86,11 @@ main {
   min-width: 300px;
   overflow: hidden;
   padding: 16px;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-  /* box-shadow: 0 15px 15px rgba(0, 0, 0, 0.5); */
+  box-shadow: 0 0rem 1rem rgba(0, 0, 0, 0.3);
+    /* font-family: ; */
 }
 
-.col{
+.col {
   /* colonne */
   display: flex;
   flex-direction: column;
@@ -111,7 +112,7 @@ input[type="date"] {
   cursor: pointer;
   box-sizing: border-box;
   position: relative;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0rem 1rem rgba(0, 0, 0, 0.5);
 }
 
 input[type='date']::-webkit-calendar-picker-indicator {
@@ -212,8 +213,8 @@ input[type='date']::-webkit-calendar-picker-indicator {
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 30px !important;
   overflow: hidden;
-  margin-top: 10px;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  margin-top: 20px;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
 }
 
 /* -----------accordion button------------- */
@@ -242,6 +243,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
   height: 45px;
   border-radius: 30px;
   margin: 5px;
+  box-shadow: 0 0rem 0.4rem rgba(0, 0, 0, 0.7);
 }
 
 /*classe per del-button*/
@@ -250,10 +252,11 @@ input[type='date']::-webkit-calendar-picker-indicator {
   align-items: center;
   justify-content: center;
   align-self: center;
-  width: 40px;
-  height: 30px;
-  border-radius: 10px;
+  width: 50px;
+  height: 35px;
+  border-radius: 30px;
   margin: 5px;
+  box-shadow: 0 0rem 0.4rem rgba(0, 0, 0, 0.7);
 }
 
 .btn-check:focus+.btn-success,
@@ -276,53 +279,61 @@ input[type='date']::-webkit-calendar-picker-indicator {
   overflow: hidden;
 }
 
-.head-large{
-  flex-wrap:nowrap;
-  column-gap:2px;
+.head-large {
+  flex-wrap: nowrap;
+  column-gap: 3px;
   border-radius: 30px;
-  /* background-color: var(--main-color); */
-  background-color: var(--terz-color);
+  background-color: var(--main-color);
+  /* background-color: var(--terz-color); */
+  /* background-color: rgba(255, 255, 255, 0.5); */
   overflow: hidden;
+  box-shadow: 0 0rem 0.4rem rgba(0, 0, 0, 0.8);
 }
 
-.head-large >*{ /* columns */
+.head-large>* {
+  /* columns */
   align-self: center;
-  background-color: var(--main-color);
+  /* background-color: var(--main-color); */
+  background-color: var(--terz-color);
   padding-top: 2px;
   padding-bottom: 2px;
 
 }
 
-.alim-row{
+.alim-row {
+  margin-top: 15px;
   padding-left: 5px;
   padding: 5px;
-  background-color: var(--main-color);
+  /* background-color: var(--main-color); */
   border-radius: 30px;
-  gap: 2px;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-  /* background-color: var(--main-color); */
+  column-gap: 3px;
+  box-shadow: 0 0rem 0.5rem rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+  background-color: var(--terz-color);
 }
 
-.alim-row>*:not(.small-header) { /* columns */
+.alim-row>*:not(.small-header) {
+  /* columns */
   min-height: 60px;
-  background-color: var(--terz-color);
-  /* background-color: var(--main-color); */
+  /* background-color: var(--terz-color); */
+  background-color: var(--main-color);
+  z-index: 1;
 }
 
-.small-header{
-  flex-wrap:nowrap;
-  column-gap:2px;
+.small-header {
+  flex-wrap: nowrap;
+  column-gap: 3px;
   /* background-color: var(--main-color); */
   background-color: var(--terz-color);
 }
 
-.small-header > .row >.col{
+.small-header>.row>.col {
   font-size: medium;
 }
 
 /* alim */
 
-.testo-alim{
+.testo-alim {
   text-align: center;
   font-size: calc(80% + 0.1vw);
 }
@@ -330,9 +341,10 @@ input[type='date']::-webkit-calendar-picker-indicator {
 
 
 
+
 /* ---------------- CHART JS -----------*/
 
-.chartBox{
+.chartBox {
   width: 250px;
 }
 
@@ -370,50 +382,55 @@ input[type='date']::-webkit-calendar-picker-indicator {
     width: 60px;
     height: 60px;
     margin: 10px;
+
   }
 
   .del-button {
-    width: 50px;
-    height: 40px;
+    width: 60px;
+    height: 45px;
     margin: 5px;
+    border-radius: 10px;
+    border-top-left-radius: 20px;
   }
 
 
-  .testo-alim{
-    font-size:0.9rem;
+  .testo-alim {
+    font-size: 0.9rem;
   }
 
-  .alim-only{
-    border-top-left-radius: 25px;
-    border-top-right-radius: 25px;
+  .alim-only {
+    border-top-left-radius: 25px !important;
+    border-top-right-radius: 25px !important;
   }
 
-  .bord-tr{
-    border-top-right-radius: 25px;
+  .bord-tr {
+    border-top-right-radius: 25px !important;
   }
 
-  .bord-tl{
-    border-top-left-radius: 25px;
-  }
-  
-  .bord-br{
-    border-bottom-right-radius: 25px;
+  .bord-tl {
+    border-top-left-radius: 25px !important;
   }
 
-  .bord-bl{
-    border-bottom-left-radius: 25px;
+  .bord-br {
+    border-bottom-right-radius: 25px !important;
   }
-  
-  .alim-row{
+
+  .bord-bl {
+    border-bottom-left-radius: 25px !important;
+  }
+
+  .alim-row {
     background-color: var(--terz-color);
-    
   }
 
 
-  
-  .alim-row>*:not(.small-header) { /* columns */
+
+  .alim-row>*:not(.small-header) {
+    /* columns */
     /* background-color: var(--terz-color); */
+    border-radius: 5px;
     background-color: var(--main-color);
+    box-shadow: 0 0rem 0.3rem rgba(0, 0, 0, 0.5);
   }
 
 }
@@ -421,7 +438,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
 /* >md breakpoint - desktop view */
 @media screen and (min-width:768px) {
 
-  .alim-row{
+  .alim-row {
     /* border: 1px solid var(--second-color); */
     padding: 0px;
   }
@@ -430,7 +447,14 @@ input[type='date']::-webkit-calendar-picker-indicator {
     gap: 0px;
   }
 
-  .alim-only{
-    background-color: var(--main-color) !important;
+  .alim-only {
+    /* background-color: var(--main-color) !important; */
+  }
+
+  .m-wid-car{
+    min-width: 121.61px;
+  }
+  .m-wid-prot{
+    min-width: 97.78px;
   }
 }

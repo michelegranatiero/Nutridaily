@@ -67,7 +67,7 @@
                 title: {
                     display: true,
                     color: 'white',
-                    text: '',
+                    text: 'Totale',
 
                 },
                 legend: {

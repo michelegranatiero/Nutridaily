@@ -87,12 +87,12 @@ function prepRemove(riga, alim, pasto, car, pro, gra, cal, sez){
 function rowTemplate(sezione, alim, car, pro, gra, cal, alId, pasId) {
     let template1 = `
 
-    <div class="row alim-row mt-2 overflow-hidden" id="riga${count.toString()}">
+    <div class="row alim-row overflow-hidden" id="riga${count.toString()}">
                 <!-- bottone + alimento -->
                 <div class="col-md-5 d-flex flex-row align-items-center alim-only ">
                     <div class="row w-100">
-                        <div class="col px-2" style="max-width: fit-content;">
-                            <button type="button" class="btn btn-danger del-button shadow-sm" data-bs-toggle="modal" data-bs-target="#remModal"
+                        <div class="col px-1 px-md-2" style="max-width: fit-content;">
+                            <button type="button" class="btn btn-danger del-button" data-bs-toggle="modal" data-bs-target="#remModal"
                             onclick="prepRemove('riga${count.toString()}',${alId}, ${pasId}, ${car}, ${pro}, ${gra}, ${cal}, '${sezione}')">
                                 <i class="bi bi-x"></i>
                             </button>
@@ -120,10 +120,10 @@ function rowTemplate(sezione, alim, car, pro, gra, cal, alId, pasId) {
                     </div>
                 </div>
                 <!-- dati -->
-                <div class="col bord-bl">
+                <div class="col bord-bl m-wid-car">
                     ${car}g
                 </div>
-                <div class="col">
+                <div class="col m-wid-prot">
                     ${pro}g
                 </div>
                 <div class="col">
