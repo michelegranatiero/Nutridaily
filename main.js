@@ -79,7 +79,6 @@ function prepRemove(riga, alim, pasto, car, pro, gra, cal, sez){
     $("#deleteReally").one('click', function(e){
         e.preventDefault();
         remove_tr(riga, alim, pasto, car, pro, gra, cal, sez);
-        $(this).prop('disabled', true);
         console.log("premuto");
     });
 }
