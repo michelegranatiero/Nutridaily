@@ -113,6 +113,7 @@ input[type="date"] {
   box-sizing: border-box;
   position: relative;
   box-shadow: 0 0rem 1rem rgba(0, 0, 0, 0.5);
+  font-weight: bold;
 }
 
 input[type='date']::-webkit-calendar-picker-indicator {
@@ -120,7 +121,6 @@ input[type='date']::-webkit-calendar-picker-indicator {
   /*filter: invert(45%) sepia(32%) saturate(955%) hue-rotate(100deg) brightness(88%) contrast(93%);*/
   background: transparent;
   bottom: 0;
-  font-family: "Roboto mono", monospace;
   color: transparent;
   cursor: pointer;
   height: auto;
