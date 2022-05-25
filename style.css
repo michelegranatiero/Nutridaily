@@ -393,9 +393,6 @@ input[type='date']::-webkit-calendar-picker-indicator {
     border-top-left-radius: 20px;
   }
 
-  .accordion-item {
-    border-radius: 50px !important;
-  }
 
   .testo-alim {
     font-size: 0.9rem;
