@@ -408,7 +408,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
 
 
   .testo-alim {
-    font-size: 0.9rem;
+    font-size: calc(70% + 0.7vw);
   }
 
   .alim-only {
