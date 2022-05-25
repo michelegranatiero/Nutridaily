@@ -213,7 +213,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 30px !important;
   overflow: hidden;
-  margin-top: 20px;
+  margin-bottom: 20px;
   box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
 }
 
@@ -341,7 +341,6 @@ input[type='date']::-webkit-calendar-picker-indicator {
 
 
 
-
 /* ---------------- CHART JS -----------*/
 
 .chartBox {
@@ -370,7 +369,8 @@ input[type='date']::-webkit-calendar-picker-indicator {
 
   .cont1 {
     width: 100%;
-    padding: 0;
+    padding: 5px;
+    padding-bottom: 0px;
     border-radius: 30px !important;
   }
 
@@ -379,8 +379,8 @@ input[type='date']::-webkit-calendar-picker-indicator {
   }
 
   .plus-button {
-    width: 60px;
-    height: 60px;
+    width: 55px;
+    height: 55px;
     margin: 10px;
 
   }
@@ -393,6 +393,9 @@ input[type='date']::-webkit-calendar-picker-indicator {
     border-top-left-radius: 20px;
   }
 
+  .accordion-item {
+    border-radius: 50px !important;
+  }
 
   .testo-alim {
     font-size: 0.9rem;

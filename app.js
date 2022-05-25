@@ -25,7 +25,10 @@ app.component("meal", {
             <div class="acc-header d-none d-md-block">
                 <div class="row head-large">
                     <div class="col col-md-5">
-                        Alimento
+                        <div class="row w-100">
+                            <div class="col px-1 px-md-2" style="max-width: 50px;">&nbsp</div>
+                            <div class="col">Alimento</div>
+                        </div>
                     </div>
                     <div class="col">
                         Carboidrati
@@ -57,7 +60,7 @@ app.component("meal", {
         collId: {
             type: String
         },
-        bodyId:{
+        bodyId: {
             type: String
         }
     }

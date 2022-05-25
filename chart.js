@@ -65,7 +65,7 @@
 
             plugins: {
                 title: {
-                    display: true,
+                    display: false,
                     color: 'white',
                     text: 'Totale',
 
