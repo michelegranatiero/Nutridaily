@@ -19,8 +19,8 @@
             $query = "SELECT * from utente where email=$1";
             $result = pg_query_params($dbconn, $query, array($email));
             if (!($tuple=pg_fetch_array($result, null, PGSQL_ASSOC))){
-                echo "Il login non e' andato a buon fine <br/>";
-                echo "Nel sistema non e' presente un account con l'email indicata <br/>";
+                header("Location: ./login.php?log=err&em=$email");
+                exit();
             }
             else{
                 $pass = $_POST["passLogin"];
@@ -39,16 +39,11 @@
                         setcookie("userarray", json_encode($arrayid), time()+500, '/');
                     }
                     header("Location: ../index.php");
-                    
-                    echo "Il login e' andato a buon fine";
+                    exit();
                 }
-                /* else echo "Il login non e' andato a buon fine <br/> La password e' errata"; */
                 else{
-                    
-                    echo "<script>
-                        alert('Login non andato a buon fine');
-                    </script>";
-                    header("Location: ./login.php");
+                    header("Location: ./login.php?log=err&em=$email");
+                    exit();
                 }
                 
                 

@@ -19,9 +19,9 @@
         $query = "SELECT * from utente where email=$1";
         $result = pg_query_params($dbconn, $query, array($email));
         if ($tuple = pg_fetch_array($result, null, PGSQL_ASSOC)) {
-            //query ajax: indirizzo email già registrato
-            echo "Registrazione fallita <br/>";
-            echo "E' già presente un account con la mail inserita";
+            //indirizzo email già registrato
+            header("Location: ./login.php?reg=already");
+            exit();
         } else {
             $nome = $_POST["nomeReg"];
             $cognome = $_POST["cognomeReg"];
@@ -46,11 +46,11 @@
                 $arrayid = array("idutente"=>$tuple["id"],"nomeutente"=>$nome,"msg"=>"Benvenuto/a");
                 $_SESSION["arrayid"] = $arrayid;
                 header("Location: ../index.php");
-                echo "La registrazione e' andata a buon fine <br/>";
+                exit();
             }
             else{
-                //da rimuovere
-                die("C'è stato un errore");
+                header("Location: ./login.php?reg=dberr");
+                exit();
             }
         }
     }

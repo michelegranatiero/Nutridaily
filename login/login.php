@@ -6,8 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nutridaily: accedi o iscriviti</title>
   <link rel="shortcut icon" href="#" />
-  <!-- Vue -->
-  <script src="https://unpkg.com/vue@3"></script>
   <!-- JQuery -->
   <script src="//code.jquery.com/jquery-3.6.0.js"></script>
   <!-- bootstrap css -->
@@ -43,7 +41,14 @@
           <h2 class="text-success">Login</h3>
             <!-- login form -->
             <form id="loginForm" action="validateLogin.php" method="POST">
-              <input type="email" name="mailLogin" class="form-control my-3" placeholder="Email" required autofocus> <!-- autofocus -->
+              <?php
+              if (isset($_GET["em"])) {
+                $em = $_GET["em"];
+                echo '<input type="email" name="mailLogin" class="form-control my-3" placeholder="Email" required autofocus value="' . $em . '">';
+              } else {
+                echo '<input type="email" name="mailLogin" class="form-control my-3" placeholder="Email" required autofocus>';
+              }
+              ?>
               <input type="password" name="passLogin" class="form-control my-3" placeholder="Password" required>
               <div class="form-check my-3 text-start">
                 <input type="checkbox" class="form-check-input" name="rememberLogin" id="rembme">
@@ -53,6 +58,15 @@
                 <button type="submit" name="loginButton" class="btn btn-success w-100 mb-3 p-2 fs-5 fw-bold">Accedi</button>
               </a>
             </form>
+            <!-- Error Message -->
+            <?php
+            if (isset($_GET['log'])) {
+              $logCheck = $_GET['log'];
+              if ($logCheck == 'err') {
+                echo '<p class="text-danger">Email o Password non valide!</p>';
+              }
+            }
+            ?>
             <!-- create registration form -->
             <hr class="horizRowLogin">
             <div class="text-center my-4">
@@ -62,8 +76,7 @@
             </div>
 
             <!-- create modal -->
-            <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true"
-              style="perspective: 2px;">
+            <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true" style="perspective: 2px;">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <!-- head -->
@@ -93,9 +106,7 @@
                       <input type="password" name="passReg" class="form-control my-3" placeholder="Nuova password" required>
                       <!-- datanascita -->
                       <div class="row my-3">
-                        <span class="text-muted fs-7 text-start">Data di nascita <i type="button"
-                            class="fa-solid fa-circle-question" data-bs-container="body" data-bs-toggle="popover"
-                            data-bs-placement="right" data-bs-content="Indica la tua data di nascita"></i></span>
+                        <span class="text-muted fs-7 text-start">Data di nascita <i type="button" class="fa-solid fa-circle-question" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Indica la tua data di nascita"></i></span>
                         <div class="col">
                           <select class="form-select date-of-b" id="day" name="dd">
                           </select>
@@ -111,14 +122,11 @@
                       </div>
                       <!-- genere -->
                       <div class="row my-3 text-start">
-                        <span class="text-muted fs-7">Genere <i type="button" class="fa-solid fa-circle-question"
-                            data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right"
-                            data-bs-content="Indica il tuo genere"></i></span>
+                        <span class="text-muted fs-7">Genere <i type="button" class="fa-solid fa-circle-question" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Indica il tuo genere"></i></span>
                         <div class="col">
                           <label class="form-check-label d-flex" for="radbtnUomo">
                             <div class="border rounded p-2 w-100">
-                              <input class="form-check-input" type="radio" name="genereReg" value="uomo"
-                                id="radbtnUomo" checked>
+                              <input class="form-check-input" type="radio" name="genereReg" value="uomo" id="radbtnUomo" checked>
                               Uomo
                             </div>
                           </label>
@@ -126,8 +134,7 @@
                         <div class="col">
                           <label class="form-check-label d-flex" for="radiobtnDonna">
                             <div class="border rounded p-2 w-100">
-                              <input class="form-check-input" type="radio" name="genereReg" value="donna"
-                                id="radiobtnDonna">
+                              <input class="form-check-input" type="radio" name="genereReg" value="donna" id="radiobtnDonna">
                               Donna
                             </div>
                           </label>
@@ -171,6 +178,22 @@
                   <div class="modal-footer">
                     <button type="submit" form="RegistrationForm" name="regButton" class="btn btn-success fs-5 px-5">Iscriviti</button>
                   </div>
+                  <?php
+                  if (isset($_GET['reg'])) {
+                    $regCheck = $_GET['reg'];
+                    if ($regCheck == 'already') {
+                      echo '<script> $(document).ready(function(){
+                        showModal();
+                      })</script>';
+                      echo '<p class="text-danger">La mail inserita &egrave gi&agrave registrata!</p>';
+                    } elseif ($regCheck == 'dbReg') {
+                      echo '<script> $(document).ready(function(){
+                        showModal();
+                      })</script>';
+                      echo '<p class="text-danger">Registrazione non andata a buon fine!</p>';
+                    }
+                  }
+                  ?>
                 </div>
               </div>
             </div>
@@ -184,8 +207,8 @@
     <!-- dateofbirth validation -->
     <script>
       var forms = document.querySelectorAll("select.date-of-b");
-      Array.prototype.slice.call(forms).forEach(function (form) {
-        form.addEventListener("change", function (e) {
+      Array.prototype.slice.call(forms).forEach(function(form) {
+        form.addEventListener("change", function(e) {
           var CurrentDate = new Date();
           var SelectedDate = new Date(
             $('[id=year]').val(),
@@ -207,19 +230,13 @@
     </script>
 
     <script>
-      function validaLogin(){
-        
-      }; 
-      function validaReg(){
-
-      };
-
+      function showModal() {
+        $("#createModal").modal('show');
+      }
     </script>
 
     <!-- bootstrap js -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <!-- date_of_birth js-->
     <script src="./date_of_birth.js"></script>
   </div>
