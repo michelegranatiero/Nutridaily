@@ -1,11 +1,11 @@
 <?php
 
-include("./db/db.php");
+include("../db/db.php");
 
 $alim = $_POST['idAlim'];
-$pasto = $_POST['idPasto'];
+$pasto = $_POST['idpasto'];
 
-$query = "DELETE from alimpasto where alimento = $1 and pasto = $2";
+$query = "INSERT into alimpasto(alimento, pasto) values ($1, $2)";
 
 $exeQuery = pg_query_params($dbconn, $query, array($alim, $pasto));
 if(!$exeQuery){
@@ -13,7 +13,7 @@ if(!$exeQuery){
     exit();
 }
 else{
-    echo "alimento rimosso";
+    echo "alimento inserito";
 
 }
 ?>
