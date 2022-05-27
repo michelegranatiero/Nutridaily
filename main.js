@@ -272,24 +272,18 @@ $(document).ready(function () {
     $("#searchText").keyup(function () {
         //Assigning search box value to javascript variable named as "txt".
         var text = $(this).val();
-        //Validating, if "txt" is empty.
+        //se text è vuoto.
         if (text == "") {
-            //Assigning empty value to "display" div in "search.php" file.
             $("#display").html("");
         }
-        //If name is not empty.
+        //se text non è vuoto.
         else {
-            //AJAX is called.
             $.ajax({
-                //AJAX type is "Post".
                 type: "POST",
-                //Data will be sent to "search.php".
                 url: "./ajaxcalls/search.php",
-                //Data, that will be sent to "search.php".
                 data: { search: text },
-                //If result found, this funtion will be called.
                 success: function (html) {
-                    //Assigning result to "display" div in "search.php" file.
+                    //Risultato da mostrare in search
                     $('#display').show();
                     $("#display").html(html).show;
                 }
