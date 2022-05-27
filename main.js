@@ -35,22 +35,22 @@ function remove_tr(id_riga, alim, pasto, car, pro, gra, cal, sez) {
             idAlim: alim,
             idPasto: pasto
         },
-        success: function (data) {
-            console.log(data);
+        success: function () {
+            riga.remove();
+
+            collAccordions.forEach((elem, index) => {
+                if ($(sez).parent().attr("id") == elem) {
+                    contCarb[index] -= parseFloat(car);
+                    contProt[index] -= parseFloat(pro);
+                    contGras[index] -= parseFloat(gra);
+                    contCal[index] -= parseInt(cal);
+                }
+            });
+
+            updateChart();
         }
     });
-    riga.remove();
 
-    collAccordions.forEach((elem, index)=>{
-        if ($(sez).parent().attr("id") == elem) {
-            contCarb[index] -= parseFloat(car);
-            contProt[index] -= parseFloat(pro);
-            contGras[index] -= parseFloat(gra);
-            contCal[index] -= parseInt(cal);
-        }
-    });
-
-    updateChart();
 
 
 }
@@ -73,8 +73,8 @@ function fill(alim, carb, prot, gras, cal, idAlim) {
 }
 
 
-function prepRemove(riga, alim, pasto, car, pro, gra, cal, sez){
-    $("#deleteReally").one('click', function(e){
+function prepRemove(riga, alim, pasto, car, pro, gra, cal, sez) {
+    $("#deleteReally").one('click', function (e) {
         e.preventDefault();
         remove_tr(riga, alim, pasto, car, pro, gra, cal, sez);
     });
@@ -132,8 +132,8 @@ function rowTemplate(sezione, alim, car, pro, gra, cal, alId, pasId) {
     `;
 
     $(sezione).append(template1);
-    
-    collAccordions.forEach((elem, index)=>{
+
+    collAccordions.forEach((elem, index) => {
         if ($(sezione).parent().attr("id") == elem) {
             contCarb[index] += parseFloat(car);
             contProt[index] += parseFloat(pro);
@@ -154,7 +154,7 @@ function displayAlimenti(arr) {
     });
     updateChart();
     /* solo dopo aver inserito gli alimenti */
-    if(timeout < 1){
+    if (timeout < 1) {
         collAccordions.forEach(elem => {
             if (!$('#' + elem).hasClass("show")) {
                 $('#' + elem).collapse('toggle'); //espansione accordion all'aggiunta dell'alimento
@@ -196,10 +196,10 @@ function aggiornaData(date) {
     $("#body-pranzo").html("");
     $("#body-cena").html("");
     $("#body-spuntini").html("");
-    contCarb = [0.,0.,0.,0.];
-    contProt = [0.,0.,0.,0.];
-    contGras = [0.,0.,0.,0.];
-    contCal  = [0,0,0,0];
+    contCarb = [0., 0., 0., 0.];
+    contProt = [0., 0., 0., 0.];
+    contGras = [0., 0., 0., 0.];
+    contCal = [0, 0, 0, 0];
 
     // $("#coll1").collapse("toggle"); -------------------------------------------------------
 
@@ -313,10 +313,6 @@ $(document).ready(function () {
                     break;
                 }
             }
-            rowTemplate('#'+tbody, alimento, tempAlim[0], tempAlim[1], tempAlim[2], tempAlim[3], tempAlim[4], pasId)
-            if (!$(expand).hasClass("show")) {
-                $(expand).collapse('toggle'); //espansione accordion all'aggiunta dell'alimento
-            };
             updateChart();
             $.ajax({
                 type: 'POST',
@@ -325,8 +321,11 @@ $(document).ready(function () {
                     idAlim: tempAlim[4],
                     idpasto: pasId
                 },
-                success: function (data) {
-                    console.log(data);
+                success: function () {
+                    rowTemplate('#' + tbody, alimento, tempAlim[0], tempAlim[1], tempAlim[2], tempAlim[3], tempAlim[4], pasId)
+                    if (!$(expand).hasClass("show")) {
+                        $(expand).collapse('toggle'); //espansione accordion all'aggiunta dell'alimento
+                    };
                 }
             });
 
@@ -342,7 +341,7 @@ $(document).ready(function () {
     $("#calendario").change(function () {
         aggiornaData($("#calendario").val());
         updateChart();
-        
+
     });
 
 

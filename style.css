@@ -80,7 +80,7 @@ main {
 
 .cont1 {
   border-radius: 45px;
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.6);
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -225,7 +225,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
   border-radius: 30px !important;
   overflow: hidden;
   margin-top: 20px;
-  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.6);
 }
 
 
@@ -265,7 +265,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
   justify-content: center;
   align-self: center;
   width: 50px;
-  height: 35px;
+  height: 40px;
   border-radius: 30px;
   margin: 5px;
   box-shadow: 0 0rem 0.4rem rgba(0, 0, 0, 0.7);
