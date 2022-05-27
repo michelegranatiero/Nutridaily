@@ -31,7 +31,7 @@ function remove_tr(id_riga, alim, pasto, car, pro, gra, cal, sez) {
     let riga = $("#" + id_riga);
     $.ajax({
         type: 'POST',
-        url: 'removeFood.php',
+        url: './ajaxcalls/removeFood.php',
         data: {
             idAlim: alim,
             idPasto: pasto
@@ -211,7 +211,7 @@ function aggiornaData(date) {
     var idPasti;
     $.ajax({
         type: 'POST',
-        url: 'checkDay.php',
+        url: './ajaxcalls/checkDay.php',
         data: { date: date },
         success: function (data) {
             idPasti = data;
@@ -220,7 +220,7 @@ function aggiornaData(date) {
                 console.log("il diario non esiste");
                 $.ajax({
                     type: 'POST',
-                    url: 'addDay.php',
+                    url: './ajaxcalls/addDay.php',
                     data: { date: date },
                     success: function (data) {
                         //ritorna array con id pasti
@@ -243,7 +243,7 @@ function aggiornaData(date) {
                 var dbArray = []; //conterrà tutti gli alimenti associati ai pasti
                 $.ajax({
                     type: "POST",
-                    url: "fetchDay.php",
+                    url: "./ajaxcalls/fetchDay.php",
                     data: { date: date },
                     success: function (data) {
                         var temp = data;
@@ -291,7 +291,7 @@ $(document).ready(function () {
                 //AJAX type is "Post".
                 type: "POST",
                 //Data will be sent to "search.php".
-                url: "search.php",
+                url: "./ajaxcalls/search.php",
                 //Data, that will be sent to "search.php".
                 data: { search: text },
                 //If result found, this funtion will be called.
@@ -329,7 +329,7 @@ $(document).ready(function () {
             updateChart();
             $.ajax({
                 type: 'POST',
-                url: 'addFood.php',
+                url: './ajaxcalls/addFood.php',
                 data: {
                     idAlim: tempAlim[4],
                     idpasto: pasId

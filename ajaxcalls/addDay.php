@@ -1,6 +1,6 @@
 <?php
 
-include("./db/db.php");
+include("../db/db.php");
 session_start();
 $id = $_SESSION["arrayid"]["idutente"];
 $data = $_POST['date'];

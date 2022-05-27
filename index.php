@@ -60,7 +60,7 @@ if ((!(isset($_SESSION["arrayid"]))) && (!(isset($_COOKIE["userarray"])))) {
                 </span>
               </li>
               <li class="nav-item ms-sm-5">
-                <a class="nav-link active fs-5 nav-text-color" href="./logout.php">Esci</a>
+                <a class="nav-link active fs-5 nav-text-color" href="./login/logout.php">Esci</a>
               </li>
             </ul>
           </div>
@@ -189,13 +189,13 @@ if ((!(isset($_SESSION["arrayid"]))) && (!(isset($_COOKIE["userarray"])))) {
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
   </script>
   <!-- app js -->
-  <script type="application/javascript" src="app.js"></script>
+  <script type="application/javascript" src="./javascript/app.js"></script>
   <!-- Chart js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
   <!-- labels plugin chart js -->
   <script src="https://unpkg.com/chart.js-plugin-labels-dv/dist/chartjs-plugin-labels.min.js"></script>
   <!-- File grafica -->
-  <script type="application/javascript" src="chart.js"></script>
+  <script type="application/javascript" src="./javascript/chart.js"></script>
   <!-- main js -->
   <script type="application/javascript" src="main.js"></script>
 
