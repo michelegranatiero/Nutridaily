@@ -84,52 +84,52 @@ function rowTemplate(sezione, alim, car, pro, gra, cal, alId, pasId) {
     count++;
     let template1 = `
     <div class="row alim-row overflow-hidden" id="riga${count.toString()}">
-                <!-- bottone + alimento -->
-                <div class="col-md-5 d-flex flex-row align-items-center alim-only ">
-                    <div class="row w-100">
-                        <div class="col px-1 px-md-2" style="max-width: fit-content;">
-                            <button type="button" class="btn btn-danger del-button" data-bs-toggle="modal" data-bs-target="#remModal"
-                            onclick="prepRemove('riga${count.toString()}',${alId}, ${pasId}, ${car}, ${pro}, ${gra}, ${cal}, '${sezione}')">
-                                <i class="bi bi-x"></i>
-                            </button>
-                        </div>
-                        <div class="col p-0 testo-alim">
-                            ${alim}
-                        </div>
-                    </div>
+        <!-- bottone + alimento -->
+        <div class="col-md-5 d-flex flex-row align-items-center alim-only ">
+            <div class="row w-100">
+                <div class="col px-1 px-md-2" style="max-width: fit-content;">
+                    <button type="button" class="btn btn-danger del-button" data-bs-toggle="modal" data-bs-target="#remModal"
+                    onclick="prepRemove('riga${count.toString()}',${alId}, ${pasId}, ${car}, ${pro}, ${gra}, ${cal}, '${sezione}')">
+                        <i class="bi bi-x"></i>
+                    </button>
                 </div>
-                <!-- header alimento mobile view-->
-                <div class="d-md-none small-header p-1">
-                    <div class="row">
-                        <div class="col">
-                            CAR
-                        </div>
-                        <div class="col">
-                            PRO
-                        </div>
-                        <div class="col">
-                            GRA
-                        </div>
-                        <div class="col text-black">
-                            CAL
-                        </div>
-                    </div>
-                </div>
-                <!-- dati -->
-                <div class="col bord-bl m-wid-car">
-                    ${car}g
-                </div>
-                <div class="col m-wid-prot">
-                    ${pro}g
-                </div>
-                <div class="col">
-                    ${gra}g
-                </div>
-                <div class="col bord-br">
-                    ${cal}
+                <div class="col p-0 testo-alim">
+                    ${alim}
                 </div>
             </div>
-            `;
+        </div>
+        <!-- header alimento mobile view-->
+        <div class="d-md-none small-header p-1">
+            <div class="row">
+                <div class="col">
+                    CAR
+                </div>
+                <div class="col">
+                    PRO
+                </div>
+                <div class="col">
+                    GRA
+                </div>
+                <div class="col text-black">
+                    CAL
+                </div>
+            </div>
+        </div>
+        <!-- dati -->
+        <div class="col bord-bl m-wid-car">
+            ${car}g
+        </div>
+        <div class="col m-wid-prot">
+            ${pro}g
+        </div>
+        <div class="col">
+            ${gra}g
+        </div>
+        <div class="col bord-br">
+            ${cal}
+        </div>
+    </div>
+    `;
 
     $(sezione).append(template1);
     
