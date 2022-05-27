@@ -16,7 +16,7 @@ app.component("meal", {
             </div>
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" v-bind:data-bs-target="'#'+collId"
                 aria-expanded="false" v-bind:aria-controls="collId">
-                <h5 class="m-0">{{pasto}}</h5>
+                <h5 class="m-0 nomepasto">{{pasto}}</h5>
             </button>
         </div>
         <div v-bind:id="collId" class="accordion-collapse collapse" v-bind:aria-labelledby="pasto"

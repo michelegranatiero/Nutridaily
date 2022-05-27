@@ -19,7 +19,7 @@ if($exeQuery){
             break;
         }
         else{
-            //manda id pasto al client
+            //return id pasto al client
             $tuple = pg_fetch_array($exeQuery2, null, PGSQL_ASSOC);
             $result[] = $tuple;
         }

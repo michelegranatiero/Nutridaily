@@ -85,7 +85,7 @@ if ((!(isset($_SESSION["arrayid"]))) && (!(isset($_COOKIE["userarray"])))) {
       <div class="cont1">
         <div class="row">
           <!-- Cal chart-->
-          <div class="col position-relative">
+          <div class="col">
             <div class="cont-circ">
               <div class="circ-progress">
                 <span class="cont-value"></span>
@@ -94,7 +94,7 @@ if ((!(isset($_SESSION["arrayid"]))) && (!(isset($_COOKIE["userarray"])))) {
             </div>
           </div>
           <!-- chart js -->
-          <div class="col d-none d-sm-block">
+          <div class="col d-none d-sm-flex">
             <div class=" chartBox">
               <canvas id="chartTotale"></canvas>
             </div>

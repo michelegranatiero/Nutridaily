@@ -2,27 +2,50 @@
 let progBar = $(".circ-progress");
 let contVal = $(".cont-value");
 let progVal = 0;
-let endVal= 1500;
-let totVal = 1800;
-let speed = 20;
-let fract = 360.0/totVal;
+let endVal = 1500;
+let totVal = 1800; //BMR
+let speed = 5;
+let fract = 360.0 / totVal;
 
-let progress = setInterval(()=> {
-    progVal+=100;
+
+function interv(prog) {
     contVal.text(`${progVal}/${totVal}`);
-    let backg =  `conic-gradient( 
-        #fff ${progVal * fract}deg,
-        #198754 ${progVal * fract}deg
-     )`;
+    let backg = `conic-gradient( 
+                #fff ${progVal * fract}deg,
+                #198754 ${progVal * fract}deg
+             )`;
     progBar.css("background-image", backg);
-    if (progVal == endVal){
-        clearInterval(progress);
+    if (progVal == endVal) {
+        clearInterval(prog);
     }
-}, speed);
+}
 
+function updateCalChart() {
+    endVal = contCal[0] + contCal[1] + contCal[2] + contCal[3];
+    totVal = bmrValue;
+    fract = 360.0 / totVal;
 
+    let act = progVal;
+    let progress = setInterval(() => {
+        if(endVal > act){
+            let incr = 50;
+            if((endVal-progVal)<50){
+                incr = 1;
+            }
+            progVal += incr;
+        }
+        else if(endVal < act){
+            let incr = 50;
+            if((progVal-endVal)<50){
+                incr = 1;
+            }
+            progVal -= incr;
+        }
+        interv(progress);
 
+    }, speed);
 
+}
 
 
 
@@ -35,7 +58,8 @@ function updateChart() {
         contGras[0] + contGras[1] + contGras[2] + contGras[3] + 0.0001
     ]
     myChart.update();
-    
+    updateCalChart();
+
 };
 
 /* MACRONUT */
@@ -89,7 +113,7 @@ const config = {
     },
     options: {
 
-        responsive: true,
+        responsive: false,
         maintainAspectRatio: true,
         aspectRatio: 2,
 
@@ -101,12 +125,12 @@ const config = {
 
             },
             legend: {
-                
+
                 display: true,
                 position: 'left',
                 labels: {
                     color: 'white',
-                    font:{
+                    font: {
                         size: 13
                     },
                     boxWidth: 13,

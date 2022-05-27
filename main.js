@@ -10,6 +10,7 @@ var contCarb;
 var contProt;
 var contGras;
 var contCal;
+var bmrValue;
 
 //popup scelta alimento
 function vistaPasto() {
@@ -35,19 +36,19 @@ function remove_tr(id_riga, alim, pasto, car, pro, gra, cal, sez) {
             idAlim: alim,
             idPasto: pasto
         },
-        success: function () {
-            riga.remove();
-
-            collAccordions.forEach((elem, index) => {
-                if ($(sez).parent().attr("id") == elem) {
-                    contCarb[index] -= parseFloat(car);
-                    contProt[index] -= parseFloat(pro);
-                    contGras[index] -= parseFloat(gra);
-                    contCal[index] -= parseInt(cal);
-                }
-            });
-
-            updateChart();
+        success: function (data) {
+            if (data) {
+                collAccordions.forEach((elem, index) => {
+                    if ($(sez).parent().attr("id") == elem) {
+                        contCarb[index] -= parseFloat(car);
+                        contProt[index] -= parseFloat(pro);
+                        contGras[index] -= parseFloat(gra);
+                        contCal[index] -= parseInt(cal);
+                    }
+                });
+                riga.remove();
+                updateChart();
+            }
         }
     });
 
@@ -57,9 +58,9 @@ function remove_tr(id_riga, alim, pasto, car, pro, gra, cal, sez) {
 
 /* chiamata da search.php per inserire l'alimento selezionato nella casella*/
 function fill(alim, carb, prot, gras, cal, idAlim) {
-    //Assigning value to "search" div in "search.php" file.
+    //assegna valore alla ricerca.
     $('#searchedItem').val(alim);
-    //Hiding "display" div in "search.php" file.
+    //nascondi.
     $('#display').hide();
     $("#searchText").hide();
     $('#searchedGroup').show();
@@ -152,7 +153,6 @@ function displayAlimenti(arr) {
             }
         });
     });
-    updateChart();
     /* solo dopo aver inserito gli alimenti */
     if (timeout < 1) {
         collAccordions.forEach(elem => {
@@ -174,6 +174,45 @@ function objToArray(arrObj, arr) {
     });
 }
 
+
+function calcBMR(arr){
+    //HARRIS-BENEDICT EQUATION
+    let gender = arr[0];
+    let age = arr[1];
+    let weight = arr[2];
+    let height = arr[3];
+    console.log(typeof(arr[3]));
+    if(gender == 'donna'){
+        bmrValue = Math.round(655.1 + (9.563 * weight) + (1.850 * height) - (4.676 * age));
+        console.log(bmrValue);
+    }
+    else if (gender == 'uomo'){
+        bmrValue = Math.round(66.5 + (13.75 * weight) + (5.003 * height) - (6.75 * age));
+    }
+    //fattore di attività (1.2 sedentario, 1.375, 1.55, 1.725)
+    let actFact = 1.2;
+    bmrValue = Math.round(bmrValue * actFact);
+}
+
+function getBMR() {
+    var bmrData = [];
+    $.ajax({
+        type: "POST",
+        url: "./ajaxcalls/bmr.php",
+        success: function (data) {
+            if (data) { 
+                var data = JSON.parse(data);
+                objToArray(data, bmrData);
+                console.log(bmrData);
+                calcBMR(bmrData[0]);
+            }
+            else{
+                alert("errore nella richiesta al server");
+            };
+        }
+    });
+}
+
 /* function checkEmptyBody(){
     collAccordions.forEach(elem => {
         let body = $("#"+elem);
@@ -185,10 +224,11 @@ function objToArray(arrObj, arr) {
     
 }
  */
+
 //aggiorna la pagina con la data dell'argomento
 function aggiornaData(date) {
-    //check esistenza diario
-    count = 0; //azzera
+    //init
+    count = 0;
     pastiArray.length = 0;
     pastiArray = []; //svuota
     alimentiCorr = []; //svuota
@@ -201,8 +241,7 @@ function aggiornaData(date) {
     contGras = [0., 0., 0., 0.];
     contCal = [0, 0, 0, 0];
 
-    // $("#coll1").collapse("toggle"); -------------------------------------------------------
-
+    //check esistenza diario
     var idPasti;
     $.ajax({
         type: 'POST',
@@ -221,8 +260,9 @@ function aggiornaData(date) {
                         var arrOfObj = JSON.parse(data);
                         objToArray(arrOfObj, pastiArray); //aggiorna pastiArray
                         if (!pastiArray) {
-                            alert("errore del database nella creazione del diario");
+                            alert("errore nella richiesta al server");
                         }
+                        updateChart();
 
                     }
                 });
@@ -232,7 +272,7 @@ function aggiornaData(date) {
                 idPasti = JSON.parse(data);
                 objToArray(idPasti, pastiArray);//aggiorna pastiArray
 
-                /* prende in input 'date' e id utente */
+                //prende in input 'date' e id utente
                 var dbArray = []; //conterrà tutti gli alimenti associati ai pasti
                 $.ajax({
                     type: "POST",
@@ -242,9 +282,10 @@ function aggiornaData(date) {
                         var temp = data;
                         if (temp) { //se ci sono alimenti nel db
                             var temp = JSON.parse(data);
-                            objToArray(temp, dbArray); //aggiorna db
+                            objToArray(temp, dbArray);
                             displayAlimenti(dbArray);
                         }
+                        updateChart();
                     }
                 });
 
@@ -261,6 +302,9 @@ $(document).ready(function () {
     //live search
     $('#searchedGroup').hide();
 
+
+    getBMR();
+
     $('#searchDelete').click(function () {
         $('#searchedGroup').hide();
         $('#searchText').show();
@@ -268,9 +312,8 @@ $(document).ready(function () {
         tempAlim = [];
     });
 
-    //On pressing a key on "Search box" in "search.php" file. This function will be called.
+    //search keyup
     $("#searchText").keyup(function () {
-        //Assigning search box value to javascript variable named as "txt".
         var text = $(this).val();
         //se text è vuoto.
         if (text == "") {
@@ -307,7 +350,7 @@ $(document).ready(function () {
                     break;
                 }
             }
-            updateChart();
+
             $.ajax({
                 type: 'POST',
                 url: './ajaxcalls/addFood.php',
@@ -315,11 +358,14 @@ $(document).ready(function () {
                     idAlim: tempAlim[4],
                     idpasto: pasId
                 },
-                success: function () {
-                    rowTemplate('#' + tbody, alimento, tempAlim[0], tempAlim[1], tempAlim[2], tempAlim[3], tempAlim[4], pasId)
-                    if (!$(expand).hasClass("show")) {
-                        $(expand).collapse('toggle'); //espansione accordion all'aggiunta dell'alimento
-                    };
+                success: function (data) {
+                    if (data) {
+                        rowTemplate('#' + tbody, alimento, tempAlim[0], tempAlim[1], tempAlim[2], tempAlim[3], tempAlim[4], pasId)
+                        if (!$(expand).hasClass("show")) {
+                            $(expand).collapse('toggle'); //espansione accordion all'aggiunta dell'alimento
+                        };
+                        updateChart();
+                    }
                 }
             });
 
@@ -334,8 +380,6 @@ $(document).ready(function () {
 
     $("#calendario").change(function () {
         aggiornaData($("#calendario").val());
-        updateChart();
-
     });
 
 
