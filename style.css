@@ -11,23 +11,24 @@
   padding: 0;
   box-sizing: border-box;
   font-size: 1.1rem;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
   height: 100vh;
   background-color: var(--main-color);
-
-  /*   background-position: center;
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url("assets/verticalbowl.jpg"); */
+  background-attachment: fixed;
+  background-image: url("assets/insa.jpg");
 }
 
 .body-mask {
   padding-top: 65px;
-  height: 100vh;
-  /*   background-color: rgba(0, 0, 0, 0.8); */
-  width: 100%;
+  min-height: 100vh;
+  width: 100%; 
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 /* -------------NAVBAR----------------- */
@@ -87,7 +88,6 @@ main {
   overflow: hidden;
   padding: 16px;
   box-shadow: 0 0rem 1rem rgba(0, 0, 0, 0.3);
-    /* font-family: ; */
 }
 
 .col {
@@ -102,7 +102,7 @@ main {
 
 /* ---------------CALENDAR----------------- */
 input[type="date"] {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.7);
   border-radius: 30px;
   border: none;
   color: var(--main-color);
@@ -138,14 +138,15 @@ input[type='date']::-webkit-calendar-picker-indicator {
   background-color: white;
 
 }
-.list-group{
+
+.list-group {
   border-left: 1px solid #ccc;
   border-right: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
   max-height: 200px;
   overflow: hidden;
   overflow-y: scroll;
-/*border-bottom-left-radius: 30px;
+  /*border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px; */
 }
 
@@ -155,7 +156,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
   border-right: none;
 }
 
-.fs-search{
+.fs-search {
   font-size: medium;
 }
 
@@ -226,9 +227,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
   margin-top: 20px;
   box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
 }
-.accordion-item:first-of-type {
-  margin-top: 10px;
-}
+
 
 /* -----------accordion button------------- */
 .accordion-button:not(.collapsed) {
@@ -291,9 +290,6 @@ input[type='date']::-webkit-calendar-picker-indicator {
   padding-top: 0rem !important;
   overflow: hidden;
 }
-.accordion-item:first-of-type {
-  margin-top: 5px;
-}
 
 
 .head-large {
@@ -355,13 +351,52 @@ input[type='date']::-webkit-calendar-picker-indicator {
   font-size: calc(80% + 0.1vw);
 }
 
-
-
-
-/* ---------------- CHART JS -----------*/
-
 .chartBox {
-  width: 250px;
+  max-width: 300px;
+  max-height: 150px;
+}
+
+
+/* --------------CAL CIRC PROGRESS-------- */
+
+.cont-circ {
+  height: 150px;
+  width: 150px;
+  background-color: transparent;
+  display: grid;
+  place-items: center;
+}
+
+.circ-progress {
+  position: relative;
+  background-color: var(--main-color);
+  border-radius: 50%;
+  height: 140px;
+  width: 140px;
+  display: grid;
+  place-items: center;
+}
+
+.circ-progress:before {
+  content: "";
+  position: absolute;
+  height: 84%;
+  width: 84%;
+  background-color: var(--terz-color);
+  border-radius: 50%;
+}
+
+.cont-value {
+  position: absolute;
+  font-size: 20px;
+  color: white;
+}
+
+.cont-kcal {
+  position: absolute;
+  font-size: 18px;
+  color: black;
+  top: 80px;
 }
 
 
@@ -383,7 +418,8 @@ input[type='date']::-webkit-calendar-picker-indicator {
 
   .cont1 {
     width: 100%;
-    padding: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
     border-radius: 30px !important;
   }
 
@@ -436,8 +472,6 @@ input[type='date']::-webkit-calendar-picker-indicator {
     background-color: var(--terz-color);
   }
 
-
-
   .alim-row>*:not(.small-header) {
     /* columns */
     /* background-color: var(--terz-color); */
@@ -445,6 +479,8 @@ input[type='date']::-webkit-calendar-picker-indicator {
     background-color: var(--main-color);
     box-shadow: 0 0rem 0.3rem rgba(0, 0, 0, 0.5);
   }
+
+
 
 }
 
@@ -461,13 +497,14 @@ input[type='date']::-webkit-calendar-picker-indicator {
   }
 
   .alim-only {
-/*     background-color: var(--main-color) !important; */
+    /*     background-color: var(--main-color) !important; */
   }
 
-  .m-wid-car{
+  .m-wid-car {
     min-width: 121.61px;
   }
-  .m-wid-prot{
+
+  .m-wid-prot {
     min-width: 97.78px;
   }
 }

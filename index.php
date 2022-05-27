@@ -72,7 +72,7 @@ if ((!(isset($_SESSION["arrayid"]))) && (!(isset($_COOKIE["userarray"])))) {
       <!-- riga diario e calendario-->
       <div class="row w-100">
         <!-- Diario Alimentare Titolo-->
-        <div class="col flex-row pb-3 space-nowrap">
+        <div class="col pb-3 space-nowrap">
           <h2 class="m-0">Diario Alimentare</h2>
         </div>
         <!-- Calendario-->
@@ -82,11 +82,22 @@ if ((!(isset($_SESSION["arrayid"]))) && (!(isset($_COOKIE["userarray"])))) {
         </div>
       </div>
       <!-- Contenitore Principale -->
-      <div class="row cont1">
-        <div class="col">
-          <div class="chartBox">
-            <!------------------------------------------ chart js ------------------------------------>
-            <canvas id="chartTotale"></canvas>
+      <div class="cont1">
+        <div class="row">
+          <!-- Cal chart-->
+          <div class="col position-relative">
+            <div class="cont-circ">
+              <div class="circ-progress">
+                <span class="cont-value"></span>
+                <span class="cont-kcal">kcal</span>
+              </div>
+            </div>
+          </div>
+          <!-- chart js -->
+          <div class="col d-none d-sm-block">
+            <div class=" chartBox">
+              <canvas id="chartTotale"></canvas>
+            </div>
           </div>
         </div>
         <!-- tabella accordion (vue.js)-->

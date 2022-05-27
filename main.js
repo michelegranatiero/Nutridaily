@@ -80,12 +80,14 @@ function prepRemove(riga, alim, pasto, car, pro, gra, cal, sez){
         e.preventDefault();
         remove_tr(riga, alim, pasto, car, pro, gra, cal, sez);
         console.log("premuto");
+        console.log(riga, alim);
     });
 }
 
 function rowTemplate(sezione, alim, car, pro, gra, cal, alId, pasId) {
+    count++;
+    console.log("riga row Template", count, alim);
     let template1 = `
-
     <div class="row alim-row overflow-hidden" id="riga${count.toString()}">
                 <!-- bottone + alimento -->
                 <div class="col-md-5 d-flex flex-row align-items-center alim-only ">
@@ -307,7 +309,6 @@ $(document).ready(function () {
     $("#add-button").click(function () {
         if ($('#searchedItem').val() != "") {
             var alimento = $('#searchedItem').val();
-            count += 1;
             var expand = tbody.next(); //da espandere DOPO
             tbody = tbody.next().find(".accordion-body").attr("id");
             $('#searchedItem').val("");
