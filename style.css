@@ -496,10 +496,6 @@ input[type='date']::-webkit-calendar-picker-indicator {
     gap: 0px;
   }
 
-  .alim-only {
-    /*     background-color: var(--main-color) !important; */
-  }
-
   .m-wid-car {
     min-width: 121.61px;
   }
