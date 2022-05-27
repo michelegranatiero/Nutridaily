@@ -23,7 +23,6 @@ function vistaPasto() {
     }
     tbody = $(window.event.target).closest(".accordion-header"); //accordion-header
     $("#addModalLabel").html(tbody.attr("id"));
-    console.log(tbody);
 }
 
 //rimuovi alimento
@@ -36,7 +35,6 @@ function remove_tr(id_riga, alim, pasto, car, pro, gra, cal, sez) {
             idAlim: alim,
             idPasto: pasto
         },
-
         success: function (data) {
             console.log(data);
         }
@@ -79,14 +77,11 @@ function prepRemove(riga, alim, pasto, car, pro, gra, cal, sez){
     $("#deleteReally").one('click', function(e){
         e.preventDefault();
         remove_tr(riga, alim, pasto, car, pro, gra, cal, sez);
-        console.log("premuto");
-        console.log(riga, alim);
     });
 }
 
 function rowTemplate(sezione, alim, car, pro, gra, cal, alId, pasId) {
     count++;
-    console.log("riga row Template", count, alim);
     let template1 = `
     <div class="row alim-row overflow-hidden" id="riga${count.toString()}">
                 <!-- bottone + alimento -->
@@ -217,7 +212,6 @@ function aggiornaData(date) {
             idPasti = data;
             if (!idPasti) { //se non esiste un diario 
                 /* crea diario e pasti per id utente e giorno 'date' e i pasti*/
-                console.log("il diario non esiste");
                 $.ajax({
                     type: 'POST',
                     url: './ajaxcalls/addDay.php',
@@ -235,7 +229,6 @@ function aggiornaData(date) {
             }
             else { //se esiste il diario
                 //assegna id pasti
-                console.log("esiste il diario");
                 idPasti = JSON.parse(data);
                 objToArray(idPasti, pastiArray);//aggiorna pastiArray
 
@@ -313,9 +306,7 @@ $(document).ready(function () {
             tbody = tbody.next().find(".accordion-body").attr("id");
             $('#searchedItem').val("");
             var pasId;
-            console.log(tbody);
             var accId = tbody.split('-')[1]; //nome pasto a cui è stato aggiunto l'alimento
-            console.log(accId);
             for (var i = 0; i < pastiArray.length; i++) {
                 if (pastiArray[i][0] == accId) {
                     pasId = pastiArray[i][1];
