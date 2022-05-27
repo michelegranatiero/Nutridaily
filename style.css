@@ -1,273 +1,510 @@
-:root{
+:root {
   /* verde: #198754 */
   --main-color: #198754;
-  --secondary-color: #ffffff;
-  --body-color:var(--main-color);
-  --navbar-color: var(--secondary-color);
-  --nav-text-color: var(--main-color);
-  --text-color: var(--secondary-color);
-  
+  --second-color: #ffffff;
+  --terz-color: #51A077;
+
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-size: 1.1rem;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
   height: 100vh;
-  background-color: var(--body-color);
+  background-color: var(--main-color);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-image: url("assets/insa.jpg");
+}
+
+.body-mask {
+  padding-top: 65px;
+  min-height: 100vh;
+  width: 100%; 
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 /* -------------NAVBAR----------------- */
 
-.bg-light{
+.bg-light {
   /* navbar color */
-  background-color: var(--navbar-color) !important;
+  background-color: var(--second-color) !important;
 }
 
 .nav-item {
   align-self: baseline;
 }
 
-.rounding{
+.rounding {
   /* navbar border-radius: 30px; */
   border-bottom-right-radius: 30px;
   border-bottom-left-radius: 30px;
 }
 
-.navbar-light .navbar-toggler{
-  border-color: rgba(0, 0, 0, 0);
+.navbar-light .navbar-toggler {
+  border-color: rgba(255, 255, 255, 0);
   color: var(--main-color);
   border-bottom-right-radius: 30px;
 }
 
-/* sm breakpoint - mobile view */
-@media screen and (max-width: 575px) {
+.nav-text-color {
+  color: var(--main-color) !important;
+  opacity: 1;
+}
+
+
+/* diario alimentare */
+.space-nowrap {
+  white-space: nowrap;
+}
+
+/* ---------------MAIN----------------- */
+main {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* allineamento verticale */
+  align-items: center;
+  position: relative;
+
+}
+
+.cont1 {
+  border-radius: 45px;
+  background-color: rgba(255, 255, 255, 0.2);
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-width: 300px;
+  overflow: hidden;
+  padding: 16px;
+  box-shadow: 0 0rem 1rem rgba(0, 0, 0, 0.3);
+}
+
+.col {
+  /* colonne */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--second-color);
+}
+
+
+/* ---------------CALENDAR----------------- */
+input[type="date"] {
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 30px;
+  border: none;
+  color: var(--main-color);
+  min-width: 125px;
+  min-height: 50px;
+  outline: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  position: relative;
+  box-shadow: 0 0rem 1rem rgba(0, 0, 0, 0.5);
+  font-weight: bold;
+}
+
+input[type='date']::-webkit-calendar-picker-indicator {
+  /* https://codepen.io/sosuke/pen/Pjoqqp */
+  /*filter: invert(45%) sepia(32%) saturate(955%) hue-rotate(100deg) brightness(88%) contrast(93%);*/
+  background: transparent;
+  bottom: 0;
+  color: transparent;
+  cursor: pointer;
+  height: auto;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: auto;
+}
+
+
+/* modal - popup search */
+
+#searchedItem {
+  background-color: white;
+
+}
+
+.list-group {
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  max-height: 200px;
+  overflow: hidden;
+  overflow-y: scroll;
+  /*border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px; */
+}
+
+.list-group-item {
+  cursor: pointer;
+  border-left: none;
+  border-right: none;
+}
+
+.fs-search {
+  font-size: medium;
+}
+
+/* per centrare modal */
+/* .modal-dialog {
+  min-height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+} */
+
+.btn-default {
+  border-color: #ccc;
+}
+
+
+/* hover, click,... default color */
+.form-control:focus,
+.form-select:focus {
+  border-color: #198754;
+  box-shadow: 0 0 0 0.2rem #28a74540;
+}
+
+.form-check-input:focus {
+  border-color: #198754;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem #b6edd3;
+}
+
+.form-check-input:checked {
+  background-color: #198754;
+  border-color: #198754;
+}
+
+.form-check-input[type=checkbox]:indeterminate {
+  background-color: #198754;
+  border-color: #198754;
+}
+
+/*----------cambio colori icone (frecce) ACCORDIONS (bootstrap)--------- */
+
+.accordion-button:not(.collapsed)::after {
+  /* replace color: insert after fill='%23---hex color without # */
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23198754'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+.accordion-button::after {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23FFFFFF'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+/* ---------------------------ACCORDION----------------------- */
+.accordion {
+  border-radius: 30px !important;
+}
+
+.accordion-button {
+  background-color: transparent;
+  border-radius: 0px !important;
+  border-bottom-left-radius: 30px !important;
+  border-top-right-radius: 30px !important;
+  /* uguale a sotto */
+}
+
+.accordion-item {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 30px !important;
+  overflow: hidden;
+  margin-top: 20px;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+}
+
+
+/* -----------accordion button------------- */
+.accordion-button:not(.collapsed) {
+  color: var(--main-color);
+}
+
+.accordion-button:focus {
+  border-color: var(--main-color);
+  box-shadow: none;
+}
+
+.accordion-button[aria-expanded='true'] {
+  background-color: var(--second-color);
+}
+
+
+/*classe per il plus-button*/
+
+.plus-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  width: 45px;
+  height: 45px;
+  border-radius: 30px;
+  margin: 5px;
+  box-shadow: 0 0rem 0.4rem rgba(0, 0, 0, 0.7);
+}
+
+/*classe per del-button*/
+.del-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  width: 50px;
+  height: 35px;
+  border-radius: 30px;
+  margin: 5px;
+  box-shadow: 0 0rem 0.4rem rgba(0, 0, 0, 0.7);
+}
+
+.btn-check:focus+.btn-success,
+.btn-success:focus {
+  box-shadow: none;
+}
+
+/* -------------------------TABELLE--------------------- */
+
+.acc-header {
+  /* stessa larghezza di accordion-body */
+  padding: 0.5rem 1.2rem;
+  overflow: hidden;
+}
+
+.accordion-body {
+  /* stessa larghezza di acc-header */
+  padding: 0.5rem 1.2rem;
+  padding-top: 0rem !important;
+  overflow: hidden;
+}
+
+
+.head-large {
+  flex-wrap: nowrap;
+  column-gap: 3px;
+  border-radius: 30px;
+  background-color: var(--main-color);
+  /* background-color: var(--terz-color); */
+  /* background-color: rgba(255, 255, 255, 0.5); */
+  overflow: hidden;
+  box-shadow: 0 0rem 0.4rem rgba(0, 0, 0, 0.8);
+}
+
+.head-large>* {
+  /* columns */
+  align-self: center;
+  /* background-color: var(--main-color); */
+  background-color: var(--terz-color);
+  padding-top: 2px;
+  padding-bottom: 2px;
+
+}
+
+.alim-row {
+  margin-top: 15px;
+  padding-left: 5px;
+  padding: 5px;
+  /* background-color: var(--main-color); */
+  border-radius: 30px;
+  column-gap: 3px;
+  box-shadow: 0 0rem 0.5rem rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+  background-color: var(--terz-color);
+}
+
+.alim-row>*:not(.small-header) {
+  /* columns */
+  min-height: 60px;
+  /* background-color: var(--terz-color); */
+  background-color: var(--main-color);
+  z-index: 1;
+}
+
+.small-header {
+  flex-wrap: nowrap;
+  column-gap: 3px;
+  /* background-color: var(--main-color); */
+  background-color: var(--terz-color);
+}
+
+.small-header>.row>.col {
+  font-size: medium;
+}
+
+/* alim */
+
+.testo-alim {
+  text-align: center;
+  font-size: calc(80% + 0.1vw);
+}
+
+.chartBox {
+  max-width: 300px;
+  max-height: 150px;
+}
+
+
+/* --------------CAL CIRC PROGRESS-------- */
+
+.cont-circ {
+  height: 150px;
+  width: 150px;
+  background-color: transparent;
+  display: grid;
+  place-items: center;
+}
+
+.circ-progress {
+  position: relative;
+  background-color: var(--main-color);
+  border-radius: 50%;
+  height: 140px;
+  width: 140px;
+  display: grid;
+  place-items: center;
+}
+
+.circ-progress:before {
+  content: "";
+  position: absolute;
+  height: 84%;
+  width: 84%;
+  background-color: var(--terz-color);
+  border-radius: 50%;
+}
+
+.cont-value {
+  position: absolute;
+  font-size: 20px;
+  color: white;
+}
+
+.cont-kcal {
+  position: absolute;
+  font-size: 18px;
+  color: black;
+  top: 80px;
+}
+
+
+
+
+/* ----------- MEDIA QUERIES --------- */
+
+/* <md breakpoint - mobile view */
+@media screen and (max-width: 767.98px) {
 
   .nav-item {
     align-self: center;
   }
 
-}
+  main {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
 
-.nav-text-color{
-  color: var(--nav-text-color) !important;
-  opacity: 1;
-}
+  .cont1 {
+    width: 100%;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 30px !important;
+  }
 
-/* ---------------MAIN----------------- */
+  .head-large {
+    display: none;
+  }
 
-.text-color{
-  color: var(--text-color) !important;
-  opacity: 1;
-}
+  .plus-button {
+    width: 55px;
+    height: 55px;
+    margin: 10px;
 
-main {
-  display: flex;
-  flex-direction: column;/* rimuovere? */
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
+  }
 
-.cont1{
-  border-radius: 30px;
-  border: 1px solid var(--secondary-color);
-  background-color: rgba(255, 255, 255, 0.2);
-  justify-content: center;
-  width: 100%;
-  overflow: hidden;
-}
-
-.cont1 > .row {
-  /* righe */
-  height: 70px;
-  border-bottom: 1px solid var(--secondary-color);
-}
-
-.cont1 > .row > .col{
-  /* colonne */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.25rem;
-  color: var(--secondary-color);
-}
-
-.alim-row > .col{
-  /* colonne */
-  align-items: center;
-  justify-content: center;
-  background-color: var(--main-color);
-  border: 1px solid #000000;
-}
-
-/* Plus Button */
-.button{
-  height: 50px;
-  width: 50px;
-  padding: 0;
-  background-color: #009578;
-  border: none;
-  outline: none;
-  border-radius: 10px;
-  
-}
-
-.botton:hover{
-  background-color: #008168;
-}
-.button:active{
-  background-color: #006a58;
-}
+  .del-button {
+    width: 60px;
+    height: 45px;
+    margin: 5px;
+    border-radius: 10px;
+    border-top-left-radius: 20px;
+  }
 
 
-/*classe per il simbolo + del bottone*/
-.material-symbols-outlined {
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 48;
-  color: #ffffff;
-  align-self: center;
-}
+  .testo-alim {
+    font-size: calc(70% + 0.7vw);
+  }
 
-  
+  .alim-only {
+    border-top-left-radius: 25px !important;
+    border-top-right-radius: 25px !important;
+  }
+
+  .bord-tr {
+    border-top-right-radius: 25px !important;
+  }
+
+  .bord-tl {
+    border-top-left-radius: 25px !important;
+  }
+
+  .bord-br {
+    border-bottom-right-radius: 25px !important;
+  }
+
+  .bord-bl {
+    border-bottom-left-radius: 25px !important;
+  }
+
+  .alim-row {
+    background-color: var(--terz-color);
+  }
+
+  .alim-row>*:not(.small-header) {
+    /* columns */
+    /* background-color: var(--terz-color); */
+    border-radius: 5px;
+    background-color: var(--main-color);
+    box-shadow: 0 0rem 0.3rem rgba(0, 0, 0, 0.5);
+  }
 
 
-
-
-
-
-
-
-
-
-/* ---------------CALENDAR----------------- */
-input[type="date"]{
-  background-color: rgba(255, 255, 255, 0.7);
-  border-radius: 10px;
-  font-family: "Roboto mono", monospace;
-  border: none;
-  color: var(--main-color);
-  font-size: 20px;
-  outline: none;  /*?*/
-  width: 160px;
-  cursor:text
-}
-
-
-input[type='date']::-webkit-calendar-picker-indicator{
-  opacity: 1;
-  display: block;
-  width: 25px;
-  height: 25px;
-  border-width: thin;
-  cursor: pointer;
-  /* https://codepen.io/sosuke/pen/Pjoqqp */
-  filter: invert(45%) sepia(32%) saturate(955%) hue-rotate(100deg) brightness(88%) contrast(93%);
-  
-}
-
-/* ---------------POPUP----------------- */
-  
-.popup{
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  position: absolute;
-  top: 0;
-  justify-content: center;
-  align-items: center;
-  display: none;
-  
-}
-
-.popup-content{
-  color: white;
-  width: 500px;
-  height: 250px;
-  background-color: rgba(0, 128, 0, 0.7);
-  border-radius: 10px;
-  text-align: center;
-  padding: 30px;
-  position: relative;
-  border: solid #fff 2px;
 
 }
 
+/* >md breakpoint - desktop view */
+@media screen and (min-width:768px) {
 
-input{
-  margin: 10px;
-  width: 50%;
-  padding: 8px;
-  border: 1px solid gray;
-  border-radius: 10px;
-  border: none;
+  .alim-row {
+    /* border: 1px solid var(--second-color); */
+    padding: 0px;
+  }
+
+  .alim-row>*:not(.small-header) {
+    gap: 0px;
+  }
+
+  .alim-only {
+    /*     background-color: var(--main-color) !important; */
+  }
+
+  .m-wid-car {
+    min-width: 121.61px;
+  }
+
+  .m-wid-prot {
+    min-width: 97.78px;
+  }
 }
-
-.close{
-  position: absolute;
-  top: 7px;
-  right: 12px;
-  left: 1x;
-  top: 5px;
-  font-size: 24px;
-  transform: rotate(45deg);
-  cursor: pointer;
-  color: #fff;
-}
-
-.tabella-macronutrienti{
-  border: 2px solid white;
-  border-radius: 5px;
-  margin-top: 10px;
-  background-color: rgba(25, 135, 84, 0.5);
-  color: #fff;
-  
-}
-
-.flex{
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  
-  
-}
-
-.button-popup-save{
-  margin-top: 20px;
-  color: #fff;
-  font-size: medium;
-  border: #fff;
-  text-align: center;
-  width: 60px;
-  height: 40px;
-  border-radius: 10px;
-  border: 2px solid #fff;
-}
-
-.button-popup-save{
-  background-color: #008168;
-}
-.button-popup-save:active{
-  background-color: #006a58;
-}
-
-th{
-  text-align: center;
-}
-  
-
-
-
-
-
-
-
-        
-
-    

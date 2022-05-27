@@ -5,12 +5,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nutridaily: accedi o iscriviti</title>
-  <!-- Vue -->
-  <script src="https://unpkg.com/vue@3"></script>
+  <link rel="shortcut icon" href="#" />
   <!-- JQuery -->
   <script src="//code.jquery.com/jquery-3.6.0.js"></script>
   <!-- bootstrap css -->
-  <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <!-- styleLogin css -->
   <link rel="stylesheet" type="text/css" href="styleLogin.css">
 </head>
@@ -41,8 +40,15 @@
           </div>
           <h2 class="text-success">Login</h3>
             <!-- login form -->
-            <form name="loginForm" action="validateLogin.php" method="POST" onsubmit="return validaLogin()">
-              <input type="email" name="mailLogin" class="form-control my-3" placeholder="Email" required autofocus> <!-- autofocus -->
+            <form id="loginForm" action="validateLogin.php" method="POST">
+              <?php
+              if (isset($_GET["em"])) {
+                $em = $_GET["em"];
+                echo '<input type="email" name="mailLogin" class="form-control my-3" placeholder="Email" required autofocus value="' . $em . '">';
+              } else {
+                echo '<input type="email" name="mailLogin" class="form-control my-3" placeholder="Email" required autofocus>';
+              }
+              ?>
               <input type="password" name="passLogin" class="form-control my-3" placeholder="Password" required>
               <div class="form-check my-3 text-start">
                 <input type="checkbox" class="form-check-input" name="rememberLogin" id="rembme">
@@ -52,6 +58,15 @@
                 <button type="submit" name="loginButton" class="btn btn-success w-100 mb-3 p-2 fs-5 fw-bold">Accedi</button>
               </a>
             </form>
+            <!-- Error Message -->
+            <?php
+            if (isset($_GET['log'])) {
+              $logCheck = $_GET['log'];
+              if ($logCheck == 'err') {
+                echo '<p class="text-danger">Email o Password non valide!</p>';
+              }
+            }
+            ?>
             <!-- create registration form -->
             <hr class="horizRowLogin">
             <div class="text-center my-4">
@@ -61,8 +76,7 @@
             </div>
 
             <!-- create modal -->
-            <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true"
-              style="perspective: 2px;">
+            <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true" style="perspective: 2px;">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <!-- head -->
@@ -77,7 +91,7 @@
                   </div>
                   <!-- body -->
                   <div class="modal-body">
-                    <form name="RegistrationForm" method="POST" action="validateRegistration.php" onsubmit="return validaReg()">
+                    <form id="RegistrationForm" method="POST" action="validateRegistration.php">
                       <!-- nome -->
                       <div class="row">
                         <div class="col">
@@ -92,9 +106,7 @@
                       <input type="password" name="passReg" class="form-control my-3" placeholder="Nuova password" required>
                       <!-- datanascita -->
                       <div class="row my-3">
-                        <span class="text-muted fs-7 text-start">Data di nascita <i type="button"
-                            class="fa-solid fa-circle-question" data-bs-container="body" data-bs-toggle="popover"
-                            data-bs-placement="right" data-bs-content="Indica la tua data di nascita"></i></span>
+                        <span class="text-muted fs-7 text-start">Data di nascita <i type="button" class="fa-solid fa-circle-question" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Indica la tua data di nascita"></i></span>
                         <div class="col">
                           <select class="form-select date-of-b" id="day" name="dd">
                           </select>
@@ -110,14 +122,11 @@
                       </div>
                       <!-- genere -->
                       <div class="row my-3 text-start">
-                        <span class="text-muted fs-7">Genere <i type="button" class="fa-solid fa-circle-question"
-                            data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right"
-                            data-bs-content="Indica il tuo genere"></i></span>
+                        <span class="text-muted fs-7">Genere <i type="button" class="fa-solid fa-circle-question" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Indica il tuo genere"></i></span>
                         <div class="col">
                           <label class="form-check-label d-flex" for="radbtnUomo">
                             <div class="border rounded p-2 w-100">
-                              <input class="form-check-input" type="radio" name="genereReg" value="uomo"
-                                id="radbtnUomo" checked>
+                              <input class="form-check-input" type="radio" name="genereReg" value="uomo" id="radbtnUomo" checked>
                               Uomo
                             </div>
                           </label>
@@ -125,8 +134,7 @@
                         <div class="col">
                           <label class="form-check-label d-flex" for="radiobtnDonna">
                             <div class="border rounded p-2 w-100">
-                              <input class="form-check-input" type="radio" name="genereReg" value="donna"
-                                id="radiobtnDonna">
+                              <input class="form-check-input" type="radio" name="genereReg" value="donna" id="radiobtnDonna">
                               Donna
                             </div>
                           </label>
@@ -141,7 +149,7 @@
                               Peso:
                             </label>
                             <div class="col px-0">
-                              <input type="number" name="pesoReg" min="0" max="999" class="form-control" id="peso" required>
+                              <input type="number" name="pesoReg" min="1" max="999" class="form-control" id="peso" required>
                             </div>
                             <label class="col col-form-label px-0">
                               kg
@@ -155,7 +163,7 @@
                               Altezza:
                             </label>
                             <div class="col px-0">
-                              <input type="number" name="altezzaReg" min="0" max="999" class="form-control" id="altezza" required>
+                              <input type="number" name="altezzaReg" min="1" max="999" class="form-control" id="altezza" required>
                             </div>
                             <label class="col col-form-label px-0">
                               cm
@@ -163,12 +171,29 @@
                           </div>
                         </div>
                       </div>
-                      <!-- iscriviti -->
-                      <div class="mt-3 text-center">
-                        <button type="submit" name="regButton" class="btn btn-success fs-5 px-5">Iscriviti</button>
-                      </div>
                     </form>
                   </div>
+                  <!-- footer -->
+                  <!-- Iscritivi -->
+                  <div class="modal-footer">
+                    <button type="submit" form="RegistrationForm" name="regButton" class="btn btn-success fs-5 px-5">Iscriviti</button>
+                  </div>
+                  <?php
+                  if (isset($_GET['reg'])) {
+                    $regCheck = $_GET['reg'];
+                    if ($regCheck == 'already') {
+                      echo '<script> $(document).ready(function(){
+                        showModal();
+                      })</script>';
+                      echo '<p class="text-danger">La mail inserita &egrave gi&agrave registrata!</p>';
+                    } elseif ($regCheck == 'dbReg') {
+                      echo '<script> $(document).ready(function(){
+                        showModal();
+                      })</script>';
+                      echo '<p class="text-danger">Registrazione non andata a buon fine!</p>';
+                    }
+                  }
+                  ?>
                 </div>
               </div>
             </div>
@@ -182,8 +207,8 @@
     <!-- dateofbirth validation -->
     <script>
       var forms = document.querySelectorAll("select.date-of-b");
-      Array.prototype.slice.call(forms).forEach(function (form) {
-        form.addEventListener("change", function (e) {
+      Array.prototype.slice.call(forms).forEach(function(form) {
+        form.addEventListener("change", function(e) {
           var CurrentDate = new Date();
           var SelectedDate = new Date(
             $('[id=year]').val(),
@@ -204,12 +229,14 @@
       });
     </script>
 
+    <script>
+      function showModal() {
+        $("#createModal").modal('show');
+      }
+    </script>
+
     <!-- bootstrap js -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-      crossorigin="anonymous"></script>
-    <!-- main js -->
-    <script src="./main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <!-- date_of_birth js-->
     <script src="./date_of_birth.js"></script>
   </div>
