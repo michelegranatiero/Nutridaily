@@ -1,4 +1,3 @@
-//eventi alimenti pasti
 var tbody;
 var count = 0;
 var pastiArray = []; //[pasto,id]
@@ -15,11 +14,12 @@ var bmrValue;
 //popup scelta alimento
 function vistaPasto() {
     //reset search on close
-    if (!($(tbody).is($(window.event.target).closest("div")))) {
+    if (!($(tbody).is($(window.event.target).closest(".accordion-header")))) {
         $('#searchText').val("");
         $("#display").html("");
         $('#searchedGroup').hide();
         $('#searchedItem').val("");
+        $('#grams').val("100");
         $('#searchText').show();
     }
     tbody = $(window.event.target).closest(".accordion-header"); //accordion-header
@@ -27,14 +27,13 @@ function vistaPasto() {
 }
 
 //rimuovi alimento
-function remove_tr(id_riga, alim, pasto, car, pro, gra, cal, sez) {
+function remove_tr(id_riga, alim, car, pro, gra, cal, sez) {
     let riga = $("#" + id_riga);
     $.ajax({
         type: 'POST',
         url: './ajaxcalls/removeFood.php',
         data: {
-            idAlim: alim,
-            idPasto: pasto
+            idAlim: alim
         },
         success: function (data) {
             if (data) {
@@ -74,15 +73,20 @@ function fill(alim, carb, prot, gras, cal, idAlim) {
 }
 
 
-function prepRemove(riga, alim, pasto, car, pro, gra, cal, sez) {
+function prepRemove(riga, alim, car, pro, gra, cal, sez) {
     $("#deleteReally").one('click', function (e) {
         e.preventDefault();
-        remove_tr(riga, alim, pasto, car, pro, gra, cal, sez);
+        remove_tr(riga, alim, car, pro, gra, cal, sez);
     });
 }
 
-function rowTemplate(sezione, alim, car, pro, gra, cal, alId, pasId) {
+function rowTemplate(sezione, alimId, alim, car, pro, gra, cal, grams) {
     count++;
+    console.log("grammi", grams);
+    car = Math.round(car/100*grams * 10)/10; //round 1 decimal
+    pro = Math.round(pro/100*grams * 10)/10; //round 1 decimal
+    gra = Math.round(gra/100*grams * 10)/10; //round 1 decimal
+    cal = Math.round(cal/100*grams); //round int
     let template1 = `
     <div class="row alim-row overflow-hidden" id="riga${count.toString()}">
         <!-- bottone + alimento -->
@@ -90,7 +94,7 @@ function rowTemplate(sezione, alim, car, pro, gra, cal, alId, pasId) {
             <div class="row w-100">
                 <div class="col px-1 px-md-2" style="max-width: fit-content;">
                     <button type="button" class="btn btn-danger del-button" data-bs-toggle="modal" data-bs-target="#remModal"
-                    onclick="prepRemove('riga${count.toString()}',${alId}, ${pasId}, ${car}, ${pro}, ${gra}, ${cal}, '${sezione}')">
+                    onclick="prepRemove('riga${count.toString()}',${alimId}, ${car}, ${pro}, ${gra}, ${cal}, '${sezione}')">
                         <i class="bi bi-x"></i>
                     </button>
                 </div>
@@ -148,8 +152,8 @@ function rowTemplate(sezione, alim, car, pro, gra, cal, alId, pasId) {
 function displayAlimenti(arr) {
     arr.forEach(al => {
         pastiArray.forEach(pas => {
-            if (al[0] == pas[1]) {
-                rowTemplate('#body-' + pas[0], al[1], al[2], al[3], al[4], al[5], al[6], al[0]);
+            if (al[7] == pas[1]) {
+                rowTemplate('#body-' + pas[0], al[0], al[1], al[2], al[3], al[4], al[5], al[6]);
             }
         });
     });
@@ -181,10 +185,8 @@ function calcBMR(arr){
     let age = arr[1];
     let weight = arr[2];
     let height = arr[3];
-    console.log(typeof(arr[3]));
     if(gender == 'donna'){
         bmrValue = Math.round(655.1 + (9.563 * weight) + (1.850 * height) - (4.676 * age));
-        console.log(bmrValue);
     }
     else if (gender == 'uomo'){
         bmrValue = Math.round(66.5 + (13.75 * weight) + (5.003 * height) - (6.75 * age));
@@ -203,7 +205,6 @@ function getBMR() {
             if (data) { 
                 var data = JSON.parse(data);
                 objToArray(data, bmrData);
-                console.log(bmrData);
                 calcBMR(bmrData[0]);
             }
             else{
@@ -229,7 +230,6 @@ function getBMR() {
 function aggiornaData(date) {
     //init
     count = 0;
-    pastiArray.length = 0;
     pastiArray = []; //svuota
     alimentiCorr = []; //svuota
     $("#body-colazione").html("");
@@ -259,9 +259,6 @@ function aggiornaData(date) {
                         //ritorna array con id pasti
                         var arrOfObj = JSON.parse(data);
                         objToArray(arrOfObj, pastiArray); //aggiorna pastiArray
-                        if (!pastiArray) {
-                            alert("errore nella richiesta al server");
-                        }
                         updateChart();
 
                     }
@@ -283,6 +280,7 @@ function aggiornaData(date) {
                         if (temp) { //se ci sono alimenti nel db
                             var temp = JSON.parse(data);
                             objToArray(temp, dbArray);
+                            console.log(dbArray);
                             displayAlimenti(dbArray);
                         }
                         updateChart();
@@ -309,6 +307,7 @@ $(document).ready(function () {
         $('#searchedGroup').hide();
         $('#searchText').show();
         $('#searchedItem').val("");
+        $('#grams').val("100");
         tempAlim = [];
     });
 
@@ -337,7 +336,11 @@ $(document).ready(function () {
 
     //button aggiungi alimento
     $("#add-button").click(function () {
-        if ($('#searchedItem').val() != "") {
+        let grams = $('#grams').val();
+        if (grams <= 0 || grams >= 5000){
+            alert("I grammi devono essere un numero compreso tra 1 e 5000");
+        }
+        else if ($('#searchedItem').val() != "") {
             var alimento = $('#searchedItem').val();
             var expand = tbody.next(); //da espandere DOPO
             tbody = tbody.next().find(".accordion-body").attr("id");
@@ -350,17 +353,23 @@ $(document).ready(function () {
                     break;
                 }
             }
-
             $.ajax({
                 type: 'POST',
                 url: './ajaxcalls/addFood.php',
                 data: {
                     idAlim: tempAlim[4],
-                    idpasto: pasId
+                    idpasto: pasId,
+                    grams: grams
                 },
                 success: function (data) {
                     if (data) {
-                        rowTemplate('#' + tbody, alimento, tempAlim[0], tempAlim[1], tempAlim[2], tempAlim[3], tempAlim[4], pasId)
+                        var arrOfObj = JSON.parse(data);
+                        let varId = [];
+                        objToArray(arrOfObj, varId); //aggiorna varId
+                        console.log(varId);
+                        let idAl = varId[0][0];
+                        console.log(idAl);
+                        rowTemplate('#' + tbody, idAl, alimento, tempAlim[0], tempAlim[1], tempAlim[2], tempAlim[3], grams)
                         if (!$(expand).hasClass("show")) {
                             $(expand).collapse('toggle'); //espansione accordion all'aggiunta dell'alimento
                         };

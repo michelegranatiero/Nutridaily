@@ -139,6 +139,14 @@ input[type='date']::-webkit-calendar-picker-indicator {
 
 }
 
+.form-control{
+  font-size: 1.1rem;
+}
+
+.fs-7 {
+  font-size: 0.8rem;
+}
+
 .list-group {
   border-left: 1px solid #ccc;
   border-right: 1px solid #ccc;
@@ -161,12 +169,12 @@ input[type='date']::-webkit-calendar-picker-indicator {
 }
 
 /* per centrare modal */
-/* .modal-dialog {
+.modal-dialog {
   min-height: calc(100vh - 60px);
   display: flex;
   flex-direction: column;
   justify-content: center;
-} */
+}
 
 .btn-default {
   border-color: #ccc;

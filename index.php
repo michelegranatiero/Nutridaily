@@ -122,11 +122,12 @@ if ((!(isset($_SESSION["arrayid"]))) && (!(isset($_COOKIE["userarray"])))) {
                 <input type="button" class="form-control" value="" id="searchedItem" disabled>
                 <button class="btn btn-danger" id="searchDelete"><i class="bi bi-x-lg"></i></button>
               </div>
+              <span class="text-muted fs-7">Alimento</span>
               <input type="text" class="form-control" placeholder="Inserisci un alimento" id="searchText" spellcheck="false">
-
               <!-- live search -->
               <div id="display"></div>
-
+              <span class="text-muted fs-7">Grammi</span>
+              <input type="number" class="form-control w-25" value="100" id="grams">
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-success" data-bs-dismiss="modal" id="add-button">Aggiungi</button>

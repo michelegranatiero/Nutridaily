@@ -3,11 +3,10 @@
 include("../db/db.php");
 
 $alim = $_POST['idAlim'];
-$pasto = $_POST['idPasto'];
 
-$query = "DELETE from alimpasto where alimento = $1 and pasto = $2";
+$query = "DELETE from alimpasto where id = $1";
 
-$exeQuery = pg_query_params($dbconn, $query, array($alim, $pasto));
+$exeQuery = pg_query_params($dbconn, $query, array($alim));
 if(!$exeQuery){
     echo false;
     exit();
