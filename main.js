@@ -4,7 +4,6 @@ var pastiArray = []; //[pasto,id]
 var tempAlim = [];
 var alimentiCorr = [];
 var collAccordions = ["coll1", "coll2", "coll3", "coll4"];
-var timeout = 0;
 var contCarb;
 var contProt;
 var contGras;
@@ -140,7 +139,7 @@ function rowTemplate(sezione, alimId, alim, car, pro, gra, cal, grams) {
         </div>
     </div>
     `;
-    if($(sezione).children().length == 0){
+    if ($(sezione).children().length == 0) {
         $(sezione).html("");
     }
     //append
@@ -148,9 +147,6 @@ function rowTemplate(sezione, alimId, alim, car, pro, gra, cal, grams) {
 
     //show acc-header
     $(sezione).prev().show();
-
-
-
 
     collAccordions.forEach((elem, index) => {
         if ($(sezione).parent().attr("id") == elem) {
@@ -163,6 +159,22 @@ function rowTemplate(sezione, alimId, alim, car, pro, gra, cal, grams) {
 
 }
 
+function expandAccord(){
+    collAccordions.forEach(elem => {
+        let coll = $('#' + elem);
+        let accChildNum = coll.find(".accordion-body").children().length;
+        if (accChildNum > 0) {
+            if (!coll.hasClass("show")) {
+                coll.collapse('toggle'); //espansione accordion se ci sono alimenti
+            };
+        }else{
+            if (coll.hasClass("show")) {
+                coll.collapse('toggle'); //shrink accordion se non ci sono alimenti
+            };
+        }
+    })
+}
+
 function displayAlimenti(arr) {
     arr.forEach(al => {
         pastiArray.forEach(pas => {
@@ -172,14 +184,9 @@ function displayAlimenti(arr) {
         });
     });
     /* solo dopo aver inserito gli alimenti */
-    if (timeout < 1) {
-        collAccordions.forEach(elem => {
-            if (!$('#' + elem).hasClass("show")) {
-                $('#' + elem).collapse('toggle'); //espansione accordion all'aggiunta dell'alimento
-            };
-        })
-        timeout++
-    }
+
+    expandAccord();
+
 }
 
 //FUNZIONE CHE CONVERTE ARR OF OBJ IN ARR OF ARR
@@ -275,6 +282,7 @@ function aggiornaData(date) {
                         var arrOfObj = JSON.parse(data);
                         objToArray(arrOfObj, pastiArray); //aggiorna pastiArray
                         updateChart();
+                        expandAccord();
 
                     }
                 });
@@ -296,6 +304,8 @@ function aggiornaData(date) {
                             var temp = JSON.parse(data);
                             objToArray(temp, dbArray);
                             displayAlimenti(dbArray);
+                        }else{
+                            expandAccord();
                         }
                         updateChart();
                     }
