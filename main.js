@@ -138,7 +138,7 @@ function rowTemplate(sezione, alimId, alim, car, pro, gra, cal, grams) {
         <div class="col">
             ${gra}g
         </div>
-        <div class="col bord-br">
+        <div class="col bord-br text-black">
             ${cal}
         </div>
     </div>

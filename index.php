@@ -118,11 +118,11 @@ if ((!(isset($_SESSION["arrayid"]))) && (!(isset($_COOKIE["userarray"])))) {
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+            <span class="text-muted fs-7">Alimento</span>
               <div class="input-group" id="searchedGroup">
                 <input type="button" class="form-control" value="" id="searchedItem" disabled>
                 <button class="btn btn-danger" id="searchDelete"><i class="bi bi-x-lg"></i></button>
               </div>
-              <span class="text-muted fs-7">Alimento</span>
               <input type="text" class="form-control" placeholder="Inserisci un alimento" id="searchText" spellcheck="false">
               <!-- live search -->
               <div id="display"></div>
