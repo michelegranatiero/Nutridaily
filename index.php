@@ -85,7 +85,7 @@ if ((!(isset($_SESSION["arrayid"]))) && (!(isset($_COOKIE["userarray"])))) {
       <div class="cont1">
         <div class="row">
           <!-- Cal chart-->
-          <div class="col position-relative">
+          <div class="col">
             <div class="cont-circ">
               <div class="circ-progress">
                 <span class="cont-value"></span>
@@ -94,7 +94,7 @@ if ((!(isset($_SESSION["arrayid"]))) && (!(isset($_COOKIE["userarray"])))) {
             </div>
           </div>
           <!-- chart js -->
-          <div class="col d-none d-sm-block">
+          <div class="col d-none d-sm-flex">
             <div class=" chartBox">
               <canvas id="chartTotale"></canvas>
             </div>
@@ -118,15 +118,16 @@ if ((!(isset($_SESSION["arrayid"]))) && (!(isset($_COOKIE["userarray"])))) {
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+            <span class="text-muted fs-7">Alimento</span>
               <div class="input-group" id="searchedGroup">
                 <input type="button" class="form-control" value="" id="searchedItem" disabled>
                 <button class="btn btn-danger" id="searchDelete"><i class="bi bi-x-lg"></i></button>
               </div>
               <input type="text" class="form-control" placeholder="Inserisci un alimento" id="searchText" spellcheck="false">
-
               <!-- live search -->
               <div id="display"></div>
-
+              <span class="text-muted fs-7">Grammi</span>
+              <input type="number" class="form-control w-25" value="100" id="grams">
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-success" data-bs-dismiss="modal" id="add-button">Aggiungi</button>
