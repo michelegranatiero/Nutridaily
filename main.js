@@ -143,8 +143,14 @@ function rowTemplate(sezione, alimId, alim, car, pro, gra, cal, grams) {
     if($(sezione).children().length == 0){
         $(sezione).html("");
     }
-
+    //append
     $(sezione).append(template1);
+
+    //show acc-header
+    $(sezione).prev().show();
+
+
+
 
     collAccordions.forEach((elem, index) => {
         if ($(sezione).parent().attr("id") == elem) {
