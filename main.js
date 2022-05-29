@@ -90,6 +90,7 @@ function prepRemove(riga, alim, car, pro, gra, cal, sez) {
 function rowTemplate(sezione, alimId, alim, car, pro, gra, cal, grams) {
     count++;
     console.log("grammi", grams);
+    grams = Math.round(grams * 10) / 10 //round 1 decimal
     car = Math.round(car / 100 * grams * 10) / 10; //round 1 decimal
     pro = Math.round(pro / 100 * grams * 10) / 10; //round 1 decimal
     gra = Math.round(gra / 100 * grams * 10) / 10; //round 1 decimal
@@ -105,8 +106,8 @@ function rowTemplate(sezione, alimId, alim, car, pro, gra, cal, grams) {
                         <i class="bi bi-x"></i>
                     </button>
                 </div>
-                <div class="col p-0 testo-alim">
-                    ${alim}
+                <div class="col p-0">
+                    <span class="testo-alim">${alim}<i class="testo-alim text-dark"> (${grams}g)</i></span>
                 </div>
             </div>
         </div>
