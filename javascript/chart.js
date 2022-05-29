@@ -64,7 +64,6 @@ function updateChart() {
     let headers = $(".acc-header");
     Array.prototype.slice.call(headers).forEach(header => {
         let body = $(header).next();
-        console.log($(body).html())
         if ( $(body).children().length == 0){
             $(header).hide();
             $(body).html("Questo pasto è vuoto, aggiungi un alimento con il pulsante +");
