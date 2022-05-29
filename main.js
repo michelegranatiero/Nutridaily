@@ -29,6 +29,7 @@ function vistaPasto() {
 
 //rimuovi alimento
 function remove_tr() {
+    console.log(removeArr);
     let id_riga = removeArr[0];
     let alim = removeArr[1];
     let car = removeArr[2];
@@ -83,10 +84,7 @@ function fill(alim, carb, prot, gras, cal, idAlim) {
 
 function prepRemove(riga, alim, car, pro, gra, cal, sez) {
     removeArr = [riga, alim, car, pro, gra, cal, sez];
-    $("#deleteReally").one('click', function (e) {
-        e.preventDefault();
-        remove_tr();
-    });
+    console.log(removeArr);
 }
 
 function rowTemplate(sezione, alimId, alim, car, pro, gra, cal, grams) {
@@ -309,6 +307,11 @@ $(document).ready(function () {
 
     //live search
     $('#searchedGroup').hide();
+
+    $("#deleteReally").on('click', function (e) {
+        e.preventDefault();
+        remove_tr();
+    });
 
 
     getBMR();
