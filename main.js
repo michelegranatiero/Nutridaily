@@ -29,7 +29,6 @@ function vistaPasto() {
 
 //rimuovi alimento
 function remove_tr() {
-    console.log(removeArr);
     let id_riga = removeArr[0];
     let alim = removeArr[1];
     let car = removeArr[2];
@@ -84,12 +83,10 @@ function fill(alim, carb, prot, gras, cal, idAlim) {
 
 function prepRemove(riga, alim, car, pro, gra, cal, sez) {
     removeArr = [riga, alim, car, pro, gra, cal, sez];
-    console.log(removeArr);
 }
 
 function rowTemplate(sezione, alimId, alim, car, pro, gra, cal, grams) {
     count++;
-    console.log("grammi", grams);
     grams = Math.round(grams * 10) / 10 //round 1 decimal
     car = Math.round(car / 100 * grams * 10) / 10; //round 1 decimal
     pro = Math.round(pro / 100 * grams * 10) / 10; //round 1 decimal
@@ -289,7 +286,6 @@ function aggiornaData(date) {
                         if (temp) { //se ci sono alimenti nel db
                             var temp = JSON.parse(data);
                             objToArray(temp, dbArray);
-                            console.log(dbArray);
                             displayAlimenti(dbArray);
                         }
                         updateChart();
@@ -380,9 +376,7 @@ $(document).ready(function () {
                         var arrOfObj = JSON.parse(data);
                         let varId = [];
                         objToArray(arrOfObj, varId); //aggiorna varId
-                        console.log(varId);
                         let idAl = varId[0][0];
-                        console.log(idAl);
                         rowTemplate('#' + tbody, idAl, alimento, tempAlim[0], tempAlim[1], tempAlim[2], tempAlim[3], grams)
                         if (!$(expand).hasClass("show")) {
                             $(expand).collapse('toggle'); //espansione accordion all'aggiunta dell'alimento
