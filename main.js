@@ -140,6 +140,9 @@ function rowTemplate(sezione, alimId, alim, car, pro, gra, cal, grams) {
         </div>
     </div>
     `;
+    if($(sezione).children().length == 0){
+        $(sezione).html("");
+    }
 
     $(sezione).append(template1);
 

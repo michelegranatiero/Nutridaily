@@ -19,10 +19,10 @@ app.component("meal", {
                 <h5 class="m-0 nomepasto">{{pasto}}</h5>
             </button>
         </div>
-        <div v-bind:id="collId" class="accordion-collapse collapse" v-bind:aria-labelledby="pasto"
+        <div v-bind:id="collId" class="accordion-collapse collapse text-center" v-bind:aria-labelledby="pasto"
         data-bs-parent="#accordionExample">
             <!-- header desktop view-->
-            <div class="acc-header d-none d-md-block">
+            <div class="acc-header">
                 <div class="row head-large">
                     <div class="col col-md-5">
                         <div class="row w-100">

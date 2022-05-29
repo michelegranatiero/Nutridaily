@@ -58,9 +58,19 @@ function updateChart() {
         contGras[0] + contGras[1] + contGras[2] + contGras[3] + 0.0001
     ]
     myChart.update();
+    //update calChart
     updateCalChart();
-
-};
+    //update visibility head-large
+    let headers = $(".acc-header");
+    Array.prototype.slice.call(headers).forEach(header => {
+        let body = $(header).next();
+        console.log($(body).html())
+        if ( $(body).children().length == 0){
+            $(header).hide();
+            $(body).html("Questo pasto è vuoto, aggiungi un alimento con il pulsante +");
+        }
+    });
+}
 
 /* MACRONUT */
 const myCanvas = $('#chartTotale');

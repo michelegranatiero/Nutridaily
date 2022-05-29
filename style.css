@@ -308,7 +308,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
 .head-large {
   flex-wrap: nowrap;
   column-gap: 3px;
-  border-radius: 30px;
+  border-radius: 5px;
   background-color: var(--main-color);
   /* background-color: var(--terz-color); */
   /* background-color: rgba(255, 255, 255, 0.5); */
@@ -502,6 +502,11 @@ input[type='date']::-webkit-calendar-picker-indicator {
     border-radius: 5px;
     background-color: var(--main-color);
     box-shadow: 0 0 0.2rem rgba(255, 255, 255, 0.3);
+  }
+
+  .acc-header {
+    /* stessa larghezza di accordion-body */
+    visibility: none;
   }
 
 
