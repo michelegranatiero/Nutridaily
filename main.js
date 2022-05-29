@@ -10,6 +10,7 @@ var contProt;
 var contGras;
 var contCal;
 var bmrValue;
+var removeArr = [];
 
 //popup scelta alimento
 function vistaPasto() {
@@ -27,7 +28,14 @@ function vistaPasto() {
 }
 
 //rimuovi alimento
-function remove_tr(id_riga, alim, car, pro, gra, cal, sez) {
+function remove_tr() {
+    let id_riga = removeArr[0];
+    let alim = removeArr[1];
+    let car = removeArr[2];
+    let pro = removeArr[3];
+    let gra = removeArr[4];
+    let cal = removeArr[5];
+    let sez = removeArr[6];
     let riga = $("#" + id_riga);
     $.ajax({
         type: 'POST',
@@ -74,19 +82,20 @@ function fill(alim, carb, prot, gras, cal, idAlim) {
 
 
 function prepRemove(riga, alim, car, pro, gra, cal, sez) {
+    removeArr = [riga, alim, car, pro, gra, cal, sez];
     $("#deleteReally").one('click', function (e) {
         e.preventDefault();
-        remove_tr(riga, alim, car, pro, gra, cal, sez);
+        remove_tr();
     });
 }
 
 function rowTemplate(sezione, alimId, alim, car, pro, gra, cal, grams) {
     count++;
     console.log("grammi", grams);
-    car = Math.round(car/100*grams * 10)/10; //round 1 decimal
-    pro = Math.round(pro/100*grams * 10)/10; //round 1 decimal
-    gra = Math.round(gra/100*grams * 10)/10; //round 1 decimal
-    cal = Math.round(cal/100*grams); //round int
+    car = Math.round(car / 100 * grams * 10) / 10; //round 1 decimal
+    pro = Math.round(pro / 100 * grams * 10) / 10; //round 1 decimal
+    gra = Math.round(gra / 100 * grams * 10) / 10; //round 1 decimal
+    cal = Math.round(cal / 100 * grams); //round int
     let template1 = `
     <div class="row alim-row overflow-hidden" id="riga${count.toString()}">
         <!-- bottone + alimento -->
@@ -179,16 +188,16 @@ function objToArray(arrObj, arr) {
 }
 
 
-function calcBMR(arr){
+function calcBMR(arr) {
     //HARRIS-BENEDICT EQUATION
     let gender = arr[0];
     let age = arr[1];
     let weight = arr[2];
     let height = arr[3];
-    if(gender == 'donna'){
+    if (gender == 'donna') {
         bmrValue = Math.round(655.1 + (9.563 * weight) + (1.850 * height) - (4.676 * age));
     }
-    else if (gender == 'uomo'){
+    else if (gender == 'uomo') {
         bmrValue = Math.round(66.5 + (13.75 * weight) + (5.003 * height) - (6.75 * age));
     }
     //fattore di attività (1.2 sedentario, 1.375, 1.55, 1.725)
@@ -202,12 +211,12 @@ function getBMR() {
         type: "POST",
         url: "./ajaxcalls/bmr.php",
         success: function (data) {
-            if (data) { 
+            if (data) {
                 var data = JSON.parse(data);
                 objToArray(data, bmrData);
                 calcBMR(bmrData[0]);
             }
-            else{
+            else {
                 alert("errore nella richiesta al server");
             };
         }
@@ -240,6 +249,7 @@ function aggiornaData(date) {
     contProt = [0., 0., 0., 0.];
     contGras = [0., 0., 0., 0.];
     contCal = [0, 0, 0, 0];
+    removeArr = [];
 
     //check esistenza diario
     var idPasti;
@@ -337,7 +347,7 @@ $(document).ready(function () {
     //button aggiungi alimento
     $("#add-button").click(function () {
         let grams = $('#grams').val();
-        if (grams <= 0 || grams >= 5000){
+        if (grams <= 0 || grams >= 5000) {
             alert("I grammi devono essere un numero compreso tra 1 e 5000");
         }
         else if ($('#searchedItem').val() != "") {
