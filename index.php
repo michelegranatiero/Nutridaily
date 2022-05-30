@@ -2,7 +2,7 @@
 session_start();
 if ((!(isset($_SESSION["arrayid"]))) && (!(isset($_COOKIE["userarray"])))) {
   header("Location: ./login/login.php");
-  die();
+  exit();
 }
 ?>
 

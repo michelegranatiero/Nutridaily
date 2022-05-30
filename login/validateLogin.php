@@ -36,7 +36,7 @@
                     $_SESSION["arrayid"] = $arrayid;
 
                     if (isset($_POST["rememberLogin"])){
-                        setcookie("userarray", json_encode($arrayid), time()+500, '/');
+                        setcookie("userarray", json_encode($arrayid), time()+5000, '/');
                     }
                     header("Location: ../index.php");
                     exit();

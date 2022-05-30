@@ -353,10 +353,10 @@ $(document).ready(function () {
                 type: "POST",
                 url: "./ajaxcalls/search.php",
                 data: { search: text },
-                success: function (html) {
+                success: function (data) {
                     //Risultato da mostrare in search
                     $('#display').show();
-                    $("#display").html(html).show;
+                    $("#display").html(data).show;
                 }
             });
         }
