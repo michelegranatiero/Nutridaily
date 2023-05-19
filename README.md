@@ -17,14 +17,33 @@ This is a responsive website built for a university project focused on the front
 ## Mobile view
 
 - Mobile Dashboard
-<img src="https://github.com/michelegranatiero/Nutridaily/blob/main/images/Dashboard_Open_Mobile.jpg"  width=300>
 
-<img src="https://github.com/michelegranatiero/Nutridaily/blob/main/images/Dashboard_Closed_Mobile.jpg" width=300>
+<table>
+  <tbody>
+    <tr>
+      <td>
+        <img src="https://github.com/michelegranatiero/Nutridaily/blob/main/images/Dashboard_Open_Mobile.jpg"  width=300>
+      </td>
+      <td>
+        <img src="https://github.com/michelegranatiero/Nutridaily/blob/main/images/Dashboard_Closed_Mobile.jpg" width=300>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-- Mobile Login
-<img src="https://github.com/michelegranatiero/Nutridaily/blob/main/images/Login_Mobile.jpg" width=300>
+- Mobile Login and Registration
 
-- Mobile Registration
-<img src="https://github.com/michelegranatiero/Nutridaily/blob/main/images/Registr_Mobile.jpg" width=300>
+<table>
+  <tbody>
+    <tr>
+      <td>
+        <img src="https://github.com/michelegranatiero/Nutridaily/blob/main/images/Login_Mobile.jpg" width=300>
+      </td>
+      <td>
+        <img src="https://github.com/michelegranatiero/Nutridaily/blob/main/images/Registr_Mobile.jpg" width=300>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 
