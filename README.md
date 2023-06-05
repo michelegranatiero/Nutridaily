@@ -2,7 +2,7 @@
 
 A daily food diary to keep track of your macros and calories.
 
-This is a responsive website built for a university project focused on the front-end side.
+This is a responsive website built for a university project focused on the frontend development.
 
 ## Desktop view
 - Desktop Dashboard
