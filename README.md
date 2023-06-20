@@ -4,6 +4,8 @@ A daily food diary to keep track of your macros and calories.
 
 This is a responsive website built for a university project focused on the frontend development.
 
+Used technologies: html, css, bootstrap, javascript, jquery, ajax, chartjs, php, vue.js
+
 ## Desktop view
 - Desktop Dashboard
 <img src="https://github.com/michelegranatiero/Nutridaily/blob/main/images/Dashboard_Desktop.png" width=800>
