@@ -4,7 +4,7 @@ A daily food diary to keep track of your macros and calories.
 
 This is a responsive website built for a university project focused on the frontend development.
 
-Used technologies: html, css, bootstrap, javascript, jquery, ajax, chart.js, php, vue.js.
+Used technologies: html, css, bootstrap, javascript, jquery, ajax, chart.js, php, vue.js, postgresql.
 
 ## Desktop view
 - Desktop Dashboard
